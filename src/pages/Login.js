@@ -4,7 +4,10 @@ import Form from "../components/Form";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import styled from "styled-components";
-import image from "../../assets/images/Login.jpg";
+import image from "../assets/images/Login.jpg";
+import { Link, Route, Switch } from "react-router-dom";
+import H3 from "../components/H3";
+import ResetModal from "../modals/ResetModal";
 
 const Container = styled.div`
   display: flex;
@@ -21,10 +24,6 @@ const Title = styled.h1`
   color: gold;
 `;
 
-const H3 = styled.h3`
-  color: white;
-`;
-
 const Hr = styled.hr`
   color: white;
   width: 50%;
@@ -37,11 +36,22 @@ const Login = () => {
         <Title>Login</Title>
         <Input type="text" placeholder="Email"></Input>
         <Input type="password" placeholder="Password"></Input>
-        <H3>Forgot Password ?</H3>
-        <Button text="Sign-In" signIn />
+
+        <Link to="/reset-password">
+          <H3 text="Ați uitat parola?" />
+        </Link>
+
+        <Link to="/">
+          <Button text="Sign-In" signIn />
+        </Link>
         <Hr />
-        <Button text="Sign-Up" signUp />
+        <Link to="/register">
+          <Button text="Sign-Up" signUp />
+        </Link>
       </Form>
+      <Switch>
+        <Route path="/reset-password" component={ResetModal} />
+      </Switch>
     </Container>
   );
 };

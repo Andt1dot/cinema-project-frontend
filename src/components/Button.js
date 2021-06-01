@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  width: 55%;
   padding: 8px 16px;
   background: ${(props) =>
     props.signIn ? "rgb(0, 100, 0,0.7)" : "rgb(255, 0, 0,0.7)"};
@@ -12,7 +11,6 @@ const StyledButton = styled.button`
   font-size: 1.2em;
   color: gold;
   transition: 0.25s;
-  margin: 0.5em;
 
   :hover,
   :focus {
