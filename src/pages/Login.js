@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Form from "../components/Form";
 import styled from "styled-components";
-import image from "../pages/bg.jpg";
+import image from "../pages/Login.jpg";
 
 const Container = styled.div`
   display: flex;
