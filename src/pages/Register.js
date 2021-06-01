@@ -1,14 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Form from "../components/Form";
+import styled from "styled-components";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import styled from "styled-components";
-import image from "../pages/Login.jpg";
 
 const Container = styled.div`
   display: flex;
-  background: url(${image});
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -21,30 +19,21 @@ const Title = styled.h1`
   color: gold;
 `;
 
-const H3 = styled.h3`
-  color: white;
-`;
-
-const Hr = styled.hr`
-  color: white;
-  width: 50%;
-`;
-
-const Login = () => {
+export default function Register() {
   return (
     <Container>
       <Form>
-        <Title>Login</Title>
-        <Input type="text" placeholder="Email"></Input>
+        <Title>Register</Title>
+        <Input type="text" placeholder="Firstname"></Input>
+        <Input type="text" placeholder="Lastname"></Input>
+        <Input type="email" placeholder="Email"></Input>
+        <Input type="text" placeholder="Username"></Input>
         <Input type="password" placeholder="Password"></Input>
-        <H3>Forgot Password ?</H3>
-        <Button signIn>Sign-In</Button>
-        <Hr />
-        <Button signUp>Sign-Up</Button>
+        <Input type="mobile" placeholder="Phone"></Input>
+        <Button text="Sign-Up" signUp />
       </Form>
     </Container>
   );
-};
+}
 
-export default Login;
-Login.propTypes = {};
+Register.propTypes = {};
