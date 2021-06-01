@@ -38,9 +38,9 @@ const Login = () => {
         <Input type="text" placeholder="Email"></Input>
         <Input type="password" placeholder="Password"></Input>
         <H3>Forgot Password ?</H3>
-        <Button signIn>Sign-In</Button>
+        <Button text="Sign-In" signIn />
         <Hr />
-        <Button signUp>Sign-Up</Button>
+        <Button text="Sign-Up" signUp />
       </Form>
     </Container>
   );

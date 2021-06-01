@@ -4,8 +4,8 @@ import Register from "./pages/Register";
 const App = () => {
   return (
     <>
-      {/*<Login></Login>*/}
-      <Register></Register>
+      <Login></Login>
+      {/*<Register></Register>*/}
     </>
   );
 };
