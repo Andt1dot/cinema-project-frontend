@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container1 = styled.div`
+const Container = styled.div`
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
@@ -19,21 +19,25 @@ const Container1 = styled.div`
 
 const Container2 = styled.div`
   background-color: rgb(2, 0, 0, 0.7);
-  display: grid;
-  width: 500px;
-  height: 120px;
+  width: auto;
+  padding: 20px;
+
   border-radius: 25px;
   align-self: center;
   justify-content: center;
   box-shadow: 5px 5px 15px white;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 `;
 
-const Modal = () => {
+const Modal = ({ children }) => {
   return (
-    <Container1>
-      <Container2></Container2>
-    </Container1>
+    <Container>
+      <Container2>{children}</Container2>
+    </Container>
   );
 };
 

@@ -37,7 +37,7 @@ const Login = () => {
         <Input type="text" placeholder="Email"></Input>
         <Input type="password" placeholder="Password"></Input>
 
-        <Link to="/reset-password">
+        <Link to="/login/reset-password">
           <H3 text="Ați uitat parola?" />
         </Link>
 
@@ -50,7 +50,7 @@ const Login = () => {
         </Link>
       </Form>
       <Switch>
-        <Route path="/reset-password" component={ResetModal} />
+        <Route path="/login/reset-password" component={ResetModal} />
       </Switch>
     </Container>
   );
