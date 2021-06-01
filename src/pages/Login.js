@@ -4,6 +4,7 @@ import Form from "../components/Form";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import styled from "styled-components";
+import image from "../pages/Login.jpg";
 
 const Container = styled.div`
   display: flex;

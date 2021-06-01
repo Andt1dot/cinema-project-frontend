@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.form`
   max-width: 400px;
   margin: auto;
-  padding: 30px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +12,7 @@ const Container = styled.form`
   border-radius: 5px;
   box-shadow: 0 1px 10px 1px #ffffff;
 `;
+
 
 const Form = ({ children }) => {
   return <Container>{children}</Container>;
