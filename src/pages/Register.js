@@ -5,7 +5,7 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import Select from "../components/Select";
 import styled from "styled-components";
-import image from "../pages/Login.jpg";
+import image from "../../assets/images/Login.jpg";
 
 const Container = styled.div`
   display: flex;
