@@ -5,9 +5,9 @@ const StyledButton = styled.button`
   width: 55%;
   padding: 8px 16px;
   background: ${(props) =>
-    props.signUp ? "red" : props.signIn ? "green" : "grey"};
-  border: 2px solid gold;
-  border-radius: 5px;
+    props.signIn ? "rgb(0, 100, 0,0.7)" : "rgb(255, 0, 0,0.7)"};
+  border: 1px solid gold;
+  border-radius: 8px;
   font-family: "Bitter", sans-serif;
   font-size: 1.2em;
   color: gold;

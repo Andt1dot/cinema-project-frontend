@@ -8,9 +8,9 @@ const Container = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #17181c;
+  background-color: RGB(255, 255, 255, 0.1);
   border-radius: 5px;
-  box-shadow: 0 3px 10px 2px #737478;
+  box-shadow: 0 1px 10px 1px #ffffff;
 `;
 
 const Form = ({ children }) => {

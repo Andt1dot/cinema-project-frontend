@@ -3,21 +3,15 @@ import styled from "styled-components";
 
 const InputField = styled.input`
   width: 75%;
-  display: block;
   outline: none;
-  padding: 8px 16px;
-  background: #17181c;
-  border: 2px solid gray;
-  border-radius: 5px;
+  padding: 5px 16px;
+  border-radius: 8px;
   font-family: "Bitter", serif;
   font-size: 1.2em;
-  color: #b3afaf;
+  background: rgb(255, 255, 255);
   margin: 0.5em;
   :focus {
-    background-color: #2a2b2e;
-  }
-  ::placeholder {
-    color: #6e6b6b;
+    box-shadow: 0 1px 10px 1px #ffffff;
   }
 `;
 

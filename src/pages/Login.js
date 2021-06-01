@@ -4,7 +4,6 @@ import Form from "../components/Form";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import styled from "styled-components";
-import image from "../pages/bg.jpg";
 
 const Container = styled.div`
   display: flex;
@@ -21,6 +20,15 @@ const Title = styled.h1`
   color: gold;
 `;
 
+const H3 = styled.h3`
+  color: white;
+`;
+
+const Hr = styled.hr`
+  color: white;
+  width: 50%;
+`;
+
 const Login = () => {
   return (
     <Container>
@@ -28,8 +36,9 @@ const Login = () => {
         <Title>Login</Title>
         <Input type="text" placeholder="Email"></Input>
         <Input type="password" placeholder="Password"></Input>
-        <a href="http://localhost:3000/">Forgot Password</a>
+        <H3>Forgot Password ?</H3>
         <Button signIn>Sign-In</Button>
+        <Hr />
         <Button signUp>Sign-Up</Button>
       </Form>
     </Container>
