@@ -1,12 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-export default function componentName() {
+export default function Home() {
   return (
-    <>
-      <h1>Welcome to Home!!!</h1>
-    </>
+    <div>
+      <h1>Welcome to Olymp Cinema!!!</h1>
+    </div>
   );
 }
-
-componentName.propTypes = {};
