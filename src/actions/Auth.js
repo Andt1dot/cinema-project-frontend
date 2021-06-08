@@ -6,25 +6,24 @@ export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
 
-export const requestLogin = (email, password) => (dispatch) => {
-    console.log("sdsdssdsd")
-//   axios
-//     .post("localhost:4000/api/auth/login", {
-//       email: email,
-//       password: password,
-//     })
-//     .then((user) => {
-//       dispatch({
-//         type: LOGIN_SUCCESS,
-//         payload: user,
-//       });
+export const requestLogin = (email, password) => async (dispatch) => {
+  axios
+    .post("http://localhost:4000/api/auth/login", {
+      email: email,
+      password: password,
+    })
+    .then((user) => {
+    //   dispatch({
+    //     type: LOGIN_SUCCESS,
+    //     payload: user,
+    //   });
 
-//       console.log(user);
-//     })
-//     .catch(Error);
-//   {
-//     console.log(Error.message);
-//   }
+      console.log(user);
+    })
+    .catch(Error);
+  {
+    console.log(Error.message);
+  }
 
   //     return {
   //     type: LOGIN_REQUEST,

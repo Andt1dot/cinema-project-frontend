@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import Form from "../components/Form";
 import Input from "../components/Input";
 import Button from "../components/Button";
@@ -8,6 +8,8 @@ import { Link, Route, Switch } from "react-router-dom";
 import H3 from "../components/H3";
 import ResetModal from "../modals/ResetModal";
 import { requestLogin } from "../actions/Auth";
+import { useDispatch } from "react-redux";
+
 // import axios from "axios";
 const Container = styled.div`
   display: flex;
@@ -46,6 +48,8 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const dispatch = useDispatch();
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -56,19 +60,7 @@ const Login = (props) => {
 
   const handleOnSubmitLogin = (event) => {
     event.preventDefault();
-    requestLogin(email,password);
-    // axios
-    //   .post("http://localhost:4000/api/auth/login", {
-    //     email: email,
-    //     password: password,
-    //   })
-    //   .then((user) => {
-    //     console.log(user);
-    //   })
-    //   .catch(Error);
-    // {
-    //   console.log(Error.message);
-    // }
+    dispatch(requestLogin(email, password));
   };
 
   return (
