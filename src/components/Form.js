@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.form`
+const Container = styled.form.attrs({
+  onSubmit: (props) => props.onSubmit,
+})`
   max-width: 400px;
   margin: auto;
   padding: 20px;
@@ -13,9 +15,8 @@ const Container = styled.form`
   box-shadow: 0 1px 10px 1px #ffffff;
 `;
 
-
-const Form = ({ children }) => {
-  return <Container>{children}</Container>;
+const Form = ({ children }, props) => {
+  return <Container onSubmit={props.onSubmit}>{children}</Container>;
 };
 
 export default Form;
