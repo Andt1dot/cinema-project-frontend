@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Form from "../components/Form";
 import Input from "../components/Input";
 import Button from "../components/Button";
@@ -44,5 +43,3 @@ export default function Register() {
     </Container>
   );
 }
-
-Register.propTypes = {};
