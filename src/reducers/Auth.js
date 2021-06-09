@@ -1,19 +1,37 @@
-import React from "react";
-import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  LOGOUT_REQUEST,
-  LOGOUT_SUCCESS,
-  LOGOUT_FAILURE,
-} from "../actions/Auth";
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from "../actions/Auth";
 
-const Auth = (action) => {
-//   switch (action.type) {
-//     case LOGIN_REQUEST: {
-//       console.log("suc");
-//     }
-//   }
+const initialState = {
+  isFetching: false,
+  isAuthenticated: localStorage.getItem("token") ? true : false,
+};
+
+const Auth = (state = initialState, action) => {
+  switch (action.type) {
+    case LOGIN_REQUEST: {
+      return {
+        ...state,
+        isFetching: true,
+      };
+    }
+    case LOGIN_SUCCESS: {
+      return {
+        ...state,
+        isFetching: false,
+        isAuthenticated: true,
+      };
+    }
+    case LOGIN_FAILURE: {
+      return {
+        ...state,
+        isFetching: false,
+        isAuthenticated: false,
+      };
+    }
+
+    default: {
+      return state;
+    }
+  }
 };
 
 export default Auth;
