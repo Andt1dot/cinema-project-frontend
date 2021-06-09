@@ -4,7 +4,11 @@ import styled from "styled-components";
 const StyledButton = styled.button`
   padding: 8px 16px;
   background: ${(props) =>
-    props.signIn ? "rgb(0, 100, 0,0.7)" : "rgb(255, 0, 0,0.7)"};
+    props.signIn
+      ? "rgb(0, 100, 0,0.7)"
+      : props.signUp
+      ? "rgb(255, 0, 0,0.7)"
+      : "rgb(17, 23, 33)"};
   border: 1px solid gold;
   border-radius: 8px;
   font-family: "Bitter", sans-serif;
