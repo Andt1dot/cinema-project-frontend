@@ -5,11 +5,19 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import Auth from "./reducers/Auth";
+import Movie from "./reducers/Movie";
 import thunk from "redux-thunk";
 
-const store = createStore(Auth, applyMiddleware(thunk));
+const reducer = combineReducers({
+  Auth,
+  Movie,
+});
+
+const store = createStore(reducer, applyMiddleware(thunk));
+
+console.log("store: ", store.getState());
 
 ReactDOM.render(
   <Router>
