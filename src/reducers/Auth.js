@@ -6,6 +6,7 @@ const initialState = {
 };
 
 const Auth = (state = initialState, action) => {
+  console.log("action: ", action.type);
   switch (action.type) {
     case LOGIN_REQUEST: {
       return {
