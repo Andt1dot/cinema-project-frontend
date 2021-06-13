@@ -20,7 +20,6 @@ export const requestLogin = (email, password) => async (dispatch) => {
       });
 
       localStorage.setItem("token", user.data.token);
-      document.cookie = "Token=" + user.data.token;
     })
     .catch((err) => {
       if (response) {

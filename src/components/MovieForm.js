@@ -56,13 +56,13 @@ const Button = styled.button`
 const initialData = {
   title: "",
   original_title: "",
-  genre: [""],
+  genre: "",
   director: "",
   release_date: "",
-  rating: "",
+  rating: 0,
   description: "",
-  actors: [""],
-  age_category_restrict: "",
+  actors: "",
+  age_restrict: "",
   duration: "",
   image_url: "",
   video_url: "",
@@ -72,12 +72,17 @@ const MovieForm = ({ onSubmitHandler }) => {
   const [data, setData] = useState(initialData);
 
   const handleInputChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const onSubmitForm = (e) => {
     e.preventDefault();
+    //console.log("data: ", data);
     onSubmitHandler(data);
+    setData(initialData);
   };
 
   return (
@@ -134,9 +139,9 @@ const MovieForm = ({ onSubmitHandler }) => {
         ></Input>
         <Input
           type="text"
-          name="age_category_restrict"
+          name="age_restrict"
           placeholder="Age Restriction"
-          value={data.age_category_restrict}
+          value={data.age_restrict}
           onChange={handleInputChange}
         ></Input>
       </Row>
@@ -179,7 +184,7 @@ const MovieForm = ({ onSubmitHandler }) => {
         ></Input>
       </Row>
       <Row>
-        <Button>Add Movie</Button>
+        <Button type="submit">Add Movie</Button>
       </Row>
     </form>
   );
