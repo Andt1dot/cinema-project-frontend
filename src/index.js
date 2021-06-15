@@ -9,10 +9,11 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import Auth from "./reducers/Auth";
 import Movie from "./reducers/Movie";
 import thunk from "redux-thunk";
-
+import Home from "./reducers/Home";
 const reducer = combineReducers({
   Auth,
   Movie,
+  Home,
 });
 
 const store = createStore(reducer, applyMiddleware(thunk));
