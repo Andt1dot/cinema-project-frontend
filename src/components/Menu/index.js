@@ -7,9 +7,9 @@ import "./index.css";
 
 const Menu = () => {
   return (
-    <div className="menu">
-      <div className="container ">
-        <header className="d-flex flex-wrap align-items-center justify-content-center  py-3 mb-4 border-bottom">
+    <div className="menu ">
+      <div>
+        <header className="d-flex flex-wrap align-items-center justify-content-center py-3 mb-4 border-bottom">
           <Link to="/">
             <div className="logo-wrapper">
               <img src={logo1} className="logo" alt="cinema" />
