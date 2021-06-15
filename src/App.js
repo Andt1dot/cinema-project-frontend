@@ -8,12 +8,11 @@ import AddMovie from "./pages/AddMovie";
 import { useSelector } from "react-redux";
 
 const App = () => {
-  
   const { movies } = useSelector((state) => ({
     movies: state.Movie.movies,
   }));
 
-  console.log("State", movies);
+  console.log("Movies[]: ", movies);
 
   return (
     <div>

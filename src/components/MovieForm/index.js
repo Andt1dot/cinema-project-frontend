@@ -85,6 +85,32 @@ const MovieForm = ({ onSubmitHandler }) => {
     setData(initialData);
   };
 
+  const showWidget = (e) => {
+    let widget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: "olymp-cinema",
+        uploadPreset: "olymp_cinema",
+        folder: "movies",
+        chunk_size: 6000000,
+      },
+      (error, result) => {
+        if (!error && result && result.event === "success") {
+          console.log(
+            "File uploaded successfully! Here is the info: ",
+            result.info
+          );
+          if (e.target.id === "image_upload") {
+            setData({ ...data, image_url: result.info.secure_url });
+          } else if (e.target.id === "video_upload") {
+            setData({ ...data, video_url: result.info.secure_url });
+          }
+        }
+      }
+    );
+
+    widget.open();
+  };
+
   return (
     <form onSubmit={onSubmitForm}>
       <Row>
@@ -170,18 +196,37 @@ const MovieForm = ({ onSubmitHandler }) => {
         ></Text>
       </Row>
       <Row>
-        <Input
-          type="file"
-          name="image_url"
-          value={data.image_url}
-          onChange={handleInputChange}
-        ></Input>
-        <Input
-          type="file"
-          name="video_url"
-          value={data.video_url}
-          onChange={handleInputChange}
-        ></Input>
+        <div
+          id="image_upload"
+          onDoubleClick={showWidget}
+          style={{ background: "green", margin: 3, fontWeight: "bold" }}
+        >
+          Upload Image
+        </div>
+        <div style={{ width: 300 }}>
+          {data.image_url && (
+            <img
+              src={data.image_url}
+              alt="movie_image"
+              style={{ width: 100 }}
+            />
+          )}
+        </div>
+      </Row>
+      <Row>
+        <div
+          id="video_upload"
+          onDoubleClick={showWidget}
+          style={{ background: "green", margin: 3, fontWeight: "bold" }}
+        >
+          Upload Video
+        </div>
+        <iframe
+          title="movie_video"
+          src={data.video_url}
+          allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+          frameBorder="0"
+        ></iframe>
       </Row>
       <Row>
         <Button type="submit">Add Movie</Button>
