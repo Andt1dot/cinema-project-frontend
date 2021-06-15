@@ -15,7 +15,7 @@ const App = () => {
   console.log("Movies[]: ", movies);
 
   return (
-    <div>
+    <React.Fragment>
       <Menu />
       <Switch>
         <Route path="/movie-add" component={AddMovie} />
@@ -23,7 +23,7 @@ const App = () => {
         <Route path="/register" component={Register} />
         <Route path="/" component={Home} />
       </Switch>
-    </div>
+    </React.Fragment>
   );
 };
 

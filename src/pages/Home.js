@@ -6,12 +6,13 @@ import MovieCarousel from "../components/MovieCarousel";
 export default function Home() {
   return (
     <div className="container">
-      <div className="row">
-        <MovieCard></MovieCard>
-        <MovieCard></MovieCard>
-        <MovieCard></MovieCard>
-        <MovieCard></MovieCard>
-        <MovieCard></MovieCard>
+      <MovieCarousel></MovieCarousel>
+      <div className="row justify-content-md-center">  
+      <MovieCard></MovieCard>
+      <MovieCard></MovieCard>
+      <MovieCard></MovieCard>
+      <MovieCard></MovieCard>
+      <MovieCard></MovieCard>
       </div>
     </div>
   );
