@@ -1,11 +1,8 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #7a827c;
+  background-image: url("https://www.maxpixel.net/static/photo/1x/Red-Curtain-Cinema-Background-Theater-Stripes-551797.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
 }
 

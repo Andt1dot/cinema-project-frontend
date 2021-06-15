@@ -5,8 +5,16 @@ import Menu from "./components/Menu";
 import { Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import AddMovie from "./pages/AddMovie";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  
+  const { movies } = useSelector((state) => ({
+    movies: state.Movie.movies,
+  }));
+
+  console.log("State", movies);
+
   return (
     <div>
       <Menu />
