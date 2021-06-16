@@ -1,0 +1,67 @@
+.wrapper {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.modal-div {
+  background-color: rgb(2, 0, 0, 0.7);
+  width: auto;
+  padding: 20px;
+
+  border-radius: 25px;
+  align-self: center;
+  justify-content: center;
+  box-shadow: 5px 5px 15px white;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.styled-h3 {
+  color: white;
+}
+.styled-button {
+  padding: 8px 16px;
+  /*background: ${(props) =>
+      props.signIn
+        ? "rgb(0, 100, 0,0.7)"
+        : props.signUp
+        ? "rgb(255, 0, 0,0.7)"
+        : "rgb(17, 23, 33)"};*/
+  border: 1px solid gold;
+  border-radius: 8px;
+  font-family: "Bitter", sans-serif;
+  font-size: 1.2em;
+  color: gold;
+  transition: 0.25s;
+}
+
+.styled-button:hover:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em;
+  transform: translateY(-0.25em);
+}
+
+.styled-input {
+  width: 75%;
+  outline: none;
+  padding: 5px 16px;
+  border-radius: 8px;
+  font-family: "Bitter", serif;
+  font-size: 1.2em;
+  background: rgb(255, 255, 255);
+  margin: 0.5em;
+}
+.styled-input:focus {
+  box-shadow: 0 1px 10px 1px #ffffff;
+}

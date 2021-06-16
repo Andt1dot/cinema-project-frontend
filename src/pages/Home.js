@@ -18,7 +18,7 @@ export default function Home() {
   }));
 
   return (
-    <div className="container">
+    <div>
       <MovieCarousel></MovieCarousel>
       <div className="row justify-content-md-center">
         {premieres.length > 0 ? (

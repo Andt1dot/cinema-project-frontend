@@ -20,85 +20,82 @@ const Menu = () => {
         </header>
       </div>
 
-      <div className="container ">
-        <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 ">
-          <NavLink
-            exact
-            to="/"
-            className="d-flex align-items-center col-md-2 mb-2 mb-md-0 link-dark text-decoration-none"
+      <nav
+        className="navbar navbar-expand-lg navbar-dark "
+        aria-label="Tenth navbar example"
+      >
+        <div className="container-fluid">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarsExample08"
+            aria-controls="navbarsExample08"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
-            Rezerveaza
-          </NavLink>
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
-          <ul className="nav col-12 col-md-8 mb-2 justify-content-center mb-md-0">
-            <li>
-              <NavLink exact to="/" className="nav-link px-2 link-secondary">
-                Acasa
-              </NavLink>
-            </li>
-            <li>
-              <NavLink exact to="/" className="nav-link px-2 link-dark">
-                Program
-              </NavLink>
-            </li>
-            <li>
-              <NavLink exact to="/" className="nav-link px-2 link-dark">
-                Noutati
-              </NavLink>
-            </li>
-            <li>
-              <NavLink exact to="/" className="nav-link px-2 link-dark">
-                Promotii
-              </NavLink>
-            </li>
-            <li>
-              <NavLink exact to="/" className="nav-link px-2 link-dark">
-                Contacte
-              </NavLink>
-            </li>
-          </ul>
-
-          <div className="dropdown col-md-2 text-end link-dark">
-            <a
-              href="/"
-              className="d-block link-dark text-decoration-none dropdown-toggle"
-              id="dropdownUser1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Profil
-            </a>
-            <ul
-              className="dropdown-menu text-small"
-              aria-labelledby="dropdownUser1"
-            >
-              <li>
-                <NavLink exact to="/login" className="dropdown-item">
+          <div
+            className="collapse navbar-collapse justify-content-md-center"
+            id="navbarsExample08"
+          >
+            <ul className="navbar-nav">
+              <li className="nav-item custom-link">
+                <NavLink exact to="/" className="nav-link " aria-current="page">
+                  Program
+                </NavLink>
+              </li>
+              <li className="nav-item custom-link">
+                <NavLink exact to="/" className="nav-link ">
+                  Noutati
+                </NavLink>
+              </li>
+              <li className="nav-item custom-link">
+                <NavLink
+                  exact
+                  to="/"
+                  className="nav-link "
+                  tabIndex="-1"
+                  aria-disabled="true"
+                >
+                  Promotii
+                </NavLink>
+              </li>
+              <li className="nav-item dropdown custom-link">
+                <NavLink
+                  exact
+                  to="/"
+                  className="nav-link dropdown-toggle "
+                  id="dropdown08"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   Sign In
                 </NavLink>
-              </li>
-              <li>
-                <NavLink exact to="/" className="dropdown-item">
-                  Setari
-                </NavLink>
-              </li>
-              <li>
-                <NavLink exact to="/" className="dropdown-item">
-                  Info
-                </NavLink>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <NavLink exact to="/" className="dropdown-item">
-                  Sign out
-                </NavLink>
+                <ul className="dropdown-menu" aria-labelledby="dropdown08">
+                  <li>
+                    <NavLink exact to="/login" className="dropdown-item">
+                      Sign In
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink exact to="/profile" className="dropdown-item">
+                      Contul meu
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink exact to="/logout" className="dropdown-item">
+                      Sign out
+                    </NavLink>
+                  </li>
+                </ul>
               </li>
             </ul>
           </div>
-        </header>
-      </div>
+        </div>
+      </nav>
     </div>
   );
 };
