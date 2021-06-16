@@ -57,7 +57,7 @@ const Menu = () => {
                   exact
                   to="/"
                   className="nav-link "
-                  tabindex="-1"
+                  tabIndex="-1"
                   aria-disabled="true"
                 >
                   Promotii

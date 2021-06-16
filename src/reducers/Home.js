@@ -22,3 +22,4 @@ const Home = (state = initialState, action) => {
       return state;
   }
 };
+export default Home;
