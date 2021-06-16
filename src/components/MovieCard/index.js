@@ -1,24 +1,27 @@
 import "./index.css";
 
-const MovieCard = () => {
+const MovieCard = ({premiere}) => {
+
+  console.log("Component",premiere);
+
   return (
-    <div class="card movie_card">
+    <div className="card movie_card">
       <img
-        src="https://www.goodillustration.com/blog/wp-content/uploads/2019/05/640-3.jpg"
-        class="card-img-top"
+        src={premiere.movie.image_url}
+        className="card-img-top"
         alt="..."
       />
-      <div class="card-body">
+      <div className="card-body">
         <i
-          class="fas fa-play play_button"
+          className="fas fa-play play_button"
           data-toggle="tooltip"
           data-placement="bottom"
           title="Play Trailer"
         ></i>
-        <h5 class="card-title">POKEMON Detective Pikachu</h5>
-        <span class="movie_info">2019</span>
-        <span class="movie_info float-right">
-          <i class="fas fa-star"></i> 9 / 10
+        <h5 className="card-title">{premiere.movie.title}</h5>
+        <span className="movie_info">2019</span>
+        <span className="movie_info float-right">
+          <i className="fas fa-star"></i> {premiere.movie.rating}
         </span>
       </div>
     </div>

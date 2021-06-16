@@ -6,6 +6,7 @@ const initialState = {
 };
 
 const Movie = (state = initialState, action) => {
+  
   switch (action.type) {
     case ADD_MOVIE_SUCCESS:
       return {

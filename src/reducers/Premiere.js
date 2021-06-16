@@ -1,11 +1,15 @@
-import { FETCH_PREMIERE_SUCCES, FETCH_PREMIERE_FAILURE } from "../actions/Home";
+import {
+  FETCH_PREMIERE_SUCCES,
+  FETCH_PREMIERE_LOADING,
+  FETCH_PREMIERE_FAILURE,
+} from "../actions/Home";
 
 const initialState = {
   premieres: [],
   error: "",
 };
 
-const Home = (state = initialState, action) => {
+const Premiere = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PREMIERE_SUCCES:
       return {
@@ -22,3 +26,5 @@ const Home = (state = initialState, action) => {
       return state;
   }
 };
+
+export default Premiere;
