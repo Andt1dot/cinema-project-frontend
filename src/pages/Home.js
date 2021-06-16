@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import MovieCard from "../components/MovieCard/index";
 import MovieCarousel from "../components/MovieCarousel";
 
@@ -7,12 +6,12 @@ export default function Home() {
   return (
     <div className="container">
       <MovieCarousel></MovieCarousel>
-      <div className="row justify-content-md-center">  
-      <MovieCard></MovieCard>
-      <MovieCard></MovieCard>
-      <MovieCard></MovieCard>
-      <MovieCard></MovieCard>
-      <MovieCard></MovieCard>
+      <div className="row justify-content-md-center">
+        <MovieCard></MovieCard>
+        <MovieCard></MovieCard>
+        <MovieCard></MovieCard>
+        <MovieCard></MovieCard>
+        <MovieCard></MovieCard>
       </div>
     </div>
   );
