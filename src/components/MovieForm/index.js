@@ -231,6 +231,11 @@ const MovieForm = ({ onSubmitHandler }) => {
       <Row>
         <Button type="submit">Add Movie</Button>
       </Row>
+      {/**<select value={this.state.fruit} onChange={this.handleChange}>
+            {options.map((option) => (
+              <option value={option.value}>{option.label}</option>
+            ))}
+  </select> */}
     </form>
   );
 };
