@@ -1,8 +1,8 @@
 import {
   FETCH_PREMIERE_SUCCES,
-  FETCH_PREMIERE_LOADING,
+  //FETCH_PREMIERE_LOADING,
   FETCH_PREMIERE_FAILURE,
-} from "../actions/Home";
+} from "../actions/Premiere";
 
 const initialState = {
   premieres: [],

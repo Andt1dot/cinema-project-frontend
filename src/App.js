@@ -5,7 +5,6 @@ import Menu from "./components/Menu";
 import { Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import AddMovie from "./pages/AddMovie";
-import { useSelector } from "react-redux";
 import AboutPremiere from "./pages/AboutPremiere";
 const App = () => {
   return (
