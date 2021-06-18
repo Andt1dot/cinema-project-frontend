@@ -16,13 +16,6 @@ const RegisterForm = () => {
           placeholder="Lastname"
           className="styled-input"
         ></input>
-        <select
-          type="Age Category"
-          option1="Adult"
-          option2="Adolescent"
-          option3="Copil"
-          className="styled-select"
-        />
         <input
           type="email"
           placeholder="Email"
