@@ -6,18 +6,13 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import AddMovie from "./pages/AddMovie";
 import { useSelector } from "react-redux";
-
+import AboutPremiere from "./pages/AboutPremiere";
 const App = () => {
-  const { movies } = useSelector((state) => ({
-    movies: state.Movie.movies,
-  }));
-
-  console.log("Movies[]: ", movies);
-
   return (
     <React.Fragment>
       <Menu />
       <Switch>
+        <Route path="/about-premiere/:id" component={AboutPremiere} />
         <Route path="/movie-add" component={AddMovie} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
