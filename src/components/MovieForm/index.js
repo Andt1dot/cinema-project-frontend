@@ -169,9 +169,9 @@ const MovieForm = ({ onSubmitHandler }) => {
                                     Age Restrict:
                                   </option>
                                   <option value="AG">AG</option>
-                                  <option value="12+">12+</option>
-                                  <option value="15+">15+</option>
-                                  <option value="18+">18+</option>
+                                  <option value="AP-12">AP-12</option>
+                                  <option value="N-15">N-15</option>
+                                  <option value="IM-18">IM-18</option>
                                 </select>
                               </div>
                             </div>
