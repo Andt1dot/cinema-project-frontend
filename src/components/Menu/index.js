@@ -48,14 +48,14 @@ const Menu = () => {
                 </NavLink>
               </li>
               <li className="nav-item custom-link">
-                <NavLink exact to="/" className="nav-link ">
+                <NavLink exact to="/news" className="nav-link ">
                   Noutati
                 </NavLink>
               </li>
               <li className="nav-item custom-link">
                 <NavLink
                   exact
-                  to="/"
+                  to="/promo"
                   className="nav-link "
                   tabIndex="-1"
                   aria-disabled="true"
@@ -66,7 +66,7 @@ const Menu = () => {
               <li className="nav-item dropdown custom-link">
                 <NavLink
                   exact
-                  to="/"
+                  to="/login"
                   className="nav-link dropdown-toggle "
                   id="dropdown08"
                   data-bs-toggle="dropdown"
