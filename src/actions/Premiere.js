@@ -14,9 +14,7 @@ export const fetchPremiereMovies = () => async (dispatch) => {
       console.log("premiere", premiere);
       dispatch({
         type: FETCH_PREMIERE_SUCCES,
-        payload: premiere.data.map((el) => {
-          return el;
-        }),
+        payload: premiere.data,
       });
     })
     .catch((err) => {

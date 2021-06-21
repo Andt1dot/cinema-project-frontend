@@ -21,7 +21,7 @@ export default function Home() {
       <MovieCarousel></MovieCarousel>
       <div className="row justify-content-md-center">
         {premieres.length > 0 ? (
-          premieres[0].map((premiere, index) => {
+          premieres.map((premiere, index) => {
             return (
               <Link
                 key={index}
