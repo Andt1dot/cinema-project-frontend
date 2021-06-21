@@ -7,7 +7,6 @@ import axios from "axios";
 
 const AboutPremiere = (props) => {
   const { id } = useParams();
-  const dispatch = useDispatch();
 
   const [premiere, setPremiere] = useState([]);
 

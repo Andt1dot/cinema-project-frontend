@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { requestLogin } from "../../actions/Auth";
+import { useDispatch } from "react-redux";
 import ResetModal from "../ResetModal";
 import "./index.css";
 
-const LoginForm = ({ handleOnSubmitLogin }) => {
+const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [modalShow, setModalShow] = React.useState(false);
+
+  const dispatch = useDispatch();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -17,9 +22,9 @@ const LoginForm = ({ handleOnSubmitLogin }) => {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    handleOnSubmitLogin(email, password);
-    //setEmail("");
-    //setPassword("");
+    dispatch(requestLogin(email, password));
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -41,9 +46,9 @@ const LoginForm = ({ handleOnSubmitLogin }) => {
           className="styled-input"
         ></input>
 
-        <Link to="/login/reset-password">
-          <h3 className="styled-h3">Ați uitat parola?</h3>
-        </Link>
+        <h3 className="styled-h3" onClick={() => setModalShow(true)}>
+          Ați uitat parola?
+        </h3>
 
         <button
           type="submit"
@@ -59,10 +64,7 @@ const LoginForm = ({ handleOnSubmitLogin }) => {
           </button>
         </Link>
       </form>
-
-      <Switch>
-        <Route path="/login/reset-password" component={ResetModal} />
-      </Switch>
+      <ResetModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 };
