@@ -14,12 +14,14 @@ export const requestLogin = (email, password) => async (dispatch) => {
       password: password,
     })
     .then((user) => {
+      console.log("user: ", user.data);
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: user.data.token,
+        payload: user.data,
       });
 
       localStorage.setItem("token", user.data.token);
+      localStorage.setItem("isAdmin", user.data.role);
     })
     .catch((err) => {
       if (response) {

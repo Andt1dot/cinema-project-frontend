@@ -3,22 +3,33 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Menu from "./components/Menu";
 import { Route, Switch } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Home from "./pages/Home";
 import AddMovie from "./pages/AddMovie";
-import { useSelector } from "react-redux";
-
+import AboutPremiere from "./pages/AboutPremiere";
+import PrivateRoute, { AdminRoute } from "./components/PrivateRoute";
 const App = () => {
-  const { movies } = useSelector((state) => ({
-    movies: state.Movie.movies,
+  const { isAuthenticated, isAdmin } = useSelector((state) => ({
+    isAuthenticated: state.Auth.isAuthenticated,
+    isAdmin: state.Auth.isAdmin,
   }));
-
-  console.log("Movies[]: ", movies);
 
   return (
     <React.Fragment>
       <Menu />
       <Switch>
-        <Route path="/movie-add" component={AddMovie} />
+        <PrivateRoute
+          path="/reservation"
+          isAuthenticated={isAuthenticated}
+          /* render={(props) => <Reservation {...props} />} */
+        />
+        <AdminRoute
+          path="/movie-add"
+          isAuthenticated={isAuthenticated}
+          isAdmin={isAdmin}
+          render={(props) => <AddMovie {...props} />}
+        />
+        <Route path="/about-premiere/:id" component={AboutPremiere} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/" component={Home} />
