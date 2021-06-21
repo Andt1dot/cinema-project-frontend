@@ -14,7 +14,7 @@ const Premiere = (state = initialState, action) => {
     case FETCH_PREMIERE_SUCCES:
       return {
         ...state,
-        premieres: [...state.premieres, action.payload],
+        premieres: action.payload,
       };
     case FETCH_PREMIERE_FAILURE: {
       return {
