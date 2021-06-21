@@ -1,19 +1,14 @@
 import React from "react";
 import "./index.css";
-import '../../../node_modules/react-modal-video/css/modal-video.min.css';
+import "../../../node_modules/react-modal-video/css/modal-video.min.css";
 import ModalVideo from "react-modal-video";
 
+const PremiereDescription = ({ premiere }) => {
+  console.log("Vine datele", premiere);
 
-const PremiereDescription = ({premiere}) => {
-    console.log("Vine datele",premiere);
+  const [isOpen, setOpen] = React.useState(false);
 
-    const [isOpen, setOpen] = React.useState(false);
- 
-     
-    
-    return (
-        
-     Object.keys(premiere).length>0 ?   
+  return Object.keys(premiere).length > 0 ? (
     <div className="movieDetails">
       <div
         className="movieDetails__backdrop"
@@ -50,6 +45,13 @@ const PremiereDescription = ({premiere}) => {
                 <p className="movieDetails__genre">Crime | Action</p>
               </div>
               <div className="movieDetails__buttonDiv">
+                  <div className="rating">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                </div>
                 <button
                   className="trailer__button movieDetails__button"
                   onClick={() => setOpen(true)}
@@ -75,11 +77,9 @@ const PremiereDescription = ({premiere}) => {
           videoId={"EFYEni2gsK0"}
           onClose={() => setOpen(false)}
         />
-        
       </div>
     </div>
-:null
-  );
+  ) : null;
 };
 
 export default PremiereDescription;
