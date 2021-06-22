@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import AddMovie from "./pages/AddMovie";
 import AboutPremiere from "./pages/AboutPremiere";
 import PrivateRoute, { AdminRoute } from "./components/PrivateRoute";
+import Reservation from "./pages/Reservation";
+
 const App = () => {
   const { isAuthenticated, isAdmin } = useSelector((state) => ({
     isAuthenticated: state.Auth.isAuthenticated,
@@ -21,7 +23,7 @@ const App = () => {
         <PrivateRoute
           path="/reservation"
           isAuthenticated={isAuthenticated}
-          /* render={(props) => <Reservation {...props} />} */
+          render={(props) => <Reservation {...props} />}
         />
         <AdminRoute
           path="/movie-add"
