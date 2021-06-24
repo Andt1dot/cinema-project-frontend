@@ -1,0 +1,122 @@
+.container-about-seats {
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-about-seats .row {
+  transform: skew(-19deg);
+}
+
+.container-about-seats .seat-free {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+  margin-left: 50px;
+  width: 35px;
+  height: 50px;
+  border-radius: 7px;
+  background: linear-gradient(
+    to top,
+    #761818,
+    #761818,
+    #761818,
+    #761818,
+    #761818,
+    #b54041,
+    #f3686a
+  );
+
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.seat-busy-legend {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+  margin-left: 50px;
+  width: 35px;
+  height: 50px;
+  border-radius: 7px;
+  background: linear-gradient(
+    to top,
+    #bb5b5b,
+    #913636,
+    #963737,
+    #aa4c4c,
+    #e6c0c0,
+    #f37a7c,
+    #f3686a
+  );
+
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.seat-status {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.seat-status p {
+  margin-left: 50px;
+}
+
+.seat-selected-legend {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+  margin-left: 50px;
+  width: 35px;
+  height: 50px;
+  border-radius: 7px;
+  background: linear-gradient(
+    to top,
+    #bb5b5b,
+    #e3d4d4,
+    #985f5f,
+    #f8f6f6,
+    #e6c0c0,
+    #fefefe,
+    #fafafa
+  );
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.title-info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.content-about-seats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.total-price {
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+}
+
+.number-seats,
+.price {
+  border: 1px solid white;
+  padding: 10px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+}
+.confirmation-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.confirmation-btn {
+  padding: 15px;
+  width: 300px;
+  background-color: yellow;
+}
