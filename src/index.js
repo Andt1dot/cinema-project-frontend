@@ -10,10 +10,13 @@ import Auth from "./reducers/Auth";
 import Movie from "./reducers/Movie";
 import thunk from "redux-thunk";
 import Premiere from "./reducers/Premiere";
+import Seat from "./reducers/Seat";
+
 const reducer = combineReducers({
   Auth,
   Movie,
   Premiere,
+  Seat,
 });
 
 const store = createStore(reducer, applyMiddleware(thunk));
