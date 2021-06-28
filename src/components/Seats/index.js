@@ -2,7 +2,6 @@ import React from "react";
 import "./index.css";
 
 const Seats = () => {
-
   const seats = [
     { row_num: "1", seat: "1" },
     { row_num: "2", seat: "1" },
@@ -23,10 +22,8 @@ const Seats = () => {
     { row_num: "3", seat: "3" },
   ];
 
-
-
   const [selected, setSelected] = React.useState(false);
-  
+
   let count = 0;
   const seatHtml = seats
     .sort((a, b) =>
@@ -41,7 +38,7 @@ const Seats = () => {
               .sort((a, b) => a.seat - b.seat)
               .map((el2) => {
                 if (el1.seat === el2.seat) {
-          //        console.log(el2.row_num, el2.seat);
+                  //        console.log(el2.row_num, el2.seat);
                   return (
                     <div
                       className={selected ? "seat-selected" : "seat"}
