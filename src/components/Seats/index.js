@@ -1,61 +1,53 @@
 import React from "react";
 import "./index.css";
 
-const Seats = () => {
-  const seats = [
-    { row_num: "1", seat: "1" },
-    { row_num: "2", seat: "1" },
-    { row_num: "3", seat: "1" },
-    { row_num: "4", seat: "1" },
-    { row_num: "1", seat: "2" },
-    { row_num: "1", seat: "3" },
-    { row_num: "1", seat: "4" },
-    { row_num: "1", seat: "5" },
-    { row_num: "1", seat: "6" },
-    { row_num: "2", seat: "2" },
-    { row_num: "2", seat: "3" },
-    { row_num: "3", seat: "2" },
-    { row_num: "3", seat: "4" },
-    { row_num: "3", seat: "5" },
-    { row_num: "2", seat: "4" },
-    { row_num: "2", seat: "5" },
-    { row_num: "3", seat: "3" },
-  ];
+const initalState = { id: 0, checked: false };
 
-  const [selected, setSelected] = React.useState(false);
+const Seats = ({ seats }) => {
+  const [seatStatus, setSeatStatus] = React.useState(initalState);
+
+  console.log("vin datele", seatStatus);
 
   let count = 0;
   const seatHtml = seats
     .sort((a, b) =>
-      a.seat === b.seat ? a.row_num - b.row_num : a.seat - b.seat
+      a.seat_num === b.seat_num
+        ? b.row_num - a.row_num
+        : b.seat_num - a.seat_num
     )
     .map((el1) => {
-      if (count !== el1.seat) {
-        count = el1.seat;
+      if (count !== el1.seat_num) {
+        count = el1.seat_num;
         return (
           <div className={`cinema-row row-${el1.sea}`}>
             {seats
-              .sort((a, b) => a.seat - b.seat)
+              .sort((a, b) => b.seat_num - a.seat_num)
               .map((el2) => {
-                if (el1.seat === el2.seat) {
-                  //        console.log(el2.row_num, el2.seat);
+                if (el1.seat_num === el2.seat_num) {
                   return (
                     <div
-                      className={selected ? "seat-selected" : "seat"}
+                      className={
+                        seatStatus.id === el2._id && seatStatus.checked === true
+                          ? "seat-selected"
+                          : "seat"
+                      }
                       onClick={(e) => {
-                        setSelected(!selected);
+                        setSeatStatus({
+                          id: el2._id,
+                          checked: !seatStatus.checked,
+                        });
                       }}
                     >
-                      {!selected ? (
+                      {!seatStatus.checked ? (
                         <span className="tooltiptext">
                           <div className="t">
-                            Locul {el2.seat}
+                            Locul {el2.seat_num}
                             <br />
                             Rîndul {el2.row_num}
                           </div>
-                          Tipul Gold
+                          Tipul {el2.seat_type}
                           <br />
-                          Preț 90 Lei
+                          {el2.seat_price} Lei
                         </span>
                       ) : null}
                     </div>

@@ -18,7 +18,7 @@ const Reservation = () => {
   console.log("Date ==", seats);
   return (
     <div className="container">
-      <Seats></Seats>
+      <Seats seats={seats}></Seats>
       <LegendSeats />
     </div>
   );
