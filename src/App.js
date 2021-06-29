@@ -21,7 +21,7 @@ const App = () => {
       <Menu />
       <Switch>
         <PrivateRoute
-          path="/reservation"
+          path="/reservation/:premiere_id/:cinema_id/:hall_id"
           isAuthenticated={isAuthenticated}
           render={(props) => <Reservation {...props} />}
         />
