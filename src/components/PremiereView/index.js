@@ -7,8 +7,6 @@ import ReservationForm from "../ReservationForm";
 const PremiereDescription = ({ premiere }) => {
   const [isOpen, setOpen] = React.useState(false);
 
-  console.log("Premiere", premiere);
-
   return Object.keys(premiere).length > 0 ? (
     <div className="movieDetails">
       <div
@@ -68,7 +66,7 @@ const PremiereDescription = ({ premiere }) => {
             </div>
           </div>
         </div>
-        <ReservationForm />
+        <ReservationForm premiere={premiere} />
       </div>
 
       <div className="movieDetails__trailer">
