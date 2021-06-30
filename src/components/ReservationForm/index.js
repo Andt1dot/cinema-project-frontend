@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 
-const ReservationForm = () => {
+const ReservationForm = ({ premiere }) => {
   return (
     <div>
       <div id="booking" className="section">

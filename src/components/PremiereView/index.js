@@ -68,7 +68,7 @@ const PremiereDescription = ({ premiere }) => {
             </div>
           </div>
         </div>
-        <ReservationForm />
+        <ReservationForm premiere={premiere} />
       </div>
 
       <div className="movieDetails__trailer">

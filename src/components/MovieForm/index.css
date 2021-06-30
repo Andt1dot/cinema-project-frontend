@@ -2,7 +2,7 @@
 
 h4 {
   font-weight: 600;
-  color: #cca012;
+  color: #102770;
 }
 
 .section {
@@ -137,7 +137,7 @@ h4 {
   transition: all 200ms linear;
 }
 
-.btn {
+.btn-add {
   border-radius: 4px;
   height: 44px;
   font-size: 13px;
@@ -154,13 +154,13 @@ h4 {
   color: #102770;
   box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
 }
-.btn:active,
-.btn:focus {
+.btn-add:active,
+.btn-add:focus {
   background-color: #102770;
   color: #cca012;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
-.btn:hover {
+.btn-add:hover {
   background-color: #102770;
   color: #cca012;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
