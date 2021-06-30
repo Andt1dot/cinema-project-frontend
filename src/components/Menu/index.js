@@ -7,7 +7,7 @@ import "./index.css";
 
 const Menu = () => {
   return (
-    <div className="menu ">
+    <div className="menu">
       <div>
         <header className="d-flex flex-wrap align-items-center justify-content-center py-3 mb-4 border-bottom">
           <Link to="/">

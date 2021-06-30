@@ -5,11 +5,10 @@ import Menu from "./components/Menu";
 import { Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Home from "./pages/Home";
-import AddMovie from "./pages/AddMovie";
 import AboutPremiere from "./pages/AboutPremiere";
 import PrivateRoute, { AdminRoute } from "./components/PrivateRoute";
 import Reservation from "./pages/Reservation";
-
+import AdminPage from "./pages/AdminPage";
 const App = () => {
   const { isAuthenticated, isAdmin } = useSelector((state) => ({
     isAuthenticated: state.Auth.isAuthenticated,
@@ -26,10 +25,10 @@ const App = () => {
           render={(props) => <Reservation {...props} />}
         />
         <AdminRoute
-          path="/movie-add"
+          path="/admin"
           isAuthenticated={isAuthenticated}
           isAdmin={isAdmin}
-          render={(props) => <AddMovie {...props} />}
+          render={(props) => <AdminPage {...props} />}
         />
         <Route path="/about-premiere/:id" component={AboutPremiere} />
         <Route path="/login" component={Login} />
