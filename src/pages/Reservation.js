@@ -2,23 +2,45 @@ import { useDispatch, useSelector } from "react-redux";
 import Seats from "../components/Seats";
 import LegendSeats from "../components/Seats/Legend";
 import fetchSeatsPremiere from "../actions/Seat";
+import fetchReservationsPremiere from "../actions/Reservation";
 import { useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 
 const Reservation = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const { premiere_id, cinema_id, hall_id } = useParams();
+
+  console.log("Params", premiere_id, cinema_id, hall_id);
 
   useEffect(() => {
     dispatch(fetchSeatsPremiere());
+    dispatch(
+      fetchReservationsPremiere(
+        premiere_id,
+        cinema_id,
+        hall_id,
+        location.search
+      )
+    );
   }, [dispatch]);
 
-  const { seats, error } = useSelector((state) => ({
+  const { seats, errorSeats } = useSelector((state) => ({
     seats: state.Seat.seats,
-    error: state.Seat.error,
+    errorSeats: state.Seat.error,
   }));
-  console.log("Date ==", seats);
+
+  const { reservations, errorReservations } = useSelector((state) => ({
+    reservations: state.Reservation.reservations,
+    errorReservations: state.Reservation.error,
+  }));
+
+  console.log("TotalSeats ==", seats);
+  console.log("Reservation==", reservations);
+
   return (
     <div className="container">
-      <Seats></Seats>
+      <Seats seats={seats}></Seats>
       <LegendSeats />
     </div>
   );

@@ -11,12 +11,14 @@ import Movie from "./reducers/Movie";
 import thunk from "redux-thunk";
 import Premiere from "./reducers/Premiere";
 import Seat from "./reducers/Seat";
+import Reservation from "./reducers/Reservation";
 
 const reducer = combineReducers({
   Auth,
   Movie,
   Premiere,
   Seat,
+  Reservation,
 });
 
 const store = createStore(reducer, applyMiddleware(thunk));
@@ -32,7 +34,5 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();

@@ -5,9 +5,9 @@ import ModalVideo from "react-modal-video";
 import ReservationForm from "../ReservationForm";
 
 const PremiereDescription = ({ premiere }) => {
-  console.log("Vine datele", premiere);
-
   const [isOpen, setOpen] = React.useState(false);
+
+  console.log("Premiere", premiere);
 
   return Object.keys(premiere).length > 0 ? (
     <div className="movieDetails">

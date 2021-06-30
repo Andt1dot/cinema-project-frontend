@@ -1,7 +1,8 @@
 import React from "react";
 import "./index.css";
 
-const ReservationForm = ({ premiere }) => {
+import { Link } from "react-router-dom";
+const ReservationForm = () => {
   return (
     <div>
       <div id="booking" className="section">
@@ -74,9 +75,12 @@ const ReservationForm = ({ premiere }) => {
                     </div>
                   </div>
                   <div className="row">
-                    <div className="form-btn col-md-6">
-                      {" "}
-                      <button className="btn submit-btn">Continua</button>{" "}
+                    <div className="btn-custom">
+                      <Link
+                        to={`/reservation/60a2c00622ea782e70473748/6094e52f7841b349a4b923d6/6094e6964f88584244ca4ba6?date=2021-06-28&hour=10:00`}
+                      >
+                        <button className="btn submit-btn">Continua</button>{" "}
+                      </Link>
                     </div>
                   </div>
                 </form>
