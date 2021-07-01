@@ -112,6 +112,25 @@
   right: 10px;
 }
 
+.seat-selected .tooltiptext {
+  display: inline-block;
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  position: relative;
+  font-size: 10px;
+  z-index: 1;
+  top: -70px;
+  width: 60px;
+  border: 1px dashed white;
+  right: 10px;
+}
+
+
+
+
 .t {
   border: 1px solid white;
 }

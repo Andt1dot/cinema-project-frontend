@@ -26,9 +26,12 @@ const Seats = ({ seats }) => {
                 if (el1.seat_num === el2.seat_num) {
                   return (
                     <div
-                      className={`seat-${el2.seat_status}`}
+                      className={
+                        seatStatus.checked && seatStatus.id === el2._id
+                          ? `seat-selected`
+                          : `seat-${el2.seat_status}`
+                      }
                       onClick={(e) => {
-                        
                         setSeatStatus({
                           id: el2._id,
                           checked:
@@ -36,7 +39,6 @@ const Seats = ({ seats }) => {
                               ? false
                               : !seatStatus.checked,
                         });
-                        console.log(el2);
                       }}
                     >
                       {el2.seat_status == "busy" ? null : (
