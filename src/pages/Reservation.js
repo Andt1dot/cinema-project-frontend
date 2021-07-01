@@ -35,11 +35,22 @@ const Reservation = () => {
     errorReservations: state.Reservation.error,
   }));
 
-  console.log(seats);
+  let reservtionSeats;
+  if (reservations) {
+    reservtionSeats = seats.map((el) => {
+      for (let seat in reservations.seats) {
+        if (el._id === reservations.seats[seat]._id) {
+          return { ...el, seat_status: "busy" };
+        }
+      }
+
+      return el;
+    });
+  }
 
   return (
     <div className="container">
-      <Seats seats={seats}></Seats>
+      <Seats seats={reservtionSeats}></Seats>
       <LegendSeats />
     </div>
   );

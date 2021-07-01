@@ -6,7 +6,7 @@ const initalState = { id: 0, checked: false };
 const Seats = ({ seats }) => {
   const [seatStatus, setSeatStatus] = React.useState(initalState);
 
-  console.log("vin datele", seatStatus);
+  console.log("vin datele", seats);
 
   let count = 0;
   const seatHtml = seats
