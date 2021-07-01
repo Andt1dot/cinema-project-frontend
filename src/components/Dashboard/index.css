@@ -1,6 +1,6 @@
 .main-container {
   background-color: rgb(161, 159, 159);
-  height: 70vmax;
+  height: 100%;
   position: fixed;
   top: 0;
   right: 0;
@@ -15,10 +15,8 @@
   font-weight: bold;
 }
 
-.admin {
-  width: 150px;
-  height: 20px;
-  float: left;
+.logo {
+  height: 25px;
 }
 
 .feather {

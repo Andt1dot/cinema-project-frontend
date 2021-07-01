@@ -2,7 +2,9 @@ import React from "react";
 import { Link, NavLink, Route } from "react-router-dom";
 import AddMovie from "../../pages/AddMovie";
 //import { AdminRoute } from "../PrivateRoute";
-import logo from "../../assets/logo/logo-mini.png";
+import logo1 from "../../assets/logo/olymp.png";
+import logo2 from "../../assets/logo/olymp-cinema-logo.png";
+import logo3 from "../../assets/logo/cinema.png";
 import "./index.css";
 
 const Dashboard = () => {
@@ -10,7 +12,11 @@ const Dashboard = () => {
     <div className="main-container">
       <header className="navbar navbar-dark header-style sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <Link className="navbar-brand col-md-3 col-lg-2 me-0 px-3 " to="/">
-          <img src={logo} alt="logo" className="admin" />
+          <div className="logo-wrapper">
+            <img src={logo1} className="logo" alt="cinema" />
+            <img src={logo2} className="logo" alt="logo" />
+            <img src={logo3} className="logo" alt="olymp" />
+          </div>
         </Link>
         <button
           className="navbar-toggler position-absolute d-md-none collapsed"
