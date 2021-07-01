@@ -11,8 +11,6 @@ const Reservation = () => {
   const location = useLocation();
   const { premiere_id, cinema_id, hall_id } = useParams();
 
-  console.log("Params", premiere_id, cinema_id, hall_id);
-
   useEffect(() => {
     dispatch(fetchSeatsPremiere());
     dispatch(
@@ -25,7 +23,7 @@ const Reservation = () => {
     );
   }, [dispatch]);
 
-  const { seats, errorSeats } = useSelector((state) => ({
+  let { seats, errorSeats } = useSelector((state) => ({
     seats: state.Seat.seats,
     errorSeats: state.Seat.error,
   }));
@@ -35,9 +33,8 @@ const Reservation = () => {
     errorReservations: state.Reservation.error,
   }));
 
-  let reservtionSeats;
   if (reservations) {
-    reservtionSeats = seats.map((el) => {
+    seats = seats.map((el) => {
       for (let seat in reservations.seats) {
         if (el._id === reservations.seats[seat]._id) {
           return { ...el, seat_status: "busy" };
@@ -50,7 +47,7 @@ const Reservation = () => {
 
   return (
     <div className="container">
-      <Seats seats={reservtionSeats}></Seats>
+      <Seats seats={seats}></Seats>
       <LegendSeats />
     </div>
   );

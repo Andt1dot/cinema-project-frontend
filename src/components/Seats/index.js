@@ -19,26 +19,27 @@ const Seats = ({ seats }) => {
       if (count !== el1.seat_num) {
         count = el1.seat_num;
         return (
-          <div className={`cinema-row row-${el1.sea}`}>
+          <div className={`cinema-row row-${el1.seat_num}`}>
             {seats
               .sort((a, b) => b.seat_num - a.seat_num)
               .map((el2) => {
                 if (el1.seat_num === el2.seat_num) {
                   return (
                     <div
-                      className={
-                        seatStatus.id === el2._id && seatStatus.checked === true
-                          ? "seat-selected"
-                          : "seat"
-                      }
+                      className={`seat-${el2.seat_status}`}
                       onClick={(e) => {
+                        
                         setSeatStatus({
                           id: el2._id,
-                          checked: !seatStatus.checked,
+                          checked:
+                            el2.seat_status === "busy"
+                              ? false
+                              : !seatStatus.checked,
                         });
+                        console.log(el2);
                       }}
                     >
-                      {!seatStatus.checked ? (
+                      {el2.seat_status == "busy" ? null : (
                         <span className="tooltiptext">
                           <div className="t">
                             Locul {el2.seat_num}
@@ -49,7 +50,7 @@ const Seats = ({ seats }) => {
                           <br />
                           {el2.seat_price} Lei
                         </span>
-                      ) : null}
+                      )}
                     </div>
                   );
                 }

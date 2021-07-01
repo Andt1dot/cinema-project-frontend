@@ -36,7 +36,18 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.seat {
+.seat-busy {
+  background: green;
+  width: 35px;
+  height: 50px;
+  border-radius: 7px;
+  margin-bottom: 10px;
+  transform: skew(20deg);
+  margin-top: -32px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.seat-free {
   width: 35px;
   height: 50px;
   border-radius: 7px;
@@ -60,17 +71,17 @@
   transform: skew(-13deg);
 }
 
-.row-2 .seat {
+.row-2 .seat-free {
   transform: skew(18deg);
 }
 
-.row-3 .seat {
+.row-3 .seat-free {
   transform: skew(-12deg);
 
   transform: skew(16deg);
 }
 
-.seat:hover .tooltiptext {
+.seat-free:hover .tooltiptext {
   transition: 0.5s;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.8);
@@ -80,12 +91,12 @@
   visibility: visible;
 }
 
-.seat p {
+.seat-free p {
   display: none;
   border-radius: 50%;
 }
 
-.seat .tooltiptext {
+.seat-free .tooltiptext {
   display: inline-block;
   visibility: hidden;
   background-color: black;
