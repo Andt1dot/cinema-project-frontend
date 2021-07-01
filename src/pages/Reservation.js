@@ -35,8 +35,7 @@ const Reservation = () => {
     errorReservations: state.Reservation.error,
   }));
 
-  console.log("TotalSeats ==", seats);
-  console.log("Reservation==", reservations);
+  console.log(seats);
 
   return (
     <div className="container">

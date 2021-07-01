@@ -17,7 +17,9 @@ const fetchSeatsPremiere = () => async (dispatch) => {
     .then((seat) => {
       dispatch({
         type: FETCH_SEATS_SUCCES,
-        payload: seat.data,
+        payload: seat.data.map((el) => {
+          return { ...el, seat_status: "free" };
+        }),
       });
     })
     .catch((err) => {
