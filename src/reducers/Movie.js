@@ -1,23 +1,94 @@
-import { ADD_MOVIE_SUCCESS, ADD_MOVIE_FAILURE } from "../actions/Movie";
+import {
+  ADD_MOVIE_SUCCESS,
+  ADD_MOVIE_FAILURE,
+  GET_MOVIES_LOADING,
+  GET_MOVIES_SUCCESS,
+  GET_MOVIES_FAILURE,
+  EDIT_MOVIE_SUCCESS,
+  EDIT_MOVIE_FAILURE,
+  DELETE_MOVIE_SUCCESS,
+  DELETE_MOVIE_FAILURE,
+} from "../actions/Movie";
 
 const initialState = {
   movies: [],
   error: "",
+  loading: "",
 };
 
 const Movie = (state = initialState, action) => {
-  
   switch (action.type) {
     case ADD_MOVIE_SUCCESS:
       return {
         ...state,
         movies: [...state.movies, action.payload],
+        error: "",
+        loading: "",
       };
 
     case ADD_MOVIE_FAILURE:
       return {
         ...state,
         error: action.payload,
+        loading: "",
+      };
+
+    case GET_MOVIES_LOADING:
+      return {
+        ...state,
+        loading: action.payload,
+        error: "",
+      };
+
+    case GET_MOVIES_SUCCESS:
+      return {
+        ...state,
+        movies: action.payload,
+        loading: "",
+        error: "",
+      };
+
+    case GET_MOVIES_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loading: "",
+      };
+
+    case EDIT_MOVIE_SUCCESS:
+      return {
+        ...state,
+        error: "",
+        loading: "",
+        movies: state.movies.map((movie) => {
+          if (movie._id === action.payload._id) {
+            return action.payload;
+          }
+          return movie;
+        }),
+      };
+    case EDIT_MOVIE_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loading: "",
+      };
+
+    case DELETE_MOVIE_SUCCESS:
+      return {
+        ...state,
+        error: "",
+        loading: "",
+        movies: state.movies.filter((movie) => {
+          return movie._id !== action.payload._id;
+        }),
+      };
+
+    case DELETE_MOVIE_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loading: "",
       };
 
     default:
