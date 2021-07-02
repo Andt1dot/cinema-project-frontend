@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import "./index.css";
-
-const initalState = { id: 0, checked: false };
-
+import LegendSeats from "./Legend/index";
 const Seats = ({ seats }) => {
   const [reservations, setReservations] = useState([]);
 
   console.log("state", reservations);
+
   let count = 0;
   const seatHtml = seats
     .sort((a, b) =>
@@ -35,7 +34,19 @@ const Seats = ({ seats }) => {
                       }
                       onClick={(e) => {
                         if (el2.seat_status === "free") {
-                          setReservations([...reservations, { seat: el2 }]);
+                          if (
+                            reservations.find(
+                              ({ seat }) => seat._id === el2._id
+                            )
+                          ) {
+                            setReservations(
+                              reservations.filter(
+                                ({ seat }) => seat._id !== el2._id
+                              )
+                            );
+                          } else {
+                            setReservations([...reservations, { seat: el2 }]);
+                          }
                         }
                       }}
                     >
@@ -61,8 +72,11 @@ const Seats = ({ seats }) => {
     });
 
   return (
-    <div className="theatre">
-      <div className="cinema-seats left">{seatHtml}</div>
+    <div className="container">
+      <div className="theatre">
+        <div className="cinema-seats left">{seatHtml}</div>
+      </div>
+      <LegendSeats reservations={reservations} />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Seats from "../components/Seats";
-import LegendSeats from "../components/Seats/Legend";
+
 import fetchSeatsPremiere from "../actions/Seat";
 import fetchReservationsPremiere from "../actions/Reservation";
 import { useEffect } from "react";
@@ -48,7 +48,6 @@ const Reservation = () => {
   return (
     <div className="container">
       <Seats seats={seats}></Seats>
-      <LegendSeats />
     </div>
   );
 };
