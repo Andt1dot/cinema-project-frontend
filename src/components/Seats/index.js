@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 
 const initalState = { id: 0, checked: false };
 
 const Seats = ({ seats }) => {
-  const [seatStatus, setSeatStatus] = React.useState(initalState);
+  const [reservations, setReservations] = useState([]);
 
-  console.log("vin datele", seats);
-
+  console.log("state", reservations);
   let count = 0;
   const seatHtml = seats
     .sort((a, b) =>
@@ -27,18 +26,17 @@ const Seats = ({ seats }) => {
                   return (
                     <div
                       className={
-                        seatStatus.checked && seatStatus.id === el2._id
+                        reservations.find(
+                          ({ seat }) =>
+                            seat._id === el2._id && seat.seat_status !== "busy"
+                        )
                           ? `seat-selected`
                           : `seat-${el2.seat_status}`
                       }
                       onClick={(e) => {
-                        setSeatStatus({
-                          id: el2._id,
-                          checked:
-                            el2.seat_status === "busy"
-                              ? false
-                              : !seatStatus.checked,
-                        });
+                        if (el2.seat_status === "free") {
+                          setReservations([...reservations, { seat: el2 }]);
+                        }
                       }}
                     >
                       {el2.seat_status == "busy" ? null : (
@@ -48,7 +46,7 @@ const Seats = ({ seats }) => {
                             <br />
                             Rîndul {el2.row_num}
                           </div>
-                          Tipul {el2.seat_type}
+                          {el2.seat_type}
                           <br />
                           {el2.seat_price} Lei
                         </span>
