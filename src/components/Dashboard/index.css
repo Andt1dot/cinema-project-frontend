@@ -15,8 +15,9 @@
   font-weight: bold;
 }
 
-.logo {
-  height: 25px;
+.company-logo {
+  height: 20px;
+  padding: 2px;
 }
 
 .feather {

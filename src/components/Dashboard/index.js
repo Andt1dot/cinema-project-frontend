@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, NavLink, Route } from "react-router-dom";
-import AddMovie from "../../pages/AddMovie";
+import { Link, NavLink, Route, Switch } from "react-router-dom";
+import MoviesList from "../../pages/Movie/MoviesList";
 //import { AdminRoute } from "../PrivateRoute";
 import logo1 from "../../assets/logo/olymp.png";
 import logo2 from "../../assets/logo/olymp-cinema-logo.png";
@@ -12,10 +12,10 @@ const Dashboard = () => {
     <div className="main-container">
       <header className="navbar navbar-dark header-style sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <Link className="navbar-brand col-md-3 col-lg-2 me-0 px-3 " to="/">
-          <div className="logo-wrapper">
-            <img src={logo1} className="logo" alt="cinema" />
-            <img src={logo2} className="logo" alt="logo" />
-            <img src={logo3} className="logo" alt="olymp" />
+          <div className="logo-wrapp">
+            <img src={logo1} className="company-logo" alt="cinema" />
+            <img src={logo2} className="company-logo" alt="logo" />
+            <img src={logo3} className="company-logo" alt="olymp" />
           </div>
         </Link>
         <button
@@ -70,7 +70,7 @@ const Dashboard = () => {
                 <li className="nav-item ">
                   <NavLink
                     exact
-                    to="/admin/movie-add"
+                    to="/admin/movies"
                     className="nav-link listItem"
                   >
                     <span data-feather="shopping-cart"></span>
@@ -195,12 +195,14 @@ const Dashboard = () => {
             </div>
 
             <div className="main-div">
-              <Route
-                path="/admin/movie-add"
-                //isAuthenticated={isAuthenticated}
-                //isAdmin={isAdmin}
-                render={(props) => <AddMovie {...props} />}
-              />
+              <Switch>
+                <Route
+                  path="/admin/movies"
+                  //isAuthenticated={isAuthenticated}
+                  //isAdmin={isAdmin}
+                  render={(props) => <MoviesList {...props} />}
+                />
+              </Switch>
             </div>
           </main>
         </div>

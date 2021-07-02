@@ -23,7 +23,7 @@ export const addMovie = (data) => async (dispatch) => {
       },
       {
         headers: {
-          Authorization: localStorage.getItem("isAdmin"),
+          Authorization: localStorage.getItem("token"),
         },
       }
     )
@@ -51,12 +51,12 @@ export const GET_MOVIES_SUCCESS = "ET_MOVIES_SUCCESS";
 export const GET_MOVIES_FAILURE = "GET_MOVIES_FAILURE";
 
 export const getMovies = () => async (dispatch) => {
-  dispatch({ type: GET_MOVIES_LOADING, payload: "Loading..." });
+  dispatch({ type: GET_MOVIES_LOADING });
 
   axios
     .get("http://localhost:4000/api/movies", {
       headers: {
-        Authorization: localStorage.getItem("isAdmin"),
+        Authorization: localStorage.getItem("token"),
       },
     })
     .then((movies) => {
@@ -97,7 +97,7 @@ export const editMovie = (data, movie_id) => async (dispatch) => {
       },
       {
         headers: {
-          Authorization: localStorage.getItem("isAdmin"),
+          Authorization: localStorage.getItem("token"),
         },
       }
     )
@@ -123,7 +123,7 @@ export const deleteMovie = (movie_id) => async (dispatch) => {
   axios
     .delete(`http://localhost:4000/api/movies${movie_id}`, {
       headers: {
-        Authorization: localStorage.getItem("isAdmin"),
+        Authorization: localStorage.getItem("token"),
       },
     })
     .then(() => {
