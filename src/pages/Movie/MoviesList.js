@@ -16,23 +16,20 @@ const MoviesList = () => {
     loading: state.Movie.loading,
   }));
 
-  /*const renderMoviesList = <div>(
-     {if(loading){
-      
-    }
-    else if(movies){
-      movies.map((movie) => {
-        return <div key={movie._id}>{movie.title}</div>;
-      })
-    }else{
-      <div>{error}</div>
-    }}
-    )
-   
-  </div>*/
-
-  console.log("geting movies: ", movies);
-  return <></>;
+  console.log("get movies: ", movies);
+  return (
+    <>
+      {loading ? (
+        <div>Loading....</div>
+      ) : !loading && movies ? (
+        movies.map((movie) => {
+          return <div key={movie._id}>{movie.title}</div>;
+        })
+      ) : (
+        <div>{error}</div>
+      )}
+    </>
+  );
 };
 
 export default MoviesList;
