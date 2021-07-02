@@ -1,7 +1,7 @@
 .main-container {
   background-color: rgb(161, 159, 159);
-  height: 100%;
-  position: fixed;
+  position: absolute;
+  height: 500vh;
   top: 0;
   right: 0;
   left: 0;

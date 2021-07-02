@@ -1,13 +1,12 @@
 import "./index.css";
 
-const MovieCard = ({premiere}) => {
-
-  console.log("Component",premiere);
+const MovieCard = ({ premiere, movie }) => {
+  console.log("Component", premiere);
 
   return (
     <div className="card movie_card">
       <img
-        src={premiere.movie.image_url}
+        src={premiere?.movie.image_url || movie?.image_url}
         className="card-img-top"
         alt="..."
       />
@@ -18,10 +17,11 @@ const MovieCard = ({premiere}) => {
           data-placement="bottom"
           title="Play Trailer"
         ></i>
-        <h5 className="card-title">{premiere.movie.title}</h5>
+        <h5 className="card-title">{premiere?.movie.title || movie?.title}</h5>
         <span className="movie_info">2019</span>
         <span className="movie_info float-right">
-          <i className="fas fa-star"></i> {premiere.movie.rating}
+          <i className="fas fa-star"></i>{" "}
+          {premiere?.movie.rating || movie?.rating}
         </span>
       </div>
     </div>

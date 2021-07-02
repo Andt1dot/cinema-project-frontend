@@ -21,7 +21,7 @@ const Reservation = () => {
         location.search
       )
     );
-  }, [dispatch]);
+  }, [dispatch, premiere_id, cinema_id, hall_id, location.search]);
 
   let { seats, errorSeats } = useSelector((state) => ({
     seats: state.Seat.seats,
