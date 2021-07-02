@@ -13,7 +13,7 @@ import {
 const initialState = {
   movies: [],
   error: "",
-  loading: "",
+  loading: false,
 };
 
 const Movie = (state = initialState, action) => {
@@ -23,20 +23,20 @@ const Movie = (state = initialState, action) => {
         ...state,
         movies: [...state.movies, action.payload],
         error: "",
-        loading: "",
+        loading: false,
       };
 
     case ADD_MOVIE_FAILURE:
       return {
         ...state,
         error: action.payload,
-        loading: "",
+        loading: false,
       };
 
     case GET_MOVIES_LOADING:
       return {
         ...state,
-        loading: action.payload,
+        loading: true,
         error: "",
       };
 
@@ -44,7 +44,7 @@ const Movie = (state = initialState, action) => {
       return {
         ...state,
         movies: action.payload,
-        loading: "",
+        loading: false,
         error: "",
       };
 
@@ -52,14 +52,14 @@ const Movie = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
-        loading: "",
+        loading: false,
       };
 
     case EDIT_MOVIE_SUCCESS:
       return {
         ...state,
         error: "",
-        loading: "",
+        loading: false,
         movies: state.movies.map((movie) => {
           if (movie._id === action.payload._id) {
             return action.payload;
@@ -71,14 +71,14 @@ const Movie = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
-        loading: "",
+        loading: false,
       };
 
     case DELETE_MOVIE_SUCCESS:
       return {
         ...state,
         error: "",
-        loading: "",
+        loading: false,
         movies: state.movies.filter((movie) => {
           return movie._id !== action.payload._id;
         }),
@@ -88,7 +88,7 @@ const Movie = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
-        loading: "",
+        loading: false,
       };
 
     default:
