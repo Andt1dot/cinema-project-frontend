@@ -77,8 +77,8 @@ const ReservationForm = ({ premiere }) => {
                             Selecteaza Ora
                           </option>
 
-                          {premiere.interval_hours.map((hour) => {
-                            return <option>{hour}</option>;
+                          {premiere.interval_hours.map((hour, idx) => {
+                            return <option key={idx}>{hour}</option>;
                           })}
                         </select>{" "}
                         <span className="select-arrow"></span>{" "}
@@ -99,8 +99,8 @@ const ReservationForm = ({ premiere }) => {
                           <option value="" hidden>
                             Selecteaza Cinematograf
                           </option>
-                          {premiere.cinema.map((cinema) => {
-                            return <option>{cinema.name}</option>;
+                          {premiere.cinema.map((cinema, idx) => {
+                            return <option key={idx}>{cinema.name}</option>;
                           })}
                         </select>
                         <span className="select-arrow"></span>{" "}
@@ -119,8 +119,8 @@ const ReservationForm = ({ premiere }) => {
                           <option value="" hidden>
                             Selecteaza Sala
                           </option>
-                          {premiere.hall.map((hall) => {
-                            return <option>{hall.name}</option>;
+                          {premiere.hall.map((hall, idx) => {
+                            return <option key={idx}>{hall.name}</option>;
                           })}
                         </select>{" "}
                         <span className="select-arrow"></span>{" "}

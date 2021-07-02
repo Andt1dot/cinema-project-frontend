@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, NavLink, Route, Switch } from "react-router-dom";
 import MoviesList from "../../pages/Movie/MoviesList";
-//import { AdminRoute } from "../PrivateRoute";
+import AddMovie from "../../pages/Movie/AddMovie";
+import SingleMovie from "../../pages/Movie/SingleMovie";
 import logo1 from "../../assets/logo/olymp.png";
 import logo2 from "../../assets/logo/olymp-cinema-logo.png";
 import logo3 from "../../assets/logo/cinema.png";
@@ -197,10 +198,19 @@ const Dashboard = () => {
             <div className="main-div">
               <Switch>
                 <Route
+                  exact
                   path="/admin/movies"
-                  //isAuthenticated={isAuthenticated}
-                  //isAdmin={isAdmin}
                   render={(props) => <MoviesList {...props} />}
+                />
+                <Route
+                  exact
+                  path="/admin/movies/movie-add"
+                  render={(props) => <AddMovie {...props} />}
+                />
+                <Route
+                  exact
+                  path="/admin/movies/:movie_id"
+                  render={(props) => <SingleMovie {...props} />}
                 />
               </Switch>
             </div>

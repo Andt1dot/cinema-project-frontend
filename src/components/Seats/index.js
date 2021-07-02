@@ -17,13 +17,14 @@ const Seats = ({ seats }) => {
       if (count !== el1.seat_num) {
         count = el1.seat_num;
         return (
-          <div className={`cinema-row row-${el1.seat_num}`}>
+          <div className={`cinema-row row-${el1.seat_num}`} key={el1._id}>
             {seats
               .sort((a, b) => b.seat_num - a.seat_num)
               .map((el2) => {
                 if (el1.seat_num === el2.seat_num) {
                   return (
                     <div
+                      key={el2._id}
                       className={
                         reservations.find(
                           ({ seat }) =>
@@ -50,7 +51,7 @@ const Seats = ({ seats }) => {
                         }
                       }}
                     >
-                      {el2.seat_status == "busy" ? null : (
+                      {el2.seat_status === "busy" ? null : (
                         <span className="tooltiptext">
                           <div className="t">
                             Locul {el2.seat_num}
@@ -65,10 +66,12 @@ const Seats = ({ seats }) => {
                     </div>
                   );
                 }
+                return null;
               })}
           </div>
         );
       }
+      return null;
     });
 
   return (
