@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import "./index.css";
 import LegendSeats from "./Legend/index";
+import ClientTypeModal from "./ClientTypeModal";
+
 const Seats = ({ seats }) => {
   const [reservations, setReservations] = useState([]);
-
+  const [modalShow, setModalShow] = React.useState({ seat: "", activ: false });
   console.log("state", reservations);
+
+  const onHandlleHidenModal = (e) => {
+    setReservations(
+      reservations.filter(({ seat }) => seat._id !== modalShow.seat)
+    );
+    setModalShow(false);
+  };
 
   let count = 0;
   const seatHtml = seats
@@ -46,6 +55,7 @@ const Seats = ({ seats }) => {
                               )
                             );
                           } else {
+                            setModalShow({ seat: el2._id, activ: true });
                             setReservations([...reservations, { seat: el2 }]);
                           }
                         }
@@ -79,7 +89,9 @@ const Seats = ({ seats }) => {
       <div className="theatre">
         <div className="cinema-seats left">{seatHtml}</div>
       </div>
+
       <LegendSeats reservations={reservations} />
+      <ClientTypeModal show={modalShow.activ} onHide={onHandlleHidenModal} />
     </div>
   );
 };
