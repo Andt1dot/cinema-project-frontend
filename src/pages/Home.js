@@ -17,24 +17,26 @@ export default function Home() {
   }));
 
   return (
-    <div className="container">
+    <div>
       <MovieCarousel></MovieCarousel>
-      <div className="row justify-content-md-center">
-        {premieres.length > 0 ? (
-          premieres.map((premiere, index) => {
-            return (
-              <Link
-                key={index}
-                className="col-md-auto"
-                to={`/about-premiere/${premiere._id}`}
-              >
-                <MovieCard premiere={premiere} />
-              </Link>
-            );
-          })
-        ) : (
-          <div>{error}</div>
-        )}
+      <div className="container" style={{ marginTop: 30 }}>
+        <div className="row justify-content-md-center">
+          {premieres.length > 0 ? (
+            premieres.map((premiere, index) => {
+              return (
+                <Link
+                  key={index}
+                  className="col-md-auto"
+                  to={`/about-premiere/${premiere._id}`}
+                >
+                  <MovieCard premiere={premiere} />
+                </Link>
+              );
+            })
+          ) : (
+            <div>{error}</div>
+          )}
+        </div>
       </div>
     </div>
   );
