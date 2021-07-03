@@ -1,8 +1,9 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo1 from "../../assets/logo/olymp.png";
 import logo2 from "../../assets/logo/olymp-cinema-logo.png";
 import logo3 from "../../assets/logo/cinema.png";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./index.css";
 
 const Menu = () => {
@@ -25,74 +26,51 @@ const Menu = () => {
         aria-label="Tenth navbar example"
       >
         <div className="container-fluid">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarsExample08"
-            aria-controls="navbarsExample08"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
           <div
-            className="collapse navbar-collapse justify-content-md-center"
+            className="navbar-collapse justify-content-md-center"
             id="navbarsExample08"
           >
-            <ul className="navbar-nav">
-              <li className="nav-item custom-link">
-                <NavLink exact to="/" className="nav-link " aria-current="page">
-                  Program
-                </NavLink>
-              </li>
-              <li className="nav-item custom-link">
-                <NavLink exact to="/news" className="nav-link ">
-                  Noutati
-                </NavLink>
-              </li>
-              <li className="nav-item custom-link">
-                <NavLink
-                  exact
-                  to="/promo"
-                  className="nav-link "
-                  tabIndex="-1"
-                  aria-disabled="true"
-                >
-                  Promotii
-                </NavLink>
-              </li>
-              <li className="nav-item dropdown custom-link">
-                <NavLink
-                  exact
-                  to="/login"
-                  className="nav-link dropdown-toggle "
-                  id="dropdown08"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Sign In
-                </NavLink>
-                <ul className="dropdown-menu" aria-labelledby="dropdown08">
-                  <li>
-                    <NavLink exact to="/login" className="dropdown-item">
+            <Navbar expand="lg">
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav activeKey="1" className="mr-auto">
+                  <Nav.Item className="custom-link">
+                    <Nav.Link eventKey="1" href="/">
+                      Program
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item className="custom-link">
+                    <Nav.Link eventKey="2" href="/">
+                      Noutati
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item className="custom-link">
+                    <Nav.Link eventKey="3" href="/">
+                      Contacte
+                    </Nav.Link>
+                  </Nav.Item>
+                  <NavDropdown
+                    title="Sign In"
+                    id="nav-dropdown"
+                    className="custom-link"
+                  >
+                    <NavDropdown.Item eventKey="4.1" href="/login">
                       Sign In
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink exact to="/profile" className="dropdown-item">
-                      Contul meu
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink exact to="/logout" className="dropdown-item">
-                      Sign out
-                    </NavLink>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item eventKey="4.2" href="/login">
+                      Setari
+                    </NavDropdown.Item>
+                    <NavDropdown.Item eventKey="4.3" href="/login">
+                      Contul Meu
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item eventKey="4.4" href="/login">
+                      Sign Out
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
           </div>
         </div>
       </nav>

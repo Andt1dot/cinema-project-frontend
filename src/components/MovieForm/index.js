@@ -62,7 +62,7 @@ const MovieForm = ({ onSubmitHandler }) => {
   return (
     <div className="section">
       <div className="section text-center">
-        <h4 className="mb-4 pb-3">Add Movie</h4>
+        <h4 className="mb-4 pb-3 form-title">Add Movie</h4>
         <form onSubmit={onSubmitForm}>
           <div className="row">
             <div className="col">

@@ -28,7 +28,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="wrapper">
+    <div className="login-wrapper">
       <form onSubmit={onSubmitForm} className="styled-form">
         <h1 className="title">Login</h1>
         <input
@@ -57,7 +57,6 @@ const LoginForm = () => {
         >
           Sign-In
         </button>
-        <hr className="styled-hr" />
         <Link to="/register">
           <button type="button" className="styled-button signUp">
             Sign-Up
