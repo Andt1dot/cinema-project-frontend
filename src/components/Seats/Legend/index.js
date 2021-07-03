@@ -2,7 +2,7 @@ import "./index.css";
 
 const LegendSeats = () => {
   return (
-    <div className="container-about-seats">
+    <div /*className="container-about-seats"*/>
       <div className="title-info ">
         <h1>Legenda</h1>
         <h1>Total</h1>
@@ -10,7 +10,7 @@ const LegendSeats = () => {
 
       <div className="content-about-seats">
         <div className="seat-status">
-          <div className="seat-free">
+          <div className="seat-free-legend">
             <p>Liber</p>
           </div>
 
@@ -27,7 +27,7 @@ const LegendSeats = () => {
         </div>
       </div>
       <div className="confirmation-container">
-        <button className="confirmation-btn">Continua</button>
+        <button className="confirmation-btn">Rezerveaza</button>
       </div>
     </div>
   );

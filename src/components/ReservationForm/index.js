@@ -35,121 +35,109 @@ const ReservationForm = ({ premiere }) => {
 
   return (
     <div>
-      <div id="booking" className="section">
-        <div className="section-center">
-          <div className="container">
+      <div className="container">
+        <div className="form-header">
+          <h1 className="booking-title">Rezerveaza</h1>
+        </div>
+        <form style={{ display: "flex", flexDirection: "column" }}>
+          <div className="booking-form">
             <div className="row">
-              <div className="booking-form">
-                <div className="form-header">
-                  <h1>Rezerveaza</h1>
+              <div className="col-md-6">
+                <div className="form-group">
+                  {" "}
+                  <input
+                    className="form-control"
+                    type="date"
+                    min={premiere.premiere_start_date.split("T", 1).toString()}
+                    max={premiere.premiere_end_date.split("T", 1).toString()}
+                    name="date"
+                    required
+                    onChange={onHandleChangeReservationInput}
+                  />{" "}
+                  <span className="form-label">Selecteaza Data</span>{" "}
                 </div>
-                <form>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        {" "}
-                        <input
-                          className="form-control"
-                          type="date"
-                          min={premiere.premiere_start_date
-                            .split("T", 1)
-                            .toString()}
-                          max={premiere.premiere_end_date
-                            .split("T", 1)
-                            .toString()}
-                          name="date"
-                          required
-                          onChange={onHandleChangeReservationInput}
-                        />{" "}
-                        <span className="form-label">Selecteaza Data</span>{" "}
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        {" "}
-                        <select
-                          className="form-control"
-                          name="hour"
-                          required
-                          onChange={onHandleChangeReservationInput}
-                        >
-                          <option value="" hidden>
-                            Selecteaza Ora
-                          </option>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group">
+                  {" "}
+                  <select
+                    className="form-control"
+                    name="hour"
+                    required
+                    onChange={onHandleChangeReservationInput}
+                  >
+                    <option value="" hidden>
+                      Selecteaza Ora
+                    </option>
 
-                          {premiere.interval_hours.map((hour, idx) => {
-                            return <option key={idx}>{hour}</option>;
-                          })}
-                        </select>{" "}
-                        <span className="select-arrow"></span>{" "}
-                        <span className="form-label">Ora</span>{" "}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        {" "}
-                        <select
-                          className="form-control"
-                          name="cinema"
-                          required
-                          onChange={onHandleChangeReservationInput}
-                        >
-                          <option value="" hidden>
-                            Selecteaza Cinematograf
-                          </option>
-                          {premiere.cinema.map((cinema, idx) => {
-                            return <option key={idx}>{cinema.name}</option>;
-                          })}
-                        </select>
-                        <span className="select-arrow"></span>{" "}
-                        <span className="form-label">Cinematograf</span>{" "}
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        {" "}
-                        <select
-                          className="form-control"
-                          name="hall"
-                          required
-                          onChange={onHandleChangeReservationInput}
-                        >
-                          <option value="" hidden>
-                            Selecteaza Sala
-                          </option>
-                          {premiere.hall.map((hall, idx) => {
-                            return <option key={idx}>{hall.name}</option>;
-                          })}
-                        </select>{" "}
-                        <span className="select-arrow"></span>{" "}
-                        <span className="form-label">Sala</span>{" "}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="btn-custom">
-                      {reservation.hour !== "" &&
-                      reservation.premiere !== "" &&
-                      reservation.date !== "" &&
-                      reservation.hall !== "" &&
-                      reservation.cinema !== "" ? (
-                        <Link
-                          to={`/reservation/${reservation.premiere}/${reservation.cinema}/${reservation.hall}?date=${reservation.date}&hour=${reservation.hour}`}
-                        >
-                          <button className="btn submit-btn">Continua</button>
-                        </Link>
-                      ) : (
-                        <button className="btn submit-btn">Continua</button>
-                      )}
-                    </div>
-                  </div>
-                </form>
+                    {premiere.interval_hours.map((hour, idx) => {
+                      return <option key={idx}>{hour}</option>;
+                    })}
+                  </select>{" "}
+                  <span className="select-arrow"></span>{" "}
+                  <span className="form-label">Ora</span>{" "}
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-6">
+                <div className="form-group">
+                  {" "}
+                  <select
+                    className="form-control"
+                    name="cinema"
+                    required
+                    onChange={onHandleChangeReservationInput}
+                  >
+                    <option value="" hidden>
+                      Selecteaza Cinematograf
+                    </option>
+                    {premiere.cinema.map((cinema, idx) => {
+                      return <option key={idx}>{cinema.name}</option>;
+                    })}
+                  </select>
+                  <span className="select-arrow"></span>{" "}
+                  <span className="form-label">Cinematograf</span>{" "}
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group">
+                  {" "}
+                  <select
+                    className="form-control"
+                    name="hall"
+                    required
+                    onChange={onHandleChangeReservationInput}
+                  >
+                    <option value="" hidden>
+                      Selecteaza Sala
+                    </option>
+                    {premiere.hall.map((hall, idx) => {
+                      return <option key={idx}>{hall.name}</option>;
+                    })}
+                  </select>{" "}
+                  <span className="select-arrow"></span>{" "}
+                  <span className="form-label">Sala</span>{" "}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          <div style={{ alignSelf: "center", marginTop: "-25px" }}>
+            {reservation.hour !== "" &&
+            reservation.premiere !== "" &&
+            reservation.date !== "" &&
+            reservation.hall !== "" &&
+            reservation.cinema !== "" ? (
+              <Link
+                to={`/reservation/${reservation.premiere}/${reservation.cinema}/${reservation.hall}?date=${reservation.date}&hour=${reservation.hour}`}
+              >
+                <button className="btn submit-btn">Continua</button>
+              </Link>
+            ) : (
+              <button className="btn submit-btn">Continua</button>
+            )}
+          </div>
+        </form>
       </div>
     </div>
   );

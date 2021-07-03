@@ -24,7 +24,7 @@ const ClientTypeModal = (props) => {
             id="inputGroupSelect04"
             aria-label="Example select with button addon"
           >
-            <option selected>Alege...</option>
+            <option value="Alege...">Alege...</option>
             <option value="1">Copil</option>
             <option value="2">Elev</option>
             <option value="3">Student</option>
