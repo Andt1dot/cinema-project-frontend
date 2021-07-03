@@ -1,4 +1,4 @@
-.wrapper {
+.login-wrapper {
   display: flex;
   background-image: url("../../assets/images/Login.jpg");
   height: 100vh; /* You must set a specified height */

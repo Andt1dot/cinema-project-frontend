@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
-import "./index.css";
+import "./style.css";
 
 const SingleMovie = () => {
   const params = useParams();
@@ -57,9 +57,6 @@ const SingleMovie = () => {
           <div className="card_right">
             <div className="img_container">
               <img src={movie.image_url} alt="" />
-            </div>
-            <div className="play_btn">
-              <a href="https://www.imdb.com/title/tt4912910/"></a>
             </div>
           </div>
         </div>

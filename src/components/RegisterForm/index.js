@@ -3,7 +3,7 @@ import "./index.css";
 
 const RegisterForm = () => {
   return (
-    <div className="wrapper">
+    <div className="register-wrapper">
       <form className="styled-form">
         <h1 className="title">Register</h1>
         <input

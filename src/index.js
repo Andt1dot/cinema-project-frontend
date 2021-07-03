@@ -23,7 +23,7 @@ const reducer = combineReducers({
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
-console.log("store: ", store.getState());
+//console.log("store: ", store.getState());
 
 ReactDOM.render(
   <Router>
@@ -33,6 +33,5 @@ ReactDOM.render(
   </Router>,
   document.getElementById("root")
 );
-
 
 reportWebVitals();

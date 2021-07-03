@@ -1,7 +1,7 @@
 import "./index.css";
 
 const MovieCard = ({ premiere, movie }) => {
-  console.log("Component", premiere);
+  //console.log("Component", premiere);
 
   return (
     <div className="card movie_card">
