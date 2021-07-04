@@ -1,8 +1,8 @@
 import "./index.css";
 
-const LegendSeats = () => {
+const LegendSeats = ({ price }) => {
   return (
-    <div /*className="container-about-seats"*/>
+    <div>
       <div className="title-info ">
         <h1>Legenda</h1>
         <h1>Total</h1>
@@ -22,8 +22,8 @@ const LegendSeats = () => {
           </div>
         </div>
         <div className="total-price">
-          <div className="number-seats">X2 Bilete</div>
-          <div className="price"> 90 Lei</div>
+          <div className="number-seats">{`X${price.countTicket} Bilete`}</div>
+          <div className="price">{`${price.totalPrice} Lei`}</div>
         </div>
       </div>
       <div className="confirmation-container">
