@@ -9,7 +9,6 @@ const Seats = ({
   setFinalReservation,
   handleClickReservation,
 }) => {
-  console.log(premiere);
   const [reservations, setReservations] = useState([]);
   const [price, setPrice] = useState({ countTicket: 0, totalPrice: 0 });
   const [modalShow, setModalShow] = React.useState({ seat: "", activ: false });
@@ -21,7 +20,7 @@ const Seats = ({
     setModalShow(false);
   };
 
-  const handleClickClientType = (clientType) => (clientType) => {
+  const handleClickClientType = (clientType) => (e) => {
     setReservations(
       reservations.map((el) => {
         if (el.seat._id === reservations[reservations.length - 1].seat._id) {

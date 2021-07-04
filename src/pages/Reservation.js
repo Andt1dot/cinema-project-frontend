@@ -19,8 +19,20 @@ const Reservation = () => {
     const reserv_hour = location.search.split("=")[2];
     const reserv_date = location.search.split("=")[1].split("&")[0];
 
+    let seatsReservation = seats.map((el) => {
+      return { _id: el.seat._id, client_type: el.client_type };
+    });
+
+    console.log(seatsReservation);
+
     dispatch(
-      addReservation(seats, premiere_id, reserv_date, reserv_hour, total_price)
+      addReservation(
+        seatsReservation,
+        premiere_id,
+        reserv_date,
+        reserv_hour,
+        total_price
+      )
     );
   };
 
