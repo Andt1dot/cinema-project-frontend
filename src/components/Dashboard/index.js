@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, Route, Switch } from "react-router-dom";
+import ZingChart from "zingchart-react";
 import MoviesList from "../../pages/Movie/MoviesList";
 import AddMovie from "../../pages/Movie/AddMovie";
 import SingleMovie from "../../pages/Movie/SingleMovie";
@@ -9,6 +10,22 @@ import logo3 from "../../assets/logo/cinema.png";
 import "./index.css";
 
 const Dashboard = () => {
+  const [chart, setChart] = useState({});
+
+  useEffect(() => {
+    setChart({
+      config: {
+        type: "bar",
+        series: [
+          {
+            values: [4, 5, 3, 4, 5, 3, 5, 4, 11],
+          },
+        ],
+      },
+    });
+  }, []);
+  console.log("chart: ", chart);
+
   return (
     <div className="main-container">
       <header className="navbar navbar-dark header-style sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -196,6 +213,9 @@ const Dashboard = () => {
             </div>
 
             <div className="main-div">
+              <div>
+                <ZingChart data={chart.config} />
+              </div>
               <Switch>
                 <Route
                   exact

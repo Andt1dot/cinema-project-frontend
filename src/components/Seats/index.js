@@ -8,7 +8,7 @@ const Seats = ({ seats, premiere }) => {
   const [price, setPrice] = useState({ countTicket: 0, totalPrice: 0 });
   const [modalShow, setModalShow] = React.useState({ seat: "", activ: false });
 
-  const onHandlleHidenModal = (e) => {
+  const handleModalShow = (e) => {
     setReservations(
       reservations.filter(({ seat }) => seat._id !== modalShow.seat)
     );
@@ -113,7 +113,7 @@ const Seats = ({ seats, premiere }) => {
       <ClientTypeModal
         handleClickClientType={handleClickClientType()}
         show={modalShow.activ}
-        onHide={onHandlleHidenModal}
+        onHide={handleModalShow}
       />
     </div>
   );
