@@ -16,7 +16,7 @@ const initialData = {
   video_url: "",
 };
 
-const MovieForm = ({ onSubmitMovieForm }) => {
+const MovieForm = ({ addNewMovie }) => {
   const [data, setData] = useState(initialData);
 
   const handleInputChange = (e) => {
@@ -29,7 +29,7 @@ const MovieForm = ({ onSubmitMovieForm }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     //console.log("data: ", data);
-    onSubmitMovieForm(data);
+    addNewMovie(data);
     setData(initialData);
   };
 
