@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "./index.css";
+
 const ClientTypeModal = (props) => {
+  console.log(props);
+  const [clientType, setClientType] = useState();
+
   return (
     <Modal
       {...props}
@@ -23,18 +27,21 @@ const ClientTypeModal = (props) => {
             className="custom-select"
             id="inputGroupSelect04"
             aria-label="Example select with button addon"
+            onChange={(e) => setClientType(e.target.value)}
           >
             <option value="Alege...">Alege...</option>
-            <option value="1">Copil</option>
-            <option value="2">Elev</option>
-            <option value="3">Student</option>
-            <option value="4">Adult</option>
-            <option value="5">Pensionar</option>
+            <option value="Copil">Copil</option>
+            <option value="Elev">Elev</option>
+            <option value="Student">Student</option>
+            <option value="Adult">Adult</option>
+            <option value="Pensionar">Pensionar</option>
           </select>
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button>Selectează</Button>
+        <Button onClick={(e) => props.handleClickClientType(clientType)}>
+          Selectează
+        </Button>
       </Modal.Footer>
     </Modal>
   );

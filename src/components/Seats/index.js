@@ -3,16 +3,37 @@ import "./index.css";
 import LegendSeats from "./Legend/index";
 import ClientTypeModal from "./ClientTypeModal";
 
-const Seats = ({ seats }) => {
+const Seats = ({ seats, premiere }) => {
+  console.log(premiere);
+
   const [reservations, setReservations] = useState([]);
+  const [price, setPrice] = useState({ countTicket: 0, totalPrice: 0 });
   const [modalShow, setModalShow] = React.useState({ seat: "", activ: false });
-  console.log("state", reservations);
 
   const onHandlleHidenModal = (e) => {
     setReservations(
       reservations.filter(({ seat }) => seat._id !== modalShow.seat)
     );
     setModalShow(false);
+  };
+
+  const handleClickClientType = (e) => (clientType) => {
+    setReservations(
+      reservations.map((el) => {
+        if (el.seat._id === reservations[reservations.length - 1].seat._id) {
+          return { ...el, client_type: clientType };
+        }
+        return el;
+      })
+    );
+    setModalShow(false);
+
+    setPrice({
+      countTicket: reservations.length,
+      totalPrice: reservations.reduce(function (acc, curr) {
+        return acc + curr.seat.seat_price + premiere.price;
+      }, 0),
+    });
   };
 
   let count = 0;
@@ -90,8 +111,12 @@ const Seats = ({ seats }) => {
         <div className="cinema-seats left">{seatHtml}</div>
       </div>
 
-      <LegendSeats reservations={reservations} />
-      <ClientTypeModal show={modalShow.activ} onHide={onHandlleHidenModal} />
+      <LegendSeats reservations={reservations} price={price} />
+      <ClientTypeModal
+        handleClickClientType={handleClickClientType()}
+        show={modalShow.activ}
+        onHide={onHandlleHidenModal}
+      />
     </div>
   );
 };

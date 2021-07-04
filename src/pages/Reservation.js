@@ -3,13 +3,14 @@ import Seats from "../components/Seats";
 
 import fetchSeatsPremiere from "../actions/Seat";
 import fetchReservationsPremiere from "../actions/Reservation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 
 const Reservation = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { premiere_id, cinema_id, hall_id } = useParams();
+  const [premiere, setPremiere] = useState();
 
   useEffect(() => {
     dispatch(fetchSeatsPremiere());
@@ -47,7 +48,7 @@ const Reservation = () => {
 
   return (
     <div className="container">
-      <Seats seats={seats}></Seats>
+      <Seats seats={seats} premiere={reservations.premiere}></Seats>
     </div>
   );
 };
