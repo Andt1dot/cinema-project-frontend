@@ -12,7 +12,7 @@ const ReservationForm = ({ premiere }) => {
     hour: "",
   });
 
-  const onHandleChangeReservationInput = (e) => {
+  const handleInputChange = (e) => {
     if (e.target.name === "hall") {
       premiere.hall.find((hall) =>
         hall.name === e.target.value
@@ -52,7 +52,7 @@ const ReservationForm = ({ premiere }) => {
                     max={premiere.premiere_end_date.split("T", 1).toString()}
                     name="date"
                     required
-                    onChange={onHandleChangeReservationInput}
+                    onChange={handleInputChange}
                   />{" "}
                   <span className="form-label">Selecteaza Data</span>{" "}
                 </div>
@@ -64,7 +64,7 @@ const ReservationForm = ({ premiere }) => {
                     className="form-control"
                     name="hour"
                     required
-                    onChange={onHandleChangeReservationInput}
+                    onChange={handleInputChange}
                   >
                     <option value="" hidden>
                       Selecteaza Ora
@@ -87,7 +87,7 @@ const ReservationForm = ({ premiere }) => {
                     className="form-control"
                     name="cinema"
                     required
-                    onChange={onHandleChangeReservationInput}
+                    onChange={handleInputChange}
                   >
                     <option value="" hidden>
                       Selecteaza Cinematograf
@@ -107,7 +107,7 @@ const ReservationForm = ({ premiere }) => {
                     className="form-control"
                     name="hall"
                     required
-                    onChange={onHandleChangeReservationInput}
+                    onChange={handleInputChange}
                   >
                     <option value="" hidden>
                       Selecteaza Sala

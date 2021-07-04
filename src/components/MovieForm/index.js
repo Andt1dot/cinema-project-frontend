@@ -16,7 +16,7 @@ const initialData = {
   video_url: "",
 };
 
-const MovieForm = ({ onSubmitHandler }) => {
+const MovieForm = ({ addNewMovie }) => {
   const [data, setData] = useState(initialData);
 
   const handleInputChange = (e) => {
@@ -26,10 +26,10 @@ const MovieForm = ({ onSubmitHandler }) => {
     });
   };
 
-  const onSubmitForm = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     //console.log("data: ", data);
-    onSubmitHandler(data);
+    addNewMovie(data);
     setData(initialData);
   };
 
@@ -63,7 +63,7 @@ const MovieForm = ({ onSubmitHandler }) => {
     <div className="section">
       <div className="section text-center">
         <h4 className="mb-4 pb-3 form-title">Add Movie</h4>
-        <form onSubmit={onSubmitForm}>
+        <form onSubmit={handleFormSubmit}>
           <div className="row">
             <div className="col">
               <div className="form-group">

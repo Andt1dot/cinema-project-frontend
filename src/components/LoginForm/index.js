@@ -20,8 +20,8 @@ const LoginForm = () => {
     setPassword(event.target.value);
   };
 
-  const onSubmitForm = (e) => {
-    e.preventDefault();
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
     dispatch(requestLogin(email, password));
     setEmail("");
     setPassword("");
@@ -29,7 +29,7 @@ const LoginForm = () => {
 
   return (
     <div className="login-wrapper">
-      <form onSubmit={onSubmitForm} className="styled-form">
+      <form onSubmit={handleFormSubmit} className="styled-form">
         <h1 className="title">Login</h1>
         <input
           onChange={handleEmailChange}
@@ -52,7 +52,7 @@ const LoginForm = () => {
 
         <button
           type="submit"
-          onClick={onSubmitForm}
+          onClick={handleFormSubmit}
           className="styled-button signIn"
         >
           Sign-In
