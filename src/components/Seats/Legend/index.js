@@ -26,9 +26,6 @@ const LegendSeats = ({ price }) => {
           <div className="price">{`${price.totalPrice} Lei`}</div>
         </div>
       </div>
-      <div className="confirmation-container">
-        <button className="confirmation-btn">Rezerveaza</button>
-      </div>
     </div>
   );
 };

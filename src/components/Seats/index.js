@@ -3,7 +3,13 @@ import "./index.css";
 import LegendSeats from "./Legend/index";
 import ClientTypeModal from "./ClientTypeModal";
 
-const Seats = ({ seats, premiere }) => {
+const Seats = ({
+  seats,
+  premiere,
+  setFinalReservation,
+  handleClickReservation,
+}) => {
+  console.log(premiere);
   const [reservations, setReservations] = useState([]);
   const [price, setPrice] = useState({ countTicket: 0, totalPrice: 0 });
   const [modalShow, setModalShow] = React.useState({ seat: "", activ: false });
@@ -15,7 +21,7 @@ const Seats = ({ seats, premiere }) => {
     setModalShow(false);
   };
 
-  const handleClickClientType = (e) => (clientType) => {
+  const handleClickClientType = (clientType) => (clientType) => {
     setReservations(
       reservations.map((el) => {
         if (el.seat._id === reservations[reservations.length - 1].seat._id) {
@@ -24,14 +30,15 @@ const Seats = ({ seats, premiere }) => {
         return el;
       })
     );
-    setModalShow(false);
 
     setPrice({
       countTicket: reservations.length,
-      totalPrice: reservations.reduce(function (acc, curr) {
+      totalPrice: reservations.reduce((acc, curr) => {
         return acc + curr.seat.seat_price + premiere.price;
       }, 0),
     });
+
+    setModalShow(false);
   };
 
   let count = 0;
@@ -115,6 +122,15 @@ const Seats = ({ seats, premiere }) => {
         show={modalShow.activ}
         onHide={onHandlleHidenModal}
       />
+
+      <div className="confirmation-container">
+        <button
+          className="confirmation-btn"
+          onClick={handleClickReservation(reservations, price.totalPrice)}
+        >
+          Rezerveaza
+        </button>
+      </div>
     </div>
   );
 };

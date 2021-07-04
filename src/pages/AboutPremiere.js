@@ -8,7 +8,7 @@ const AboutPremiere = (props) => {
   const { id } = useParams();
 
   const [premiere, setPremiere] = useState([]);
-
+ 
   useEffect(() => {
     axios.get(`http://localhost:4000/api/premieres/${id}`).then((premiere) => {
       setPremiere(premiere.data);

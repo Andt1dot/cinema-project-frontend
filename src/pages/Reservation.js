@@ -5,12 +5,24 @@ import fetchSeatsPremiere from "../actions/Seat";
 import fetchReservationsPremiere from "../actions/Reservation";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-
+import { addReservation } from "../actions/Reservation";
 const Reservation = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { premiere_id, cinema_id, hall_id } = useParams();
-  const [premiere, setPremiere] = useState();
+  const [finalReservation, setFinalReservation] = useState({
+    seats: [],
+    price: 0,
+  });
+
+  const handleClickReservation = (seats, total_price) => (e) => {
+    const reserv_hour = location.search.split("=")[2];
+    const reserv_date = location.search.split("=")[1].split("&")[0];
+
+    dispatch(
+      addReservation(seats, premiere_id, reserv_date, reserv_hour, total_price)
+    );
+  };
 
   useEffect(() => {
     dispatch(fetchSeatsPremiere());
@@ -48,7 +60,12 @@ const Reservation = () => {
 
   return (
     <div className="container">
-      <Seats seats={seats} premiere={reservations.premiere}></Seats>
+      <Seats
+        seats={seats}
+        premiere={reservations.premiere}
+        setFinalReservation={setFinalReservation}
+        handleClickReservation={handleClickReservation}
+      ></Seats>
     </div>
   );
 };
