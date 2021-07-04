@@ -3,12 +3,12 @@ import { Modal, Button } from "react-bootstrap";
 import "./index.css";
 
 const ClientTypeModal = (props) => {
-  console.log(props);
   const [clientType, setClientType] = useState();
 
   return (
     <Modal
-      {...props}
+      onHide={props.onHide}
+      show={props.show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered

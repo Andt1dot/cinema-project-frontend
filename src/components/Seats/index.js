@@ -4,8 +4,6 @@ import LegendSeats from "./Legend/index";
 import ClientTypeModal from "./ClientTypeModal";
 
 const Seats = ({ seats, premiere }) => {
-  console.log(premiere);
-
   const [reservations, setReservations] = useState([]);
   const [price, setPrice] = useState({ countTicket: 0, totalPrice: 0 });
   const [modalShow, setModalShow] = React.useState({ seat: "", activ: false });
