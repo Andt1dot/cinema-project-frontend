@@ -6,6 +6,7 @@ import fetchReservationsPremiere from "../actions/Reservation";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { addReservation } from "../actions/Reservation";
+import { fetchPremiereMovies } from "../actions/Premiere";
 const Reservation = () => {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -23,8 +24,6 @@ const Reservation = () => {
       return { _id: el.seat._id, client_type: el.client_type };
     });
 
-    console.log(seatsReservation);
-
     dispatch(
       addReservation(
         seatsReservation,
@@ -37,6 +36,7 @@ const Reservation = () => {
   };
 
   useEffect(() => {
+    dispatch(fetchPremiereMovies());
     dispatch(fetchSeatsPremiere());
     dispatch(
       fetchReservationsPremiere(
@@ -58,10 +58,14 @@ const Reservation = () => {
     errorReservations: state.Reservation.error,
   }));
 
+  const { premiere } = useSelector((state) => ({
+    premiere: state.Premiere.premieres.find((el) => el._id === premiere_id),
+  }));
+
   if (reservations) {
     seats = seats.map((el) => {
-      for (let seat in reservations.seats) {
-        if (el._id === reservations.seats[seat]._id) {
+      for (let seat in reservations) {
+        if (el._id === reservations[seat]._id) {
           return { ...el, seat_status: "busy" };
         }
       }
@@ -74,7 +78,7 @@ const Reservation = () => {
     <div className="container">
       <Seats
         seats={seats}
-        premiere={reservations.premiere}
+        premiere={premiere}
         setFinalReservation={setFinalReservation}
         handleClickReservation={handleClickReservation}
       ></Seats>
