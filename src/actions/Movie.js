@@ -77,10 +77,10 @@ export const getMovies = () => async (dispatch) => {
 export const EDIT_MOVIE_SUCCESS = "EDIT_MOVIE_SUCCESS";
 export const EDIT_MOVIE_FAILURE = "EDIT_MOVIE_FAILURE";
 
-export const editMovie = (data, movie_id) => async (dispatch) => {
+export const editMovie = (movie_id, data) => async (dispatch) => {
   axios
     .put(
-      `http://localhost:4000/api/movies${movie_id}`,
+      `http://localhost:4000/api/movies/${movie_id}`,
       {
         title: data.title,
         original_title: data.original_title,
@@ -120,13 +120,14 @@ export const DELETE_MOVIE_SUCCESS = "DELETE_MOVIE_SUCCESS";
 export const DELETE_MOVIE_FAILURE = "DELETE_MOVIE_FAILURE";
 
 export const deleteMovie = (movie_id) => async (dispatch) => {
-  axios
-    .delete(`http://localhost:4000/api/movies${movie_id}`, {
+  await axios
+    .delete(`http://localhost:4000/api/movies/${movie_id}`, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
     })
-    .then(() => {
+    .then((removedMovie) => {
+      console.log("removedMovie:", removedMovie);
       dispatch({
         type: DELETE_MOVIE_SUCCESS,
         payload: "The movie was successfully deleted.",

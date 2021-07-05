@@ -16,9 +16,9 @@ const initialData = {
   video_url: "",
 };
 
-const MovieForm = ({ addNewMovie }) => {
-  const [data, setData] = useState(initialData);
-
+const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
+  const [data, setData] = useState(initialMovie);
+  // console.log("data: ", initialMovie);
   const handleInputChange = (e) => {
     setData({
       ...data,
@@ -29,8 +29,8 @@ const MovieForm = ({ addNewMovie }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     //console.log("data: ", data);
-    addNewMovie(data);
-    setData(initialData);
+    onSubmitCallback(data);
+    setData(initialMovie);
   };
 
   const showWidget = (e) => {
@@ -62,7 +62,7 @@ const MovieForm = ({ addNewMovie }) => {
   return (
     <div className="section">
       <div className="section text-center">
-        <h4 className="mb-4 pb-3 form-title">Add Movie</h4>
+        <h4 className="mb-4 pb-3 form-title">Movie Form</h4>
         <form onSubmit={handleFormSubmit}>
           <div className="row">
             <div className="col">
@@ -99,7 +99,7 @@ const MovieForm = ({ addNewMovie }) => {
                   type="date"
                   name="release_date"
                   className="form-style"
-                  autoComplete="off"
+                  //autoComplete="off"
                   placeholder="Release Date"
                   value={data.release_date}
                   onChange={handleInputChange}
@@ -251,7 +251,7 @@ const MovieForm = ({ addNewMovie }) => {
                   <iframe
                     title="movie_video"
                     src={data.video_url}
-                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                    allow="fullscreen; encrypted-media; picture-in-picture"
                     frameBorder="0"
                     style={{
                       height: 250,

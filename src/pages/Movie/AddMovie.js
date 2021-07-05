@@ -6,7 +6,7 @@ import MovieForm from "../../components/MovieForm";
 const AddMovie = () => {
   const dispatch = useDispatch();
 
-  const addNewMovie = (movie) => {
+  const onSubmitCallback = (movie) => {
     dispatch(addMovie(movie));
 
     /*dispatch(addMovie(movie)).then(() => {
@@ -14,7 +14,7 @@ const AddMovie = () => {
     });*/
   };
 
-  return <MovieForm addNewMovie={addNewMovie} />;
+  return <MovieForm onSubmitCallback={onSubmitCallback} />;
 };
 
 export default AddMovie;
