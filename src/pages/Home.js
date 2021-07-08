@@ -26,7 +26,7 @@ export default function Home() {
               return (
                 <Link
                   key={index}
-                  className="col-md-auto"
+                  className="col-md-auto text-decoration-none"
                   to={`/about-premiere/${premiere._id}`}
                 >
                   <MovieCard premiere={premiere} />

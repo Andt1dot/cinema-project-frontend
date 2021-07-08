@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import Seats from "../components/Seats";
-
 import fetchSeatsPremiere from "../actions/Seat";
 import fetchReservationsPremiere from "../actions/Reservation";
 import { useEffect, useState } from "react";
@@ -11,10 +10,6 @@ const Reservation = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { premiere_id, cinema_id, hall_id } = useParams();
-  const [finalReservation, setFinalReservation] = useState({
-    seats: [],
-    price: 0,
-  });
 
   const handleClickReservation = (seats, total_price) => (e) => {
     const reserv_hour = location.search.split("=")[2];
@@ -79,7 +74,10 @@ const Reservation = () => {
       <Seats
         seats={seats}
         premiere={premiere}
-        setFinalReservation={setFinalReservation}
+        totalReservation={{
+          reservations: reservations.length,
+          seats: seats.length,
+        }}
         handleClickReservation={handleClickReservation}
       ></Seats>
     </div>

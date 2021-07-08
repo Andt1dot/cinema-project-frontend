@@ -1,8 +1,6 @@
 import "./index.css";
 
 const MovieCard = ({ premiere, movie }) => {
-  //console.log("Component", premiere);
-
   return (
     <div className="card movie_card">
       <img
@@ -11,14 +9,12 @@ const MovieCard = ({ premiere, movie }) => {
         alt="..."
       />
       <div className="card-body">
-        <i
-          className="fas fa-play play_button"
-          data-toggle="tooltip"
-          data-placement="bottom"
-          title="Play Trailer"
-        ></i>
-        <h5 className="card-title">{premiere?.movie.title || movie?.title}</h5>
-        <span className="movie_info">2019</span>
+        <h5 className="card-title-movie">
+          {premiere?.movie.title || movie?.title}
+        </h5>
+        <span className="movie_info">
+          {premiere.movie.release_date.split("T")[0].split("-")[0]}
+        </span>
         <span className="movie_info float-right">
           <i className="fas fa-star"></i>{" "}
           {premiere?.movie.rating || movie?.rating}

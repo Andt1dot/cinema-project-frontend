@@ -35,19 +35,20 @@ const PremiereDescription = ({ premiere }) => {
                 className="movieDetails__director"
                 key={1 * Math.floor(Math.random() * 100)}
               >
-                Directed by Guy Ritchie
+                {premiere.movie.director}
               </p>
 
-              <p className="movieDetails__runtime">1h 59m</p>
+              <p className="movieDetails__runtime">{premiere.movie.duration}</p>
 
               <div className="movieDetails__genres">
-                <p className="movieDetails__genre">Crime | Action</p>
+                <p className="movieDetails__genre">{premiere.movie.genre}</p>
               </div>
               <div className="movieDetails__buttonDiv">
                 <div className="rating">
+                  {}
                   <span className="fa fa-star checked"></span>
                   <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
+                  <span className="fa fa-star"></span>
                   <span className="fa fa-star"></span>
                   <span className="fa fa-star"></span>
                 </div>
@@ -71,10 +72,10 @@ const PremiereDescription = ({ premiere }) => {
 
       <div className="movieDetails__trailer">
         <ModalVideo
-          channel="youtube"
+          channel="cloudinary"
           autoplay
           isOpen={isOpen}
-          videoId={"EFYEni2gsK0"}
+          videoId={""}
           onClose={() => setOpen(false)}
         />
       </div>

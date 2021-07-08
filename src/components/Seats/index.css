@@ -3,8 +3,11 @@
   justify-content: center;
   align-items: center;
   margin-top: 200px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   padding: 50px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0px 0px 10px white;
 }
 
 .cinema-seats {
@@ -84,7 +87,7 @@
 .seat-free:hover .tooltiptext {
   transition: 0.5s;
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5);
   color: white;
   justify-content: center;
   margin: 0;
