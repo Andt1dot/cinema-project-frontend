@@ -3,6 +3,7 @@ import { Link, NavLink, Route, Switch } from "react-router-dom";
 import ZingChart from "zingchart-react";
 import MoviesList from "../../pages/Movie/MoviesList";
 import AddMovie from "../../pages/Movie/AddMovie";
+import EditMovie from "../../pages/Movie/EditMovie";
 import SingleMovie from "../../pages/Movie/SingleMovie";
 import logo1 from "../../assets/logo/olymp.png";
 import logo2 from "../../assets/logo/olymp-cinema-logo.png";
@@ -795,7 +796,7 @@ const Dashboard = () => {
     });
   }, []);
 
-  console.log("chart: ", chart);
+  // console.log("chart: ", chart);
 
   return (
     <div className="main-container">
@@ -984,11 +985,6 @@ const Dashboard = () => {
             </div>
 
             <div className="main-div">
-              <div>
-                <ZingChart data={chart.config} />
-                <ZingChart data={chartSecond.config} />
-                <ZingChart data={chartThird.config} />
-              </div>
               <Switch>
                 <Route
                   exact
@@ -1002,8 +998,24 @@ const Dashboard = () => {
                 />
                 <Route
                   exact
+                  path="/admin/movies/movie-edit/:movie_id"
+                  render={(props) => <EditMovie {...props} />}
+                />
+                <Route
+                  exact
                   path="/admin/movies/:movie_id"
                   render={(props) => <SingleMovie {...props} />}
+                />
+                <Route
+                  exact
+                  path="/admin"
+                  render={(props) => (
+                    <div>
+                      <ZingChart data={chart.config} />
+                      <ZingChart data={chartSecond.config} />
+                      <ZingChart data={chartThird.config} />
+                    </div>
+                  )}
                 />
               </Switch>
             </div>

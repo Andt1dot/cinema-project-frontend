@@ -1,6 +1,8 @@
+/*----------------------------Movie Card-------------------------*/
+
 .main_card {
   color: #fff;
-  width: 760px;
+  width: 800px;
   height: 390px;
   margin: 50px auto;
   display: -webkit-box;
@@ -33,12 +35,16 @@
   margin-top: 25px;
   margin-left: 10px;
 }
-.card_datails h1 {
-  font-size: 30px;
+.card_datails {
+  font-size: 15px;
+}
+.crew {
+  font-size: 15px;
 }
 .card_right img {
   height: 390px;
   border-radius: 2px;
+  width: 270px;
 }
 .card_right {
   border-radius: 2px;
@@ -54,18 +60,20 @@
   justify-content: space-between;
 }
 
-.PG,
 .year,
 .genre,
 .time {
   color: fff;
-  padding: 10px;
+  padding: 2px;
   font-weight: bold;
   border-radius: 15px;
 }
 
 .PG {
-  background: #92fe9d;
+  padding: 8px;
+  font-weight: bold;
+  border-radius: 15px;
+  background: #e6bd0b;
   -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
 }
@@ -81,15 +89,13 @@ a {
 .social-btn {
   margin-left: 0px;
 }
-button {
+.crd-button {
   color: #fff;
   border: none;
-  padding: 20px;
+  padding: 15px;
   outline: none;
   font-size: 12px;
-  margin-top: 30px;
-  margin-left: 10px;
-  background: #92fe9d;
+  background: #e6bd0b;
   border-radius: 12px;
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -98,7 +104,7 @@ button {
   transition: 200ms ease-in-out;
 }
 
-button:hover {
+.crd-button:hover {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
@@ -143,3 +149,27 @@ button:hover {
     opacity: 0;
   }
 }
+/*----------------------------Filter-------------------------*/
+.search-sec {
+  padding: 2rem;
+}
+.search-slt {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  height: calc(3rem + 2px) !important;
+  border-radius: 0;
+}
+.wrn-btn {
+  padding-right: 20px;
+  width: 150px;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  height: calc(3rem + 2px) !important;
+  border-radius: 0;
+}
+/*-----------------------------------------------------*/
