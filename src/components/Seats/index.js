@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import "./index.css";
 import LegendSeats from "./Legend/index";
 import ClientTypeModal from "./ClientTypeModal";
-
+import ReservationPremiere from "./ReservationPremiere";
 const Seats = ({
   seats,
   premiere,
-  setFinalReservation,
   handleClickReservation,
+  totalReservation,
 }) => {
   const [reservations, setReservations] = useState([]);
   const [price, setPrice] = useState({ countTicket: 0, totalPrice: 0 });
   const [modalShow, setModalShow] = React.useState({ seat: "", activ: false });
-
 
   const handleModalShow = (e) => {
     setReservations(
@@ -112,6 +111,7 @@ const Seats = ({
 
   return (
     <div className="container">
+      <ReservationPremiere totalReservation={totalReservation} />
       <div className="theatre">
         <div className="cinema-seats left">{seatHtml}</div>
       </div>

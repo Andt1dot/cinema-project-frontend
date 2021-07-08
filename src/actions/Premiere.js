@@ -7,11 +7,10 @@ export const fetchPremiereMovies = () => async (dispatch) => {
   dispatch({
     type: FETCH_PREMIERE_LOADING,
   });
-  //console.log("Premiere is fetching");
+
   axios
     .get("http://localhost:4000/api/premieres")
     .then((premiere) => {
-      //console.log("premiere", premiere);
       dispatch({
         type: FETCH_PREMIERE_SUCCES,
         payload: premiere.data,
