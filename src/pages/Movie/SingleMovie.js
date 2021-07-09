@@ -37,7 +37,7 @@ const SingleMovie = () => {
     });
   };
 
-  //console.log("single-movie: ", movie);
+  console.log("single-movie: ", movie.release_date);
   return (
     <>
       <div className="container">
