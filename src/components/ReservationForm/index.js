@@ -123,7 +123,8 @@ const ReservationForm = ({ premiere }) => {
             </div>
           </div>
           <div style={{ alignSelf: "center", marginTop: "25px" }}>
-            {reservation.hour !== "" &&
+            { 
+            reservation.hour !== "" &&
             reservation.premiere !== "" &&
             reservation.date !== "" &&
             reservation.hall !== "" &&

@@ -55,16 +55,26 @@
   transform: translateY(-0.25em);
 }
 
-.styled-input {
-  width: 75%;
+.styled-input.input-custom {
+  width: 85%;
   outline: none;
   padding: 5px 16px;
   border-radius: 8px;
   font-family: "Bitter", serif;
   font-size: 1.2em;
   background: rgb(255, 255, 255);
-  margin: 0.5em;
+  margin: 0.9em;
 }
 .styled-input:focus {
   box-shadow: 0 1px 10px 1px #ffffff;
+}
+
+.manage-acces {
+margin: 20px;
+display: flex;
+justify-content: center;
+}
+
+.Sign-In,.Sign-Up {
+  margin: 10px;
 }

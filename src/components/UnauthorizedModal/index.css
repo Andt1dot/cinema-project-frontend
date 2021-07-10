@@ -1,0 +1,15 @@
+.header-unauthorize.modal-header {
+  font-size: 16px;
+  text-align: center;
+  color: red;
+}
+
+.body-unauthorize {
+  color: black;
+}
+.error-message {
+  color: red;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}

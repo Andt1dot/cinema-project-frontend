@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { requestLogin } from "../../actions/Auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ResetModal from "../ResetModal";
+
 import "./index.css";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [modalShow, setModalShow] = React.useState(false);
+  const history = useHistory();
 
   const dispatch = useDispatch();
+
+  const { isAuthenticated, errorMessage } = useSelector((state) => state.Auth);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -23,45 +27,57 @@ const LoginForm = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     dispatch(requestLogin(email, password));
-    setEmail("");
-    setPassword("");
+
+    // setEmail("");
+    // setPassword("");
   };
 
   return (
     <div className="login-wrapper">
       <form onSubmit={handleFormSubmit} className="styled-form">
         <h1 className="title">Login</h1>
+        {errorMessage && !isAuthenticated ? (
+          <div className="error-message">
+            <p>{`* ${errorMessage} *`}</p>
+          </div>
+        ) : null}
         <input
           onChange={handleEmailChange}
           value={email}
           type="email"
           placeholder="Email"
-          className="styled-input"
+          className="styled-input input-custom"
         ></input>
         <input
           onChange={handlePasswordChange}
           value={password}
           type="password"
           placeholder="Password"
-          className="styled-input"
+          className="styled-input input-custom"
         ></input>
 
         <h3 className="styled-h3" onClick={() => setModalShow(true)}>
           Ați uitat parola?
         </h3>
+        <div className="manage-acces">
+          {isAuthenticated ? (
+            <Redirect to="/" className="Sign-In">
+              <button type="submit" className="styled-button signIn">
+                Autentificare
+              </button>
+            </Redirect>
+          ) : (
+            <button type="submit" className="styled-button signIn">
+              Autentificare
+            </button>
+          )}
 
-        <button
-          type="submit"
-          onClick={handleFormSubmit}
-          className="styled-button signIn"
-        >
-          Sign-In
-        </button>
-        <Link to="/register">
-          <button type="button" className="styled-button signUp">
-            Sign-Up
-          </button>
-        </Link>
+          <Link to="/register" className=" Sign-Up">
+            <button type="button" className="styled-button signUp">
+              Înregistrare
+            </button>
+          </Link>
+        </div>
       </form>
       <ResetModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>

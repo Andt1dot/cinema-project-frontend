@@ -9,7 +9,7 @@ const ClientTypeModal = (props) => {
     <Modal
       onHide={props.onHide}
       show={props.show}
-      size="lg"
+      size="sm"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >

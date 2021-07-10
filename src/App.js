@@ -9,6 +9,7 @@ import AboutPremiere from "./pages/AboutPremiere";
 import PrivateRoute, { AdminRoute } from "./components/PrivateRoute";
 import Reservation from "./pages/Reservation";
 import AdminPage from "./pages/AdminPage";
+
 const App = () => {
   const { isAuthenticated, isAdmin } = useSelector((state) => ({
     isAuthenticated: state.Auth.isAuthenticated,
@@ -19,6 +20,7 @@ const App = () => {
     <React.Fragment>
       <Menu />
       <Switch>
+
         <PrivateRoute
           path="/reservation/:premiere_id/:cinema_id/:hall_id"
           isAuthenticated={isAuthenticated}
