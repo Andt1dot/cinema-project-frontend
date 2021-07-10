@@ -34,10 +34,14 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item ">
-              <a className="nav-link listItem" href="/customers">
-                <span data-feather="users"></span>
+              <NavLink
+                exact
+                to="/admin/premieres"
+                className="nav-link listItem"
+              >
+                <span data-feather="shopping-cart"></span>
                 Premieres
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item ">
               <a className="nav-link listItem" href="/reports">
