@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Modal } from "react-bootstrap";
+
 import "./index.css";
 
 const CardCustom = ({ movie, handleShow }) => {
+  const [show, setShow] = useState(false);
+
   return (
     <>
       <div className="main_card">
@@ -24,9 +28,33 @@ const CardCustom = ({ movie, handleShow }) => {
             </p>
             <div className="social-btn row">
               <div className="col-md-4">
-                <button className="crd-button">
+                <button className="crd-button" onClick={() => setShow(true)}>
                   <i className="fas fa-play "></i> SEE TRAILER
                 </button>
+                <Modal
+                  size="lg"
+                  show={show}
+                  onHide={() => setShow(false)}
+                  dialogClassName="modal-90w"
+                  aria-labelledby="example-custom-modal-styling-title"
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                      Trailer
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <iframe
+                      title="movie-trailer"
+                      src={movie.video_url}
+                      width="765"
+                      height="600"
+                      allow="autoplay;  encrypted-media; picture-in-picture"
+                      allowFullScreen
+                      frameBorder="0"
+                    ></iframe>
+                  </Modal.Body>
+                </Modal>
               </div>
               <div className="col-md-3">
                 <button className="crd-button">

@@ -59,7 +59,7 @@ const PremiereDescription = ({ premiere }) => {
                   Play Trailer
                 </button>
                 <Modal
-                  size="xl"
+                  size="lg"
                   show={show}
                   onHide={() => setShow(false)}
                   dialogClassName="modal-90w"
