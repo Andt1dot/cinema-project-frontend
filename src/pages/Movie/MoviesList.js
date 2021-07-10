@@ -4,7 +4,7 @@ import { getMovies } from "../../actions/Movie";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import MovieCard from "../../components/MovieCard";
-import "./style.css";
+import FilterCustom from "../../components/FilterCustom";
 
 const MoviesList = () => {
   const dispatch = useDispatch();
@@ -39,65 +39,7 @@ const MoviesList = () => {
             >
               Movies
             </span>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-              }}
-            >
-              <div>
-                {" "}
-                <Link to="/admin/movies/movie-add">
-                  <button
-                    className="btn btn-secondary wrn-btn"
-                    style={{ background: "green" }}
-                  >
-                    Add Movie
-                  </button>
-                </Link>
-              </div>
-              <form>
-                <div className="row">
-                  <div className="col-lg-12">
-                    <div className="row">
-                      <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                        <input
-                          type="text"
-                          className="form-control search-slt"
-                          placeholder="Genre"
-                        />
-                      </div>
-                      <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                        <input
-                          type="text"
-                          className="form-control search-slt"
-                          placeholder="Release Date"
-                        />
-                      </div>
-                      <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                        <select
-                          className="form-control search-slt"
-                          id="exampleFormControlSelect1"
-                        >
-                          <option>Age Restrict</option>
-                          <option>Example one</option>
-                          <option>Example one</option>
-                          <option>Example one</option>
-                          <option>Example one</option>
-                          <option>Example one</option>
-                          <option>Example one</option>
-                        </select>
-                      </div>
-                      <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                        <button className="btn btn-secondary wrn-btn">
-                          Filter
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
+            <FilterCustom />
           </div>
           {movies.map((movie) => {
             return (
@@ -106,8 +48,7 @@ const MoviesList = () => {
                 key={movie._id}
                 style={{ width: 250, marginLeft: 20 }}
               >
-                {" "}
-                <MovieCard movie={movie} />{" "}
+                <MovieCard movie={movie} />
               </Link>
             );
           })}
