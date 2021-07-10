@@ -6,10 +6,13 @@ import MoviesList from "./Movie/MoviesList";
 import AddMovie from "./Movie/AddMovie";
 import EditMovie from "./Movie/EditMovie";
 import SingleMovie from "./Movie/SingleMovie";
+import PremieresList from "./Premieres/PremieresList";
 import chartFirst from "../components/Dashboard/Charts/ChartFirst";
 import chartSecond from "../components/Dashboard/Charts/ChartSecond";
 import chartThird from "../components/Dashboard/Charts/ChartThird";
-
+import SinglePremiere from "./Premieres/SinglePremiere";
+import EditPremiere from "./Premieres/EditPremiere";
+import AddPremiere from "./Premieres/AddPremiere";
 const AdminPage = () => {
   const [moviesChart, setMoviesChart] = useState({});
   const [usersChart, setUsersChart] = useState({});
@@ -26,6 +29,26 @@ const AdminPage = () => {
     <>
       <Dashboard>
         <Switch>
+          <Route
+            exact
+            path="/admin/premieres/premiere-edit/:premiere_id"
+            render={(props) => <EditPremiere {...props} />}
+          />
+          <Route
+            exact
+            path="/admin/premieres/premiere-add"
+            render={(props) => <AddPremiere {...props} />}
+          />
+          <Route
+            exact
+            path="/admin/premieres/:premiere_id"
+            render={(props) => <SinglePremiere {...props} />}
+          />
+          <Route
+            exact
+            path="/admin/premieres"
+            render={(props) => <PremieresList {...props} />}
+          />
           <Route
             exact
             path="/admin/movies"

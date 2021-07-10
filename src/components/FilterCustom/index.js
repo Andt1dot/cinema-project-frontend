@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 
-const FilterCustom = () => {
+const FilterCustom = ({ addButtonTitle }) => {
   return (
     <>
       <div
@@ -18,7 +18,7 @@ const FilterCustom = () => {
               className="btn btn-secondary wrn-btn"
               style={{ background: "green" }}
             >
-              Add Movie
+              {addButtonTitle}
             </button>
           </Link>
         </div>

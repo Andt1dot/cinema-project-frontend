@@ -1,30 +1,27 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getMovies } from "../../actions/Movie";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { fetchPremiereMovies } from "../../actions/Premiere";
+import { useSelector, useDispatch } from "react-redux";
 import MovieCard from "../../components/MovieCard";
 import FilterCustom from "../../components/FilterCustom";
 
-const MoviesList = () => {
+const PremieresList = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(getMovies());
+    dispatch(fetchPremiereMovies());
   }, [dispatch]);
 
-  const { movies, loading, error } = useSelector((state) => ({
-    movies: state.Movie.movies,
-    error: state.Movie.error,
-    loading: state.Movie.loading,
+  const { premieres, loading, error } = useSelector((state) => ({
+    premieres: state.Premiere.premieres,
+    loading: state.Premiere.loading,
+    error: state.Premiere.error,
   }));
 
-  //console.log("get movies: ", movies);
   return (
     <>
       {loading ? (
         <div>Loading....</div>
-      ) : !loading && movies ? (
+      ) : !loading && premieres ? (
         <div className="row">
           <div
             style={{
@@ -37,18 +34,18 @@ const MoviesList = () => {
             <span
               style={{ padding: 10, fontSize: "30px", textAlign: "center" }}
             >
-              Movies
+              Premieres
             </span>
-            <FilterCustom addButtonTitle="Add Movie" />
+            <FilterCustom addButtonTitle="Add Premiere" />
           </div>
-          {movies.map((movie) => {
+          {premieres.map((premiere) => {
             return (
               <Link
-                to={`/admin/movies/${movie._id}`}
-                key={movie._id}
+                to={`/admin/premieres/${premiere._id}`}
+                key={premiere._id}
                 style={{ width: 250, marginLeft: 20 }}
               >
-                <MovieCard movie={movie} />
+                <MovieCard premiere={premiere} />
               </Link>
             );
           })}
@@ -60,4 +57,4 @@ const MoviesList = () => {
   );
 };
 
-export default MoviesList;
+export default PremieresList;
