@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router";
 import { useDispatch } from "react-redux";
-import { Modal, Button } from "react-bootstrap";
 import { deleteMovie } from "../../actions/Movie";
 import CardCustom from "../../components/CardCustom";
+import DeleteModal from "../../components/DeleteModal";
 import axios from "axios";
 
 const SingleMovie = () => {
@@ -42,22 +42,12 @@ const SingleMovie = () => {
       <div className="container">
         <CardCustom movie={movie} handleShow={handleShow} />
       </div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title style={{ color: "black" }}>Delete Movie</Modal.Title>
-        </Modal.Header>
-        <Modal.Body style={{ color: "black" }}>
-          Are you sure you want to delete this movie ?
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={handleClickDeleteBtn}>
-            Delete
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancel
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <DeleteModal
+        show={show}
+        handleClose={handleClose}
+        handleClickDeleteBtn={handleClickDeleteBtn}
+        text="Movie"
+      />
     </>
   );
 };
