@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 import "../../../node_modules/react-modal-video/css/modal-video.min.css";
-import ModalVideo from "react-modal-video";
 import ReservationForm from "../ReservationForm";
+import { Modal } from "react-bootstrap";
 
 const PremiereDescription = ({ premiere }) => {
-  const [isOpen, setOpen] = React.useState(false);
+  const [show, setShow] = useState(false);
 
   return Object.keys(premiere).length > 0 ? (
     <div className="movieDetails">
@@ -54,10 +54,34 @@ const PremiereDescription = ({ premiere }) => {
                 </div>
                 <button
                   className="trailer__button movieDetails__button"
-                  onClick={() => setOpen(true)}
+                  onClick={() => setShow(true)}
                 >
                   Play Trailer
                 </button>
+                <Modal
+                  size="xl"
+                  show={show}
+                  onHide={() => setShow(false)}
+                  dialogClassName="modal-90w"
+                  aria-labelledby="example-custom-modal-styling-title"
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                      Trailer
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <iframe
+                      title="movie-trailer"
+                      src={premiere.movie.video_url}
+                      width="765"
+                      height="600"
+                      allow="autoplay;  encrypted-media; picture-in-picture"
+                      allowFullScreen
+                      frameBorder="0"
+                    ></iframe>
+                  </Modal.Body>
+                </Modal>
               </div>
               <div>
                 <p className="movieDetails__overview">
@@ -68,16 +92,6 @@ const PremiereDescription = ({ premiere }) => {
           </div>
         </div>
         <ReservationForm premiere={premiere} />
-      </div>
-
-      <div className="movieDetails__trailer">
-        <ModalVideo
-          channel="cloudinary"
-          autoplay
-          isOpen={isOpen}
-          videoId={""}
-          onClose={() => setOpen(false)}
-        />
       </div>
     </div>
   ) : null;
