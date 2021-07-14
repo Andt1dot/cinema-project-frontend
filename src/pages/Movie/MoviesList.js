@@ -31,7 +31,7 @@ const MoviesList = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              marginBottom: "20px",
+              marginBottom: "30px",
             }}
           >
             <span
@@ -39,7 +39,10 @@ const MoviesList = () => {
             >
               Movies
             </span>
-            <FilterCustom addButtonTitle="Add Movie" />
+            <FilterCustom
+              addButtonTitle="Add Movie"
+              pathName="/admin/movies/movie-add"
+            />
           </div>
           {movies.map((movie) => {
             return (

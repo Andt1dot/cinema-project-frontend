@@ -56,10 +56,10 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item ">
-              <a className="nav-link listItem" href="/integr">
+              <NavLink exact to="/admin/news" className="nav-link listItem">
                 <span data-feather="layers"></span>
                 News
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item ">
               <a className="nav-link listItem" href="/integr">

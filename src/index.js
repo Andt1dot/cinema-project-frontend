@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import Auth from "./reducers/Auth";
 import Movie from "./reducers/Movie";
+import News from "./reducers/News";
 import thunk from "redux-thunk";
 import Premiere from "./reducers/Premiere";
 import Seat from "./reducers/Seat";
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   Premiere,
   Seat,
   Reservation,
+  News,
 });
 
 const store = createStore(reducer, applyMiddleware(thunk));

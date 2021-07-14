@@ -98,10 +98,10 @@ const CardCustom = ({ movie, premiere, handleShow }) => {
                     </Modal.Header>
                     <Modal.Body>
                       <iframe
+                        width="100%"
                         title="movie-trailer"
                         src={premiere?.movie.video_url || movie.video_url}
-                        width="765"
-                        height="600"
+                        height="450"
                         allow="autoplay;  encrypted-media; picture-in-picture"
                         allowFullScreen
                         frameBorder="0"
