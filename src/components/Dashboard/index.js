@@ -1,11 +1,10 @@
 import React from "react";
-import { Route, Switch } from "react-router";
 import Header from "./Header";
 import Navbar from "./Navbar";
 import "./index.css";
 
 const Dashboard = ({ children }) => {
-  //console.log("children", children.props.children);
+  //console.log("children.props.children", children.props.children);
   return (
     <div className="main-container">
       <Header />
@@ -40,17 +39,7 @@ const Dashboard = ({ children }) => {
               </div>
             </div>
 
-            <div className="main-div">
-              {children.props.children.map((component, index) => (
-                <Switch key={index}>
-                  <Route
-                    exact
-                    path={component.props.path}
-                    render={component.props.render}
-                  />
-                </Switch>
-              ))}
-            </div>
+            <div className="main-div">{children}</div>
           </main>
         </div>
       </div>

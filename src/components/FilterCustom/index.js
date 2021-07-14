@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 
-const FilterCustom = ({ addButtonTitle }) => {
+const FilterCustom = ({ addButtonTitle, pathName }) => {
   return (
     <>
       <div
@@ -13,7 +13,7 @@ const FilterCustom = ({ addButtonTitle }) => {
       >
         <div>
           {" "}
-          <Link to="/admin/movies/movie-add">
+          <Link to={pathName}>
             <button
               className="btn btn-secondary wrn-btn"
               style={{ background: "green" }}

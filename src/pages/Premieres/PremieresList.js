@@ -36,7 +36,10 @@ const PremieresList = () => {
             >
               Premieres
             </span>
-            <FilterCustom addButtonTitle="Add Premiere" />
+            <FilterCustom
+              addButtonTitle="Add Premiere"
+              pathName="/admin/premieres/premiere-add"
+            />
           </div>
           {premieres.map((premiere) => {
             return (
