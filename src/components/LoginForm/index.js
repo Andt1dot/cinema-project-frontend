@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
-import { requestLogin } from "../../actions/Auth";
+import { Link, Redirect } from "react-router-dom";
+import requestLogin from "../../actions/Auth/LogIn";
 import { useDispatch, useSelector } from "react-redux";
 import ResetModal from "../ResetModal";
 
@@ -10,12 +10,13 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [modalShow, setModalShow] = React.useState(false);
-  const history = useHistory();
 
   const dispatch = useDispatch();
 
-  const { isAuthenticated, errorMessage } = useSelector((state) => state.Auth);
-
+  const { isAuthenticated, isAdmin, errorMessageLogin } = useSelector(
+    (state) => state.Auth
+  );
+  console.log(isAuthenticated);
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -27,18 +28,15 @@ const LoginForm = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     dispatch(requestLogin(email, password));
-
-    // setEmail("");
-    // setPassword("");
   };
 
   return (
     <div className="login-wrapper">
       <form onSubmit={handleFormSubmit} className="styled-form">
         <h1 className="title">Login</h1>
-        {errorMessage && !isAuthenticated ? (
+        {errorMessageLogin && !isAuthenticated ? (
           <div className="error-message">
-            <p>{`* ${errorMessage} *`}</p>
+            <p>{`* ${errorMessageLogin} *`}</p>
           </div>
         ) : null}
         <input
@@ -61,11 +59,11 @@ const LoginForm = () => {
         </h3>
         <div className="manage-acces">
           {isAuthenticated ? (
-            <Redirect to="/" className="Sign-In">
+            <Link to="/" className="Sign-In">
               <button type="submit" className="styled-button signIn">
                 Autentificare
               </button>
-            </Redirect>
+            </Link>
           ) : (
             <button type="submit" className="styled-button signIn">
               Autentificare

@@ -1,35 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import ResetPassword from "../../actions/Auth/ResetPassword";
+import NotificationModal from "../NotificationModal";
 
 const ResetModal = (props) => {
+  const [email, setEmail] = useState("");
+  const [modal, setShowModal] = useState(false);
+  const [stateNotification, setStateNotification] = useState({});
+
+  const onHandleSubmitResetPassword = (e) => {
+    setShowModal(true);
+    ResetPassword(email).then((response) => {
+      setStateNotification(response);
+    });
+  };
+  console.log("stateNotification", stateNotification.title);
   return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title
-          id="contained-modal-title-vcenter"
-          style={{ color: "black" }}
-        >
-          Resetarea Parolei
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p style={{ color: "black" }}>
-          Introduceți adresa de email pe care ați folosit-o la înregistrare
-        </p>
-        <input type="email" className="styled-input" />
-      </Modal.Body>
-      <Modal.Footer>
-        <Button>Trimite</Button>
-        <Button onClick={props.onHide} style={{ background: "red" }}>
-          Anuleaza
-        </Button>
-      </Modal.Footer>
-    </Modal>
+    <>
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title
+            id="contained-modal-title-vcenter"
+            style={{ color: "black" }}
+          >
+            Resetarea Parolei
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p style={{ color: "black" }}>
+            Introduceți adresa de email pe care ați folosit-o la înregistrare
+          </p>
+          <input
+            type="email"
+            className="styled-input"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={onHandleSubmitResetPassword}>Trimite</Button>
+
+          <Button onClick={props.onHide} style={{ background: "red" }}>
+            Anuleaza
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <NotificationModal
+        show={modal}
+        onHide={(e) => {
+          setShowModal(false);
+        }}
+        title={stateNotification.title}
+        body={stateNotification.body}
+        messageType={stateNotification.messageType}
+      ></NotificationModal>
+    </>
   );
 };
 export default ResetModal;

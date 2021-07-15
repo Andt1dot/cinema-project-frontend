@@ -19,8 +19,15 @@
 
 .styled-h3 {
   color: white;
-  font-size: large;
+  font-size: 20px;
+  cursor: pointer;
 }
+
+.styled-h3:hover {
+  transition: 0.5s;
+  text-decoration: underline;
+  color: gold;
+} 
 
 .styled-form {
   display: flex;
@@ -73,8 +80,9 @@
 margin: 20px;
 display: flex;
 justify-content: center;
+flex-wrap: wrap;
 }
 
 .Sign-In,.Sign-Up {
-  margin: 10px;
+  margin-left: 10px;
 }

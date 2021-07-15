@@ -226,3 +226,15 @@
 .movieDetails__genre {
   margin-bottom: 0;
 }
+
+
+.video-trailer-body {
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0 0 10 2px white;
+  width: 100%;
+
+}
+
+.video-trailer-header {
+color:black;
+}

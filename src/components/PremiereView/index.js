@@ -62,19 +62,19 @@ const PremiereDescription = ({ premiere }) => {
                   size="lg"
                   show={show}
                   onHide={() => setShow(false)}
-                  dialogClassName="modal-90w"
+                  dialogClassName="modal-90w  "
                   aria-labelledby="example-custom-modal-styling-title"
                 >
-                  <Modal.Header closeButton>
+                  <Modal.Header closeButton className='video-trailer-header'>
                     <Modal.Title id="example-custom-modal-styling-title">
-                      Trailer
+                     {premiere.movie.title} - Trailer
                     </Modal.Title>
                   </Modal.Header>
-                  <Modal.Body>
+                  <Modal.Body className='video-trailer-body'>
                     <iframe
                       title="movie-trailer"
                       src={premiere.movie.video_url}
-                      width="765"
+                      width="100%"
                       height="600"
                       allow="autoplay;  encrypted-media; picture-in-picture"
                       allowFullScreen

@@ -34,7 +34,6 @@ const ReservationForm = ({ premiere }) => {
   };
 
   return (
-    <div>
       <div className="container">
         <div className="form-header">
           <h1 className="booking-title">Rezerveaza</h1>
@@ -140,7 +139,7 @@ const ReservationForm = ({ premiere }) => {
           </div>
         </form>
       </div>
-    </div>
+  
   );
 };
 
