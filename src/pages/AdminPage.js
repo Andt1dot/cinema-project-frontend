@@ -13,6 +13,11 @@ import chartThird from "../components/Dashboard/Charts/ChartThird";
 import SinglePremiere from "./Premieres/SinglePremiere";
 import EditPremiere from "./Premieres/EditPremiere";
 import AddPremiere from "./Premieres/AddPremiere";
+import NewsList from "./News/NewsList";
+import NewsArticle from "./News/NewsArticle";
+import AddNews from "./News/AddNews";
+import EditNews from "./News/EditNews";
+
 const AdminPage = () => {
   const [moviesChart, setMoviesChart] = useState({});
   const [usersChart, setUsersChart] = useState({});
@@ -29,6 +34,27 @@ const AdminPage = () => {
     <>
       <Dashboard>
         <Switch>
+          <Route
+            exact
+            path="/admin/news/news-edit/:news_id"
+            render={(props) => <EditNews {...props} />}
+          />
+          <Route
+            exact
+            path="/admin/news/news-add"
+            render={(props) => <AddNews {...props} />}
+          />
+          <Route
+            exact
+            path="/admin/news/:news_id"
+            render={(props) => <NewsArticle {...props} />}
+          />
+          <Route
+            exact
+            path="/admin/news"
+            render={(props) => <NewsList {...props} />}
+          />
+
           <Route
             exact
             path="/admin/premieres/premiere-edit/:premiere_id"

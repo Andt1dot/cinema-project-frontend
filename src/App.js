@@ -9,8 +9,12 @@ import AboutPremiere from "./pages/AboutPremiere";
 import PrivateRoute, { AdminRoute } from "./components/PrivateRoute";
 import Reservation from "./pages/Reservation";
 import AdminPage from "./pages/AdminPage";
+<<<<<<< HEAD
 import CheckRegister from "./actions/Auth/CheckRegister";
 import ResetPassword from "./pages/ResetPassword";
+=======
+import NewsPage from "./pages/NewsPage";
+>>>>>>> 6ab4410f7f3bbf34dfa3f778de5512104f1699e7
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,6 +46,7 @@ const App = () => {
         />
 
         <Route path="/about-premiere/:id" component={AboutPremiere} />
+        <Route path="/news" component={NewsPage} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/reset-password/:id" component={ResetPassword} />
