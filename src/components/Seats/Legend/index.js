@@ -2,13 +2,10 @@ import "./index.css";
 
 const LegendSeats = ({ price }) => {
   return (
-    <div>
-      <div className="title-info ">
-        <h1>Legenda</h1>
-        <h1>Total</h1>
-      </div>
-
+    <div className="legend-container">
       <div className="content-about-seats">
+        <h3>Legenda</h3>
+
         <div className="seat-status">
           <div className="seat-free-legend">
             <p>Liber</p>
@@ -21,11 +18,15 @@ const LegendSeats = ({ price }) => {
             <p>Selectat</p>
           </div>
         </div>
-        <div className="total-price">
+      
+      </div>
+      <div className="total-price">
+          <h3>Total</h3>
+          <div className='info-price'>
           <div className="number-seats">{`X${price.countTicket} Bilete`}</div>
           <div className="price">{`${price.totalPrice} Lei`}</div>
+          </div>
         </div>
-      </div>
     </div>
   );
 };

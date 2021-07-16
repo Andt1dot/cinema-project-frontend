@@ -6,7 +6,7 @@ const ClientTypeModal = (props) => {
   const [clientType, setClientType] = useState();
 
   return (
-    <Modal
+    <Modal className ='modal-client_type'
       onHide={props.onHide}
       show={props.show}
       size="sm"
@@ -44,6 +44,7 @@ const ClientTypeModal = (props) => {
         </Button>
       </Modal.Footer>
     </Modal>
+    
   );
 };
 export default ClientTypeModal;

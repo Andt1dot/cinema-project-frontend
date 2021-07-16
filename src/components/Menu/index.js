@@ -7,6 +7,11 @@ import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./index.css";
 
 const Menu = () => {
+  const onHandleCilckLogOut = (e) => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
+
   return (
     <div className="menu">
       <div>
@@ -50,23 +55,30 @@ const Menu = () => {
                     </Nav.Link>
                   </Nav.Item>
                   <NavDropdown
-                    title="Sign In"
+                    title="Action"
                     id="nav-dropdown"
                     className="custom-link"
                   >
-                    <NavDropdown.Item eventKey="4.1" href="/login">
-                      Sign In
-                    </NavDropdown.Item>
-                    <NavDropdown.Item eventKey="4.2" href="/login">
+                    {localStorage.getItem("token") ? (
+                      <NavDropdown.Item
+                        eventKey="4.1"
+                        onClick={onHandleCilckLogOut}
+                        href={"/logout"}
+                      >
+                        Sign Out
+                      </NavDropdown.Item>
+                    ) : (
+                      <NavDropdown.Item eventKey="4.2" href="/login">
+                        Sign In
+                      </NavDropdown.Item>
+                    )}
+                    <NavDropdown.Item eventKey="4.3" href="/login">
                       Setari
                     </NavDropdown.Item>
-                    <NavDropdown.Item eventKey="4.3" href="/login">
+                    <NavDropdown.Item eventKey="4.4" href="/login">
                       Contul Meu
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item eventKey="4.4" href="/login">
-                      Sign Out
-                    </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
               </Navbar.Collapse>
