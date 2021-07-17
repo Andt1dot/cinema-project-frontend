@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Menu from "./components/Menu";
@@ -11,9 +11,8 @@ import Reservation from "./pages/Reservation";
 import AdminPage from "./pages/AdminPage";
 import NewsPage from "./pages/NewsPage";
 import ArticlePage from "./pages/ArticlePage";
-import CheckRegister from "./actions/Auth/CheckRegister";
+import checkRegister from "./actions/Auth/CheckRegister";
 import ResetPassword from "./pages/ResetPassword";
-
 
 const App = () => {
   const dispatch = useDispatch();
@@ -24,9 +23,11 @@ const App = () => {
   }));
 
   useEffect(() => {
-    dispatch(CheckRegister());
+    dispatch(checkRegister());
   }, [isAuthenticated, isAdmin]);
+
   console.log(isAuthenticated, isAdmin);
+
   return (
     <React.Fragment>
       <Menu />

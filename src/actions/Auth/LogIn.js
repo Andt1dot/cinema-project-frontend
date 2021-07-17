@@ -8,7 +8,7 @@ const requestLogin = (email, password) => async (dispatch) => {
     type: LOGIN_REQUEST,
   });
 
-   await axios
+  await axios
     .post("http://localhost:4000/api/auth/login", {
       email,
       password,
@@ -21,12 +21,12 @@ const requestLogin = (email, password) => async (dispatch) => {
       });
 
       localStorage.setItem("token", user.data.token);
-     // localStorage.setItem("isAdmin", user.data.role);
+      user.data.role === 1 && localStorage.setItem("isAdmin", user.data.role);
     })
     .catch((error) => {
       // console.log("eroare", error.request.response);
       console.log("eroare", error.request.response);
-     
+
       dispatch({
         type: LOGIN_FAILURE,
         payload: error.request.response.split("%")[1],

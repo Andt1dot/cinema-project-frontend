@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import requestLogin from "../../actions/Auth/LogIn";
 import { useDispatch, useSelector } from "react-redux";
 import ResetModal from "../ResetModal";
@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   const dispatch = useDispatch();
 
-  const { isAuthenticated, isAdmin, errorMessageLogin } = useSelector(
+  const { isAuthenticated, errorMessageLogin } = useSelector(
     (state) => state.Auth
   );
   console.log(isAuthenticated);

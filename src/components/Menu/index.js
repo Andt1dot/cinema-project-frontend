@@ -7,8 +7,9 @@ import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./index.css";
 
 const Menu = () => {
-  const onHandleCilckLogOut = (e) => {
+  const onCilckLogOut = (e) => {
     localStorage.removeItem("token");
+    localStorage.removeItem("isAdmin");
     window.location.reload();
   };
 
@@ -62,7 +63,7 @@ const Menu = () => {
                     {localStorage.getItem("token") ? (
                       <NavDropdown.Item
                         eventKey="4.1"
-                        onClick={onHandleCilckLogOut}
+                        onClick={onCilckLogOut}
                         href={"/logout"}
                       >
                         Sign Out

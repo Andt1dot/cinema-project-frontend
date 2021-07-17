@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import ResetPassword from "../../actions/Auth/ResetPassword";
+import resetPassword from "../../actions/Auth/ResetPassword";
 import NotificationModal from "../NotificationModal";
 
 const ResetModal = (props) => {
@@ -8,13 +8,15 @@ const ResetModal = (props) => {
   const [modal, setShowModal] = useState(false);
   const [stateNotification, setStateNotification] = useState({});
 
-  const onHandleSubmitResetPassword = (e) => {
+  const onSubmitResetPassword = (e) => {
     setShowModal(true);
-    ResetPassword(email).then((response) => {
+    resetPassword(email).then((response) => {
       setStateNotification(response);
     });
   };
-  console.log("stateNotification", stateNotification.title);
+
+  //console.log("stateNotification", stateNotification.title);
+
   return (
     <>
       <Modal
@@ -43,7 +45,7 @@ const ResetModal = (props) => {
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={onHandleSubmitResetPassword}>Trimite</Button>
+          <Button onClick={onSubmitResetPassword}>Trimite</Button>
 
           <Button onClick={props.onHide} style={{ background: "red" }}>
             Anuleaza

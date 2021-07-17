@@ -1,5 +1,5 @@
 import React from "react";
-import './index.css'
+import "./index.css";
 import { Modal, Button } from "react-bootstrap";
 
 const UnauthorizedModal = (props) => {
@@ -16,11 +16,14 @@ const UnauthorizedModal = (props) => {
           Cod 401: Neautorizat
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body className = "body-unauthorize">
+      <Modal.Body className="body-unauthorize">
         <h4>Stimate vizitator,</h4>
         <p>
           Accesul în continuare se realizează doar cu un cont de utilizator
-          valid.<p>Vă recomandăm să vă autentificați s-au să vă înregistrați în sistem.</p>
+          valid.
+          <p>
+            Vă recomandăm să vă autentificați sau să vă înregistrați în sistem.
+          </p>
         </p>
       </Modal.Body>
       <Modal.Footer>

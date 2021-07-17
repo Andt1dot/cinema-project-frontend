@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import requestRegister from "../../actions/Auth/Register";
 import NotificationModal from "../NotificationModal";
 
@@ -18,12 +18,12 @@ const RegisterForm = () => {
 
   const dispatch = useDispatch();
 
-  const onHandleHideModal = (e) => {
+  const onHideModal = (e) => {
     setModalShow(false);
     history.push("/");
   };
 
-  const onHandleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(requestRegister(inputRegister));
   };
@@ -34,7 +34,7 @@ const RegisterForm = () => {
     }
   }, [isRegister]);
 
-  const onHandleChangeInput = (e) => {
+  const handleInputChange = (e) => {
     setInputRegister({ ...inputRegister, [e.target.name]: e.target.value });
   };
 
@@ -54,7 +54,7 @@ const RegisterForm = () => {
           required
           placeholder="Numele"
           className="styled-input"
-          onChange={onHandleChangeInput}
+          onChange={handleInputChange}
         ></input>
         <label>Prenumele:</label>
         <input
@@ -63,7 +63,7 @@ const RegisterForm = () => {
           type="text"
           placeholder="Prenumele"
           className="styled-input"
-          onChange={onHandleChangeInput}
+          onChange={handleInputChange}
         ></input>
         <label>Vîrsta:</label>
         <input
@@ -72,7 +72,7 @@ const RegisterForm = () => {
           required
           placeholder="Vîrsta"
           className="styled-input"
-          onChange={onHandleChangeInput}
+          onChange={handleInputChange}
         ></input>
         <label>Email:</label>
         <input
@@ -81,7 +81,7 @@ const RegisterForm = () => {
           required
           placeholder="Email"
           className="styled-input"
-          onChange={onHandleChangeInput}
+          onChange={handleInputChange}
         ></input>
         <label>Username:</label>
         <input
@@ -90,7 +90,7 @@ const RegisterForm = () => {
           required
           placeholder="Username"
           className="styled-input"
-          onChange={onHandleChangeInput}
+          onChange={handleInputChange}
         ></input>
         <label>Parola:</label>
         <input
@@ -99,7 +99,7 @@ const RegisterForm = () => {
           type="password"
           placeholder="Parola"
           className="styled-input"
-          onChange={onHandleChangeInput}
+          onChange={handleInputChange}
         ></input>
         <label>Tel.mobil:</label>
         <input
@@ -108,18 +108,18 @@ const RegisterForm = () => {
           type="mobile"
           placeholder="mobil"
           className="styled-input"
-          onChange={onHandleChangeInput}
+          onChange={handleInputChange}
         ></input>
         <button
           className="styled-button signUp-register"
-          onClick={onHandleSubmit}
+          onClick={handleSubmit}
         >
           Sign-Up
         </button>
       </form>
       <NotificationModal
         show={modalShow}
-        onHide={onHandleHideModal}
+        onHide={onHideModal}
         title={"Cod 200: Succes !!!"}
         body={
           "Înregistrare cu succes, vă rugăm să verificați poșta electronică timp de 30 minute pentru a finaliza înregistrarea"
