@@ -26,16 +26,16 @@ const ReservationPremiere = ({ totalReservation }) => {
           age_restrict: premiere.data.movie.age_restrict,
         });
       });
-  }, [premiere_id]);
+  }, [premiere_id, cinema_id, hall_id]);
 
   return (
-    <div class="card reservation-premiere">
-      <div class="card-header">
+    <div className="card reservation-premiere">
+      <div className="card-header">
         Informații despre rezervare <p>{premiere.movie}</p>
       </div>
-      <div class="card-body body-info-reservation">
+      <div className="card-body body-info-reservation">
         <div className="img-premiere-reserv ">
-          <img src={premiere.img} alt="..." class="img-thumbnail"></img>
+          <img src={premiere.img} alt="..." className="img-thumbnail"></img>
         </div>
         <div className="info-reservation">
           <div className="info-1">

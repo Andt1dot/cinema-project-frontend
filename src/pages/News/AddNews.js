@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import { useDispatch } from "react-redux";
+import { addNews } from "../../actions/News";
+import NewsForm from "../../components/NewsForm";
 
 const AddNews = () => {
-  return (
-    <>
-      
-    </>
-  )
-}
+  const dispatch = useDispatch();
 
-export default AddNews
+  const onSubmitCallback = (article) => {
+    dispatch(addNews(article));
+  };
+  return <NewsForm onSubmitCallback={onSubmitCallback} />;
+};
+
+export default AddNews;

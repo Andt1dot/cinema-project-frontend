@@ -3,7 +3,7 @@ import axios from "axios";
 // export const RESET_PASSWORD_SUCCESS = "RESET_PASSWORD_SUCCESS";
 // export const RESET_PASSWORD_FAILURE = "RESET_PASSWORD_FAILURE";
 
-const ResetPassword = async (email) => {
+const resetPassword = async (email) => {
   return await axios
     .post("http://localhost:4000/api/auth/request/reset-password", {
       email,
@@ -19,4 +19,4 @@ const ResetPassword = async (email) => {
     });
 };
 
-export default ResetPassword;
+export default resetPassword;

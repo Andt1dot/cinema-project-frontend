@@ -65,22 +65,17 @@ const PremiereDescription = ({ premiere }) => {
                   dialogClassName="modal-90w  "
                   aria-labelledby="example-custom-modal-styling-title"
                 >
-                  <Modal.Header closeButton className='video-trailer-header'>
+                  <Modal.Header closeButton className="video-trailer-header">
                     <Modal.Title id="example-custom-modal-styling-title">
-                     {premiere.movie.title} - Trailer
+                      {premiere.movie.title} - Trailer
                     </Modal.Title>
                   </Modal.Header>
-                  <Modal.Body className='video-trailer-body'>
+                  <Modal.Body className="video-trailer-body">
                     <iframe
                       width="100%"
                       title="movie-trailer"
                       src={premiere.movie.video_url}
-<<<<<<< HEAD
-                      width="100%"
-                      height="600"
-=======
                       height="450"
->>>>>>> 6ab4410f7f3bbf34dfa3f778de5512104f1699e7
                       allow="autoplay;  encrypted-media; picture-in-picture"
                       allowFullScreen
                       frameBorder="0"

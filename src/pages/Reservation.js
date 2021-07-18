@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Seats from "../components/Seats";
 import fetchSeatsPremiere from "../actions/Seat";
 import fetchReservationsPremiere from "../actions/Reservation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { addReservation } from "../actions/Reservation";
 import { fetchPremiereMovies } from "../actions/Premiere";
@@ -43,14 +43,14 @@ const Reservation = () => {
     );
   }, [dispatch, premiere_id, cinema_id, hall_id, location.search]);
 
-  let { seats, errorSeats } = useSelector((state) => ({
+  let { seats /*errorSeats*/ } = useSelector((state) => ({
     seats: state.Seat.seats,
-    errorSeats: state.Seat.error,
+    //errorSeats: state.Seat.error,
   }));
 
-  const { reservations, errorReservations } = useSelector((state) => ({
+  const { reservations /*errorReservations*/ } = useSelector((state) => ({
     reservations: state.Reservation.reservations,
-    errorReservations: state.Reservation.error,
+    //errorReservations: state.Reservation.error,
   }));
 
   const { premiere } = useSelector((state) => ({

@@ -20,7 +20,10 @@ const PrivateRoute = ({ isAuthenticated, ...props }) => {
 export default PrivateRoute;
 
 export const AdminRoute = ({ isAuthenticated, isAdmin, ...props }) => {
-  if (!isAuthenticated || (isAuthenticated && !isAdmin)) {
+  console.log("isAuth: ", isAuthenticated);
+  console.log("isAdmin: ", isAdmin);
+
+  if ((!isAuthenticated && !isAdmin) || (isAuthenticated && !isAdmin)) {
     return <Redirect exact from="/" to="/login" />;
   }
   return <Route {...props} />;

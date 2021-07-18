@@ -3,7 +3,7 @@ export const CHECK_REGISTER_REQUEST = "CHECK_REGISTER_REQUEST";
 export const CHECK_REGISTER_SUCCESS = "CHECK_REGISTER_SUCCESS";
 export const CHECK_REGISTER_FAILURE = "CHECK_REGISTER_FAILURE";
 
-const CheckRegister = () => async (dispatch) => {
+const checkRegister = () => async (dispatch) => {
   dispatch({
     type: CHECK_REGISTER_REQUEST,
   });
@@ -31,4 +31,4 @@ const CheckRegister = () => async (dispatch) => {
     });
 };
 
-export default CheckRegister;
+export default checkRegister;

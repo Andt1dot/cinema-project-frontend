@@ -10,15 +10,15 @@ import {
 } from "../actions/Auth/Register";
 
 import {
-  CHECK_REGISTER_REQUEST,
+  //CHECK_REGISTER_REQUEST,
   CHECK_REGISTER_SUCCESS,
-  CHECK_REGISTER_FAILURE,
+  //CHECK_REGISTER_FAILURE,
 } from "../actions/Auth/CheckRegister";
 
 const initialStateLogin = {
   isFetching: false,
-  isAuthenticated: false,
-  isAdmin: false,
+  isAuthenticated: localStorage.getItem("token") ? true : false,
+  isAdmin: localStorage.getItem("isAdmin") ? true : false,
   isRegister: false,
   errorMessageLogin: "",
   errorMessageRegister: "",
@@ -37,7 +37,7 @@ const Auth = (state = initialStateLogin, action) => {
         ...state,
         isFetching: false,
         isAuthenticated: true,
-        isAdmin: action.payload?.role === 0 ? false : true,
+        //isAdmin: action.payload?.role === 0 ? false : true,
       };
     }
 
