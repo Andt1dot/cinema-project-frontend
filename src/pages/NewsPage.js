@@ -22,13 +22,11 @@ const NewsPage = () => {
       {loading ? (
         <div>Loading...</div>
       ) : !loading && news ? (
-        <Row xs={1} md={2}>
+        <Row xs={1} md={3}>
           {news.map((article, idx) => {
             return (
               <Col key={idx}>
-                <Card
-                  style={{ width: "18rem", color: "black", margin: "10px" }}
-                >
+                <Card style={{ color: "black" }}>
                   <Card.Img variant="top" src={article.image_url} />
                   <Card.Body>
                     <Card.Title>{article.title}</Card.Title>

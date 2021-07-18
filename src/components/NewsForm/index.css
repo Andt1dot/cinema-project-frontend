@@ -1,0 +1,9 @@
+.news-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.news-form {
+  margin-left: 50px;
+  margin-right: 50px;
+}

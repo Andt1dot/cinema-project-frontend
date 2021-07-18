@@ -6,7 +6,9 @@ const DeleteModal = ({ show, handleClose, handleClickDeleteBtn, text }) => {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title style={{ color: "black" }}>Delete Movie</Modal.Title>
+          <Modal.Title
+            style={{ color: "black" }}
+          >{`Delete ${text}`}</Modal.Title>
         </Modal.Header>
         <Modal.Body style={{ color: "black" }}>
           Are you sure you want to delete this {text} ?
