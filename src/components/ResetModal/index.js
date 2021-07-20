@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import resetPassword from "../../actions/Auth/ResetPassword";
+import {requestResetPassword} from "../../actions/Auth/ResetPassword";
 import NotificationModal from "../NotificationModal";
 
 const ResetModal = (props) => {
@@ -10,7 +10,7 @@ const ResetModal = (props) => {
 
   const onSubmitResetPassword = (e) => {
     setShowModal(true);
-    resetPassword(email).then((response) => {
+    requestResetPassword(email).then((response) => {
       setStateNotification(response);
     });
   };
