@@ -50,7 +50,7 @@ const App = () => {
         <Route path="/news/:news_id" component={ArticlePage} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path="/reset-password/:id" component={ResetPassword} />
+        <Route path="/reset-password/:user_id" component={ResetPassword} />
         <Route path="/" component={Home} />
       </Switch>
     </React.Fragment>
