@@ -37,7 +37,7 @@ const Auth = (state = initialStateLogin, action) => {
         ...state,
         isFetching: false,
         isAuthenticated: true,
-        //isAdmin: action.payload?.role === 0 ? false : true,
+        isAdmin: action.payload?.role === 0 ? false : true,
       };
     }
 
