@@ -1,0 +1,15 @@
+.footer-style {
+  background: #141414;
+}
+.footer-copy {
+  background: black;
+}
+
+.link-color {
+  color: darkgray;
+}
+
+.link-color :hover {
+  color: darkgray;
+  width: 2px;
+}
