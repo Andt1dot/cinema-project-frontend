@@ -13,6 +13,7 @@ import NewsPage from "./pages/NewsPage";
 import ArticlePage from "./pages/ArticlePage";
 import checkRegister from "./actions/Auth/CheckRegister";
 import ResetPassword from "./pages/ResetPassword";
+import Footer from "./components/Footer";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ const App = () => {
         <Route path="/reset-password/:user_id" component={ResetPassword} />
         <Route path="/" component={Home} />
       </Switch>
+      <Footer />
     </React.Fragment>
   );
 };
