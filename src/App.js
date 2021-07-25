@@ -38,14 +38,12 @@ const App = () => {
           isAuthenticated={isAuthenticated}
           render={(props) => <Reservation {...props} />}
         />
-
         <AdminRoute
           path="/admin"
           isAuthenticated={isAuthenticated}
           isAdmin={isAdmin}
           render={(props) => <AdminPage {...props} />}
         />
-
         <Route path="/about-premiere/:id" component={AboutPremiere} />
         <Route exact path="/news" component={NewsPage} />
         <Route path="/news/:news_id" component={ArticlePage} />
