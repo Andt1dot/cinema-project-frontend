@@ -3,6 +3,7 @@ import "./index.css";
 import LegendSeats from "./Legend/index";
 import ClientTypeModal from "./ClientTypeModal";
 import ReservationPremiere from "./ReservationPremiere";
+
 const Seats = ({
   seats,
   premiere,

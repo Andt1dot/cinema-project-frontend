@@ -2,16 +2,23 @@ import { useDispatch, useSelector } from "react-redux";
 import Seats from "../components/Seats";
 import fetchSeatsPremiere from "../actions/Seat";
 import fetchReservationsPremiere from "../actions/Reservation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { addReservation } from "../actions/Reservation";
 import { fetchPremiereMovies } from "../actions/Premiere";
+import ChoosePaymentModal from "../components/ChoosePaymentModal";
+import ResetModal from "../components/ResetModal";
 const Reservation = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { premiere_id, cinema_id, hall_id } = useParams();
 
+  const [modalShowChoosePayment, setModalShowChoosePayment] = useState(false);
+
   const handleClickReservation = (seats, total_price) => (e) => {
+    console.log("modal");
+    setModalShowChoosePayment(true);
+    /* 
     const reserv_hour = location.search.split("=")[2];
     const reserv_date = location.search.split("=")[1].split("&")[0];
 
@@ -28,6 +35,7 @@ const Reservation = () => {
         total_price
       )
     );
+ */
   };
 
   useEffect(() => {
@@ -80,6 +88,11 @@ const Reservation = () => {
         }}
         handleClickReservation={handleClickReservation}
       ></Seats>
+
+      <ChoosePaymentModal
+        onShow={modalShowChoosePayment}
+        onHide={(e) => setModalShowChoosePayment(false)}
+      ></ChoosePaymentModal>
     </div>
   );
 };
