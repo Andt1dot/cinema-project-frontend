@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import logo1 from "../../assets/logo/olymp.png";
 import logo2 from "../../assets/logo/olymp-cinema-logo.png";
 import logo3 from "../../assets/logo/cinema.png";
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import "./index.css";
 
 const Menu = () => {
@@ -13,6 +14,9 @@ const Menu = () => {
     window.location.reload();
   };
 
+  const { isAdmin } = useSelector((state) => ({
+    isAdmin: state.Auth.isAdmin,
+  }));
   return (
     <div className="menu">
       <div>
@@ -39,7 +43,7 @@ const Menu = () => {
             <Navbar expand="lg">
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                <Nav activeKey="1" className="mr-auto">
+                <Nav className="mr-auto">
                   <Nav.Item className="custom-link">
                     <Nav.Link eventKey="1" href="/">
                       Program
@@ -55,32 +59,27 @@ const Menu = () => {
                       Contacte
                     </Nav.Link>
                   </Nav.Item>
-                  <NavDropdown
-                    title="Action"
-                    id="nav-dropdown"
-                    className="custom-link"
-                  >
-                    {localStorage.getItem("token") ? (
-                      <NavDropdown.Item
-                        eventKey="4.1"
-                        onClick={onCilckLogOut}
-                        href={"/logout"}
-                      >
+                  {isAdmin && (
+                    <Nav.Item className="custom-link">
+                      <Nav.Link eventKey="4" href="/admin">
+                        Dashboard
+                      </Nav.Link>
+                    </Nav.Item>
+                  )}
+
+                  {localStorage.getItem("token") ? (
+                    <Nav.Item className="custom-link" onClick={onCilckLogOut}>
+                      <Nav.Link eventKey="5" href="/logout">
                         Sign Out
-                      </NavDropdown.Item>
-                    ) : (
-                      <NavDropdown.Item eventKey="4.2" href="/login">
+                      </Nav.Link>
+                    </Nav.Item>
+                  ) : (
+                    <Nav.Item className="custom-link">
+                      <Nav.Link eventKey="6" href="/login">
                         Sign In
-                      </NavDropdown.Item>
-                    )}
-                    <NavDropdown.Item eventKey="4.3" href="/login">
-                      Setari
-                    </NavDropdown.Item>
-                    <NavDropdown.Item eventKey="4.4" href="/login">
-                      Contul Meu
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                  </NavDropdown>
+                      </Nav.Link>
+                    </Nav.Item>
+                  )}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>

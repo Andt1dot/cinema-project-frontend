@@ -16,14 +16,23 @@ const ArticlePage = () => {
 
   return (
     <Container style={{ marginTop: "50px", marginBottom: "100px" }}>
-      <h1>{newsArticle.title}</h1>{" "}
-      <img
-        src={newsArticle.image_url}
-        style={{ width: "100%", margin: 0 }}
-        alt="news-article"
-      />
-      <h2>{newsArticle.subtitle}</h2>
-      <p>{newsArticle.content}</p>
+      <div
+        style={{
+          background: "#141414",
+          border: "2px solid white",
+          padding: "15px",
+          borderRadius: "20px",
+        }}
+      >
+        <h1>{newsArticle.title}</h1>
+        <img
+          src={newsArticle.image_url}
+          style={{ width: "100%", margin: 0 }}
+          alt="news-article"
+        />
+        <h2 style={{ marginTop: "10px" }}>{newsArticle.subtitle}</h2>
+        <p style={{ marginTop: "30px" }}>{newsArticle.content}</p>
+      </div>
     </Container>
   );
 };
