@@ -7,17 +7,42 @@ import { useLocation, useParams } from "react-router-dom";
 import { addReservation } from "../actions/Reservation";
 import { fetchPremiereMovies } from "../actions/Premiere";
 import ChoosePaymentModal from "../components/ChoosePaymentModal";
-import ResetModal from "../components/ResetModal";
+import NotificationModal from "../components/NotificationModal";
+import PaymentModal from "../components/PaymentModal";
+
 const Reservation = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { premiere_id, cinema_id, hall_id } = useParams();
 
   const [modalShowChoosePayment, setModalShowChoosePayment] = useState(false);
+  const [methodPayment, setMethodPayment] = useState(false);
+  const [modalShowNotification, setModalShowNotification] = useState(false);
+  const [modalPayment, setModalPayment] = useState(false);
+
+  const [finalStageReservation, setFinalStageReservation] = useState({
+    seats: [],
+    total_price: "",
+  });
 
   const handleClickReservation = (seats, total_price) => (e) => {
-    console.log("modal");
+    setFinalStageReservation(seats, total_price);
     setModalShowChoosePayment(true);
+  };
+
+  const handleClickFinishReservation = (e) => {
+    if (methodPayment === "cache") {
+      setModalShowChoosePayment(false);
+      setModalShowNotification(true);
+    } else if (methodPayment === "card") {
+      setModalShowChoosePayment(false);
+      setModalShowNotification(false);
+      setModalPayment(true);
+    }
+
+    console.log("methodPayment", methodPayment);
+    // console.log("modal", modalShowChoosePayment);
+    //setModalShowChoosePayment(true);
     /* 
     const reserv_hour = location.search.split("=")[2];
     const reserv_date = location.search.split("=")[1].split("&")[0];
@@ -92,7 +117,22 @@ const Reservation = () => {
       <ChoosePaymentModal
         onShow={modalShowChoosePayment}
         onHide={(e) => setModalShowChoosePayment(false)}
+        setMethodPayment={setMethodPayment}
+        handleClickFinishReservation={handleClickFinishReservation}
       ></ChoosePaymentModal>
+      <NotificationModal
+        show={modalShowNotification}
+        onHide={(e) => setModalShowNotification(false)}
+        title={"Succes"}
+        body={
+          "Felicitari modal cu succes, ati rezervat locul verificati posta electronica"
+        }
+        messageType={200}
+      ></NotificationModal>
+      <PaymentModal
+        onShow={modalPayment}
+        onHide={(e) => setModalPayment(false)}
+      ></PaymentModal>
     </div>
   );
 };

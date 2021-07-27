@@ -9,7 +9,6 @@
 }
 
 #male {
-  margin-right: 11px;
   display: flex;
   justify-content: center;
 }
@@ -34,15 +33,9 @@
   cursor: pointer;
 }
 
-#male input:checked + span {
-  background: #ec4705;
-  color: white;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
+#male input:checked + span,
 #female input:checked + span {
-  background: #f23895;
+  background: #eabf13e8;
   color: white;
   cursor: pointer;
 }
@@ -82,6 +75,8 @@
 
 .title-select-method.modal-header {
   color: black;
+  display: flex;
+  justify-content: center;
 }
 
 .fas.fa-hand-holding-usd {
@@ -90,7 +85,7 @@
 }
 
 .fa.fa-credit-card {
-  font-size: 30px;
+  font-size: 35px;
 }
 
 span.cache-method {
@@ -103,4 +98,51 @@ h6 {
 
 .align-credit-card {
   display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.male-container,
+.female-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.title-select-method {
+  text-align: center;
+}
+
+.select-method-payment.btn.btn-primary {
+  border-top: 2px solid black;
+  width: 100%;
+  background: #eabf13e8 !important;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: black;
+  font-size: 20px;
+}
+
+.select-method-payment.btn.btn-primary:hover {
+  background: red !important;
+  border-color: black;
+
+  color: white !important;
+}
+
+@media screen and (max-width: 985px) {
+  .align-credit-card {
+    flex-direction: column;
+    align-items: center;
+  }
+  .male-container,
+  .female-container {
+    margin-bottom: 20px;
+    align-items: center;
+  }
+}
+
+.modal-dialog.modal-lg.modal-dialog-centered {
+  width: auto !important;
 }

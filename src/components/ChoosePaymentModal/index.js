@@ -1,41 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
 const ChoosePaymentModal = (props) => {
   return (
     <Modal
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      show={true}
-      onHide={false}
+      show={props.onShow}
+      onHide={props.onHide}
     >
-      <Modal.Header className="title-select-method">
-        <Modal.Title>Modalitatea de achitare</Modal.Title>
+      <Modal.Header className="title-select-method " closeButton>
+        <Modal.Title>Alege-ți modalitatea de achitare</Modal.Title>
       </Modal.Header>
 
       <div class="choose">
         <div className="align-credit-card">
-          <label id="male">
-            <h6>Achitare cu Cardul:</h6>
-            <input name="gender" type="radio" />
-            <span>
-              <i class="fa fa-credit-card"></i>
-            </span>
-          </label>
-    
-        <label id="female">
-          <h6>Achitare la casă:</h6>
-          <input name="gender" type="radio" />
-          <span className="cache-method">
-            <i class="fas fa-hand-holding-usd"></i>
-          </span>
-        </label>
+          <div className="male-container">
+            <label id="male">
+              <input
+                name="gender"
+                type="radio"
+                onChange={(e) => props.setMethodPayment("card")}
+              />
+              <span className="span-credit-card">
+                <i class="fa fa-credit-card"></i>
+              </span>
+            </label>
+            <h6>Achitare cu Cardul</h6>
+          </div>
+          <div className="female-container">
+            <label id="female">
+              <input
+                name="gender"
+                type="radio"
+                onChange={(e) => props.setMethodPayment("cache")}
+              />
+              <span className="cache-method">
+                <i class="fas fa-hand-holding-usd"></i>
+              </span>
+            </label>
+            <h6>Achitare la Casă</h6>
+          </div>
+        </div>
       </div>
-      </div>
-      <Modal.Footer>
-        <Button variant="primary">Ok</Button>
-      </Modal.Footer>
+      <Button
+        onClick={props.handleClickFinishReservation}
+        className=" shadow-none select-method-payment"
+      >
+        Spre achitare
+      </Button>
     </Modal>
   );
 };
