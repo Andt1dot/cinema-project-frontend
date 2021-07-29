@@ -25,42 +25,43 @@ const Reservation = () => {
     total_price: "",
   });
 
+  const handleClickPayMethodCard = (e) => {
+    e.preventDefault();
+    setModalPayment(false);
+    setModalShowNotification(true);
+  };
+
   const handleClickReservation = (seats, total_price) => (e) => {
-    setFinalStageReservation(seats, total_price);
+    setFinalStageReservation({ seats: seats, total_price });
     setModalShowChoosePayment(true);
   };
 
-  const handleClickFinishReservation = (e) => {
+  const handleClickChooseMethodPay = (e) => {
     if (methodPayment === "cache") {
       setModalShowChoosePayment(false);
       setModalShowNotification(true);
+
+      const reserv_hour = location.search.split("=")[2];
+      const reserv_date = location.search.split("=")[1].split("&")[0];
+
+      let seatsReservation = finalStageReservation.seats.map((el) => {
+        return { _id: el.seat._id, client_type: el.client_type };
+      });
+
+      dispatch(
+        addReservation(
+          seatsReservation,
+          premiere_id,
+          reserv_date,
+          reserv_hour,
+          finalStageReservation.total_price
+        )
+      );
     } else if (methodPayment === "card") {
       setModalShowChoosePayment(false);
       setModalShowNotification(false);
       setModalPayment(true);
     }
-
-    console.log("methodPayment", methodPayment);
-    // console.log("modal", modalShowChoosePayment);
-    //setModalShowChoosePayment(true);
-    /* 
-    const reserv_hour = location.search.split("=")[2];
-    const reserv_date = location.search.split("=")[1].split("&")[0];
-
-    let seatsReservation = seats.map((el) => {
-      return { _id: el.seat._id, client_type: el.client_type };
-    });
-
-    dispatch(
-      addReservation(
-        seatsReservation,
-        premiere_id,
-        reserv_date,
-        reserv_hour,
-        total_price
-      )
-    );
- */
   };
 
   useEffect(() => {
@@ -118,7 +119,7 @@ const Reservation = () => {
         onShow={modalShowChoosePayment}
         onHide={(e) => setModalShowChoosePayment(false)}
         setMethodPayment={setMethodPayment}
-        handleClickFinishReservation={handleClickFinishReservation}
+        handleClickChooseMethodPay={handleClickChooseMethodPay}
       ></ChoosePaymentModal>
       <NotificationModal
         show={modalShowNotification}
@@ -132,6 +133,9 @@ const Reservation = () => {
       <PaymentModal
         onShow={modalPayment}
         onHide={(e) => setModalPayment(false)}
+        onSucces={(e) => setModalShowNotification(true)}
+        totalPrice={finalStageReservation.total_price}
+        handleClickPayMethodCard={handleClickPayMethodCard}
       ></PaymentModal>
     </div>
   );

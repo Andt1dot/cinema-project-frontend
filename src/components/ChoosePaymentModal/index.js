@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import "./index.css";
 import { Button, Modal } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
-const ChoosePaymentModal = (props) => {
+const ChoosePaymentModal = ({
+  handleClickChooseMethodPay,
+  setMethodPayment,
+  onShow,
+  onHide,
+}) => {
   return (
     <Modal
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      show={props.onShow}
-      onHide={props.onHide}
+      show={onShow}
+      onHide={onHide}
     >
       <Modal.Header className="title-select-method " closeButton>
         <Modal.Title>Alege-ți modalitatea de achitare</Modal.Title>
@@ -23,7 +27,7 @@ const ChoosePaymentModal = (props) => {
               <input
                 name="gender"
                 type="radio"
-                onChange={(e) => props.setMethodPayment("card")}
+                onChange={(e) => setMethodPayment("card")}
               />
               <span className="span-credit-card">
                 <i class="fa fa-credit-card"></i>
@@ -36,7 +40,7 @@ const ChoosePaymentModal = (props) => {
               <input
                 name="gender"
                 type="radio"
-                onChange={(e) => props.setMethodPayment("cache")}
+                onChange={(e) => setMethodPayment("cache")}
               />
               <span className="cache-method">
                 <i class="fas fa-hand-holding-usd"></i>
@@ -47,7 +51,7 @@ const ChoosePaymentModal = (props) => {
         </div>
       </div>
       <Button
-        onClick={props.handleClickFinishReservation}
+        onClick={handleClickChooseMethodPay}
         className=" shadow-none select-method-payment"
       >
         Spre achitare

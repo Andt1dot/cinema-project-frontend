@@ -1,16 +1,23 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
 import "./index.css";
-const PaymentModal = (props) => {
+const PaymentModal = ({
+  onSucces,
+  onShow,
+  onHide,
+  totalPrice,
+  handleClickPayMethodCard,
+}) => {
+  console.log("totalPrice", totalPrice);
   return (
     <Modal
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      show={props.onShow}
-      onHide={props.onHide}
-      //   className="modal-payment"
+      show={onShow}
+      onHide={onHide}
     >
+      <Modal.Header closeButton></Modal.Header>
       <div class="row justify-content-center">
         <div class=" col-lg-6 col-md-8">
           <div class="card p-3">
@@ -67,8 +74,12 @@ const PaymentModal = (props) => {
               <div class="row justify-content-center">
                 <div class="col-12">
                   <div class="input-group">
-                    <input type="text" name="Name" placeholder="John Doe" />{" "}
-                    <label>Name</label>{" "}
+                    <input
+                      type="text"
+                      name="Name"
+                      placeholder="Vasile Ciocan"
+                    />{" "}
+                    <label>Numele</label>{" "}
                   </div>
                 </div>
               </div>
@@ -84,7 +95,7 @@ const PaymentModal = (props) => {
                       minlength="19"
                       maxlength="19"
                     />{" "}
-                    <label>Card Number</label>{" "}
+                    <label>Numărul Cardului</label>{" "}
                   </div>
                 </div>
               </div>
@@ -102,7 +113,7 @@ const PaymentModal = (props) => {
                           minlength="5"
                           maxlength="5"
                         />{" "}
-                        <label>Expiry Date</label>{" "}
+                        <label>Data Expirării</label>{" "}
                       </div>
                     </div>
                     <div class="col-6">
@@ -124,10 +135,11 @@ const PaymentModal = (props) => {
               <div class="row justify-content-center">
                 <div class="col-md-12">
                   <input
+                    onClick={handleClickPayMethodCard}
                     type="submit"
-                    value="Pay 100 EUR"
+                    value={`Achită ${totalPrice} LEI`}
                     class="btn btn-pay placeicon"
-                  />{" "}
+                  />
                 </div>
               </div>
             </form>

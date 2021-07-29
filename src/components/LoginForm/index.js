@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import requestLogin from "../../actions/Auth/LogIn";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import ResetModal from "../ResetModal";
 
 import "./index.css";
@@ -10,13 +11,13 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [modalShow, setModalShow] = React.useState(false);
-
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const { isAuthenticated, errorMessageLogin } = useSelector(
     (state) => state.Auth
   );
-  console.log(isAuthenticated);
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -28,6 +29,11 @@ const LoginForm = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     dispatch(requestLogin(email, password));
+
+    console.log(isAuthenticated);
+    if (isAuthenticated) {
+      history.push("/");
+    }
   };
 
   return (
@@ -59,12 +65,12 @@ const LoginForm = () => {
         </h3>
         <div className="manage-acces">
           {isAuthenticated ? (
-            <Link to="/" className="Sign-In">
-              <button type="submit" className="styled-button signIn">
-                Autentificare
-              </button>
-            </Link>
+            // <Link to="/" className="Sign-In">
+            <button type="submit" className="styled-button signIn">
+              Autentificare
+            </button>
           ) : (
+            // </Link>
             <button type="submit" className="styled-button signIn">
               Autentificare
             </button>
