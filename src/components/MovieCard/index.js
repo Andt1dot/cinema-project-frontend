@@ -7,8 +7,8 @@ const MovieCard = ({ premiere, movie }) => {
         <div className="card movie_card">
           <img
             src={premiere?.movie.image_url || movie?.image_url}
-            className="card-img-top"
-            alt="..."
+            className="card-img-top movie_card_img"
+            alt="movie-card"
           />
           <div className="card-body">
             <h5 className="card-title-movie">

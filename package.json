@@ -26,6 +26,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.0",
+    "ua-parser-js": "^0.7.28",
     "web-vitals": "^1.1.2",
     "zingchart-react": "^3.1.0"
   },
