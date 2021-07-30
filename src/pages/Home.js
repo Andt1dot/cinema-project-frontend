@@ -4,6 +4,29 @@ import MovieCarousel from "../components/MovieCarousel";
 import { fetchPremiereMovies } from "../actions/Premiere";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -19,20 +42,37 @@ export default function Home() {
   return (
     <div>
       <MovieCarousel></MovieCarousel>
-      <div className="container" style={{ marginTop: 30 }}>
+      <div className="container" style={{ marginTop: 30, marginBottom: 100 }}>
         <div className="row justify-content-md-center">
+          <h4 className="text-center">Filme în Derulare</h4>
           {premieres.length > 0 ? (
-            premieres.map((premiere, index) => {
-              return (
-                <Link
-                  key={index}
-                  className="col-md-auto text-decoration-none"
-                  to={`/about-premiere/${premiere._id}`}
-                >
-                  <MovieCard premiere={premiere} />
-                </Link>
-              );
-            })
+            <Carousel
+              responsive={responsive}
+              swipeable={false}
+              draggable={false}
+              //showDots={true}
+              ssr={true}
+              infinite={true}
+              autoPlaySpeed={1000}
+              keyBoardControl={true}
+              customTransition="all .5"
+              transitionDuration={500}
+              containerClass="carousel-container"
+              //dotListClass="custom-dot-list-style"
+              //itemClass="carousel-item-padding-40-px"
+            >
+              {premieres.map((premiere, index) => {
+                return (
+                  <Link
+                    key={index}
+                    className="col-md-auto text-decoration-none"
+                    to={`/about-premiere/${premiere._id}`}
+                  >
+                    <MovieCard premiere={premiere} />
+                  </Link>
+                );
+              })}
+            </Carousel>
           ) : (
             <div>{error}</div>
           )}
