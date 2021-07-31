@@ -47,11 +47,29 @@ const NewsList = () => {
               {news.map((article, idx) => {
                 return (
                   <Col key={idx}>
-                    <Card style={{ color: "black" }}>
+                    <Card style={{ color: "black", margin: "10px" }}>
                       <Card.Img variant="top" src={article.image_url} />
                       <Card.Body>
-                        <Card.Title>{article.title}</Card.Title>
-                        <Card.Text>{article.subtitle}</Card.Text>
+                        <Card.Title
+                          style={{
+                            width: "content-width",
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          {article.title}
+                        </Card.Title>
+                        <Card.Text
+                          style={{
+                            width: "content-width",
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          {article.subtitle}
+                        </Card.Text>
                         <Link to={`/admin/news/${article._id}`}>
                           <Button variant="primary">Vezi Articol</Button>
                         </Link>

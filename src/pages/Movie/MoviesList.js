@@ -49,7 +49,7 @@ const MoviesList = () => {
               <Link
                 to={`/admin/movies/${movie._id}`}
                 key={movie._id}
-                style={{ width: 250, marginLeft: 20 }}
+                style={{ width: 250, marginLeft: 20, textDecoration: "none" }}
               >
                 <MovieCard movie={movie} />
               </Link>

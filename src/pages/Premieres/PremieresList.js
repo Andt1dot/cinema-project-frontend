@@ -46,7 +46,7 @@ const PremieresList = () => {
               <Link
                 to={`/admin/premieres/${premiere._id}`}
                 key={premiere._id}
-                style={{ width: 250, marginLeft: 20 }}
+                style={{ width: 250, marginLeft: 20, textDecoration: "none" }}
               >
                 <MovieCard premiere={premiere} />
               </Link>

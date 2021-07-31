@@ -38,9 +38,7 @@ const NewsForm = ({ initialArticle = initialData, onSubmitCallback }) => {
             "File uploaded successfully! Here is the info: ",
             result.info
           );
-          if (e.target.id === "image_upload") {
-            setData({ ...data, image_url: result.info.secure_url });
-          }
+          setData({ ...data, image_url: result.info.secure_url });
         }
       }
     );
@@ -51,6 +49,7 @@ const NewsForm = ({ initialArticle = initialData, onSubmitCallback }) => {
   console.log("data: ", data);
   return (
     <>
+      <h4 className="m-4 text-center">News Form</h4>
       <form className="news-form" onSubmit={handleFormSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Article Title</Form.Label>
@@ -104,7 +103,16 @@ const NewsForm = ({ initialArticle = initialData, onSubmitCallback }) => {
           )}
         </div>
         <div className="news-btn">
-          <button className=" btn btn-primary" style={{ width: "300px" }}>
+          <button
+            className=" btn btn-primary"
+            style={{
+              width: "250px",
+              background: "#d1a019",
+              color: "black",
+              fontWeight: "bold",
+              border: "none",
+            }}
+          >
             Submit
           </button>
         </div>
