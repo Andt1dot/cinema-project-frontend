@@ -62,8 +62,8 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
   return (
     <div className="section">
       <div className="section text-center">
-        <h4 className="mb-4 pb-3 form-title">Movie Form</h4>
-        <form onSubmit={handleFormSubmit}>
+        <h4 className="m-4 text-center">Movie Form</h4>
+        <form onSubmit={handleFormSubmit} className="movie-form-style">
           <div className="row">
             <div className="col">
               <div className="form-group">
@@ -156,6 +156,7 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
                   className="form-style"
                   value={data.age_restrict}
                   onChange={handleInputChange}
+                  style={{ WebkitAppearance: "none" }}
                 >
                   <option value="Age Restrict">Age Restrict:</option>
                   <option value="AG">AG</option>
@@ -213,7 +214,7 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
                   onDoubleClick={showWidget}
                   className="form-style"
                 >
-                  Upload Image
+                  Upload Image (double click)
                 </div>
               </div>
             </div>
@@ -224,7 +225,7 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
                   onDoubleClick={showWidget}
                   className="form-style"
                 >
-                  Upload Video
+                  Upload Video (double click)
                 </div>
               </div>
             </div>
@@ -266,7 +267,7 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
           <div className="row">
             <div className="form-group">
               {" "}
-              <button className="btn-add mt-3">submit</button>
+              <button className="btn btn-add mt-3">Submit</button>
             </div>
           </div>
         </form>
