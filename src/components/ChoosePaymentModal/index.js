@@ -27,7 +27,7 @@ const ChoosePaymentModal = ({
               <input
                 name="gender"
                 type="radio"
-                onChange={(e) => setMethodPayment("card")}
+                onChange={(e) => setMethodPayment("Card")}
               />
               <span className="span-credit-card">
                 <i class="fa fa-credit-card"></i>
@@ -40,7 +40,7 @@ const ChoosePaymentModal = ({
               <input
                 name="gender"
                 type="radio"
-                onChange={(e) => setMethodPayment("cache")}
+                onChange={(e) => setMethodPayment("Cache")}
               />
               <span className="cache-method">
                 <i class="fas fa-hand-holding-usd"></i>

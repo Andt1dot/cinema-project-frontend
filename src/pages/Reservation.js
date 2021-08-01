@@ -29,6 +29,25 @@ const Reservation = () => {
     e.preventDefault();
     setModalPayment(false);
     setModalShowNotification(true);
+
+    const reserv_hour = location.search.split("=")[2];
+    const reserv_date = location.search.split("=")[1].split("&")[0];
+
+    let seatsReservation = finalStageReservation.seats.map((el) => {
+      return { _id: el.seat._id, client_type: el.client_type };
+    });
+
+    dispatch(
+      addReservation(
+        seatsReservation,
+        premiere_id,
+        reserv_date,
+        reserv_hour,
+        finalStageReservation.total_price,
+        "Complete",
+        methodPayment
+      )
+    );
   };
 
   const handleClickReservation = (seats, total_price) => (e) => {
@@ -37,7 +56,7 @@ const Reservation = () => {
   };
 
   const handleClickChooseMethodPay = (e) => {
-    if (methodPayment === "cache") {
+    if (methodPayment === "Cache") {
       setModalShowChoosePayment(false);
       setModalShowNotification(true);
 
@@ -54,10 +73,11 @@ const Reservation = () => {
           premiere_id,
           reserv_date,
           reserv_hour,
-          finalStageReservation.total_price
+          finalStageReservation.total_price,
+          "Incomplete"
         )
       );
-    } else if (methodPayment === "card") {
+    } else if (methodPayment === "Card") {
       setModalShowChoosePayment(false);
       setModalShowNotification(false);
       setModalPayment(true);

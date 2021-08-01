@@ -1,4 +1,5 @@
 import axios from "axios";
+import generateTicket from "./Ticket";
 export const FETCH_RESERVATIONS_SUCCES = "FETCH_RESERVATIONS_SUCCES";
 export const FETCH_RESERVATIONS_LOADING = "FETCH_RESERVATIONS_LOADING";
 export const FETCH_RESERVATIONS_FAILURE = "FETCH_RESERVATIONS_FAILURE";
@@ -36,14 +37,16 @@ const fetchReservationsPremiere =
   };
 
 export const addReservation =
-  (seats, premiere, reserv_date, reserv_hour, total_price) =>
+  (
+    seats,
+    premiere,
+    reserv_date,
+    reserv_hour,
+    total_price,
+    status,
+    methodPayment
+  ) =>
   async (dispatch) => {
-    // console.log("seats", seats);
-    // console.log("premiere", premiere);
-    // console.log("reserv_date", reserv_date);
-    // console.log("reserv_hour", reserv_hour);
-    // console.log("total_price", total_price);
-
     dispatch({
       type: ADD_RESERVATIONS_LOADING,
     });
@@ -52,11 +55,12 @@ export const addReservation =
       .post(
         "http://localhost:4000/api/reservations/",
         {
-          seats: seats,
-          premiere: premiere,
-          reserv_date: reserv_date,
-          reserv_hour: reserv_hour,
-          total_price: total_price,
+          seats,
+          premiere,
+          reserv_date,
+          reserv_hour,
+          total_price,
+          status: status,
         },
         {
           headers: {
@@ -65,6 +69,14 @@ export const addReservation =
         }
       )
       .then((reservation) => {
+        if (reservation.data.status === "Complete") {
+          dispatch(generateTicket(reservation.data._id, methodPayment));
+        }
+
+        dispatch({
+          type: ADD_RESERVATIONS_SUCCES,
+          payload: reservation.data,
+        });
         console.log("reservationAction", reservation);
       })
       .catch((err) => {
