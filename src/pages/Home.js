@@ -9,19 +9,19 @@ import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
   superLargeDesktop: {
-    breakpoint: { max: 4000, min: 1125 },
+    breakpoint: { max: 4000, min: 990 },
     items: 4,
   },
   desktop: {
-    breakpoint: { max: 1125, min: 1024 },
+    breakpoint: { max: 990, min: 770 },
     items: 3,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 770, min: 400 },
     items: 2,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 400, min: 0 },
     items: 1,
   },
 };

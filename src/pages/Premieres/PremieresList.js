@@ -31,11 +31,7 @@ const PremieresList = () => {
               marginBottom: "20px",
             }}
           >
-            <span
-              style={{ padding: 10, fontSize: "30px", textAlign: "center" }}
-            >
-              Premieres
-            </span>
+            <h2>Premieres</h2>
             <FilterCustom
               addButtonTitle="Add Premiere"
               pathName="/admin/premieres/premiere-add"

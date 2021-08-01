@@ -22,10 +22,10 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item ">
-              <a className="nav-link listItem" href="/orders">
+              <NavLink exact to="/admin/users" className="nav-link listItem">
                 <span data-feather="file"></span>
                 Users
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item ">
               <NavLink exact to="/admin/movies" className="nav-link listItem">
@@ -44,34 +44,43 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item ">
-              <a className="nav-link listItem" href="/reports">
-                <span data-feather="bar-chart-2"></span>
-                Reservations
-              </a>
-            </li>
-            <li className="nav-item ">
-              <a className="nav-link listItem" href="/integr">
-                <span data-feather="layers"></span>
-                Tickets
-              </a>
-            </li>
-            <li className="nav-item ">
               <NavLink exact to="/admin/news" className="nav-link listItem">
                 <span data-feather="layers"></span>
                 News
               </NavLink>
             </li>
             <li className="nav-item ">
-              <a className="nav-link listItem" href="/integr">
-                <span data-feather="layers"></span>
-                Notifications
-              </a>
+              <NavLink
+                exact
+                to="/admin/reservations"
+                className="nav-link listItem"
+              >
+                <span data-feather="bar-chart-2"></span>
+                Reservations
+              </NavLink>
             </li>
             <li className="nav-item ">
-              <a className="nav-link listItem" href="/integr">
+              <NavLink exact to="/admin/tickets" className="nav-link listItem">
+                <span data-feather="layers"></span>
+                Tickets
+              </NavLink>
+            </li>
+
+            <li className="nav-item ">
+              <NavLink
+                exact
+                to="/admin/notifications"
+                className="nav-link listItem"
+              >
+                <span data-feather="layers"></span>
+                Notifications
+              </NavLink>
+            </li>
+            <li className="nav-item ">
+              <NavLink exact to="/admin/cinemas" className="nav-link listItem">
                 <span data-feather="layers"></span>
                 Cinemas
-              </a>
+              </NavLink>
             </li>
           </ul>
 
@@ -89,14 +98,14 @@ const Navbar = () => {
             <li className="nav-item">
               <a className="nav-link listItem" href="/current">
                 <span data-feather="file-text"></span>
-                Personel
+                Sales
               </a>
             </li>
 
             <li className="nav-item">
               <a className="nav-link listItem" href="/sales">
                 <span data-feather="file-text"></span>
-                Sales
+                Metrics
               </a>
             </li>
           </ul>

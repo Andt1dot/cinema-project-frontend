@@ -85,3 +85,31 @@ export const addReservation =
   };
 
 export default fetchReservationsPremiere;
+
+export const GET_ALL_RESERVATIONS_LOADING = "GET_ALL_RESERVATIONS_LOADING";
+export const GET_ALL_RESERVATIONS_SUCCESS = "GET_ALL_RESERVATIONS_SUCCESS";
+export const GET_ALL_RESERVATIONS_ERROR = "GET_ALL_RESERVATIONS_ERROR";
+
+export const getAllReservations = () => async (dispatch) => {
+  dispatch({ type: GET_ALL_RESERVATIONS_LOADING });
+
+  axios
+    .get("http://localhost:4000/api/reservations", {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+    .then((reservations) => {
+      dispatch({
+        type: GET_ALL_RESERVATIONS_SUCCESS,
+        payload: reservations.data,
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      dispatch({
+        type: GET_ALL_RESERVATIONS_ERROR,
+        payload: "Error.Could not get reservations.",
+      });
+    });
+};

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Modal } from "react-bootstrap";
+import { Modal, Card, Row, Col, Button } from "react-bootstrap";
 
 import "./index.css";
 
@@ -10,136 +10,143 @@ const CardCustom = ({ movie, premiere, handleShow }) => {
   return (
     <>
       {premiere?.movie || movie ? (
-        <div className="main_card">
-          <div className="card_left">
-            <div className="card_datails">
-              <h4>{premiere?.movie.title || movie.title}</h4>
-
-              {movie ? (
-                <p>Original title: {movie.original_title}</p>
-              ) : (
-                <p>
-                  Start Date:
-                  {premiere.premiere_start_date.split("T", 1).toString()}
-                  <span style={{ padding: "10px" }}> </span>
-                  End Date:
-                  {premiere.premiere_end_date.split("T", 1).toString()}
-                </p>
-              )}
-
-              <div className="card_cat">
-                <p className="PG">
-                  {premiere?.movie.age_restrict || movie.age_restrict}
-                </p>
+        <Card bg="dark" border="light" className="p-3">
+          <Card.Header>{premiere?.movie.title || movie.title}</Card.Header>
+          <Row>
+            <Col lg={4}>
+              <Card.Img
+                style={{ width: "100%" }}
+                src={premiere?.movie.image_url || movie.image_url}
+              />
+            </Col>
+            <Col lg={8}>
+              <Card.Body>
                 {movie ? (
-                  <p className="year">2021</p>
+                  <Card.Title>
+                    Original title: {movie.original_title}
+                  </Card.Title>
                 ) : (
-                  <p className="year">{premiere.price} MDL</p>
+                  <Card.Text>
+                    <strong>Start Date:</strong>
+                    {premiere.premiere_start_date.split("T", 1).toString()}
+                    <span style={{ padding: "10px" }}> </span>
+                    <strong>End Date:</strong>
+                    {premiere.premiere_end_date.split("T", 1).toString()}
+                  </Card.Text>
                 )}
-
-                <p className="genre">{premiere?.movie.genre || movie.genre}</p>
-                <p className="time">
-                  {premiere?.movie.duration || movie.duration}
-                </p>
-              </div>
-              {movie ? (
-                <p className="disc">{movie.description}</p>
-              ) : (
-                <p className="disc">
-                  Performance hours:{" "}
-                  {premiere.interval_hours.map((hour, idx) => (
-                    <span style={{ padding: "10px" }} key={idx}>
-                      {hour}
-                    </span>
-                  ))}
-                </p>
-              )}
-
-              {movie ? (
-                <p className="crew">
-                  Director: {movie.director}
-                  <br></br>
-                  Stars: {movie.actors}
-                </p>
-              ) : (
-                <p className="crew">
-                  Cinemas:{" "}
-                  {premiere?.cinema.map((cinema, idx) => (
-                    <span style={{ padding: "10px" }} key={idx}>
-                      {cinema.name}
-                    </span>
-                  ))}
-                  <br></br>
-                  Halls:{" "}
-                  {premiere?.hall.map((hall, idx) => (
-                    <span style={{ padding: "10px" }} key={idx}>
-                      {hall.name}
-                    </span>
-                  ))}
-                </p>
-              )}
-
-              <div className="social-btn row">
-                <div className="col-md-4">
-                  <button className="crd-button" onClick={() => setShow(true)}>
-                    <i className="fas fa-play "></i> SEE TRAILER
-                  </button>
-                  <Modal
-                    size="lg"
-                    show={show}
-                    onHide={() => setShow(false)}
-                    dialogClassName="modal-90w"
-                    aria-labelledby="example-custom-modal-styling-title"
-                  >
-                    <Modal.Header closeButton>
-                      <Modal.Title id="example-custom-modal-styling-title">
-                        Trailer
-                      </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      <iframe
-                        width="100%"
-                        title="movie-trailer"
-                        src={premiere?.movie.video_url || movie.video_url}
-                        height="450"
-                        allow="autoplay;  encrypted-media; picture-in-picture"
-                        allowFullScreen
-                        frameBorder="0"
-                      ></iframe>
-                    </Modal.Body>
-                  </Modal>
-                </div>
-                <div className="col-md-3">
-                  <button className="crd-button">
-                    <i className="fas fa-star "></i>
-                    <span> {premiere?.movie.rating || movie.rating}</span>
-                  </button>
-                </div>
-                <div className="col-md-2">
+                <Card.Text as="div" className="card_cat mt-3 mb-0">
+                  <p className="PG">
+                    {premiere?.movie.age_restrict || movie.age_restrict}
+                  </p>
+                  <p className="genre">
+                    {premiere?.movie.genre || movie.genre}
+                  </p>
+                </Card.Text>
+                <Card.Text as="div">
                   {movie ? (
-                    <Link to={`/admin/movies/movie-edit/${movie._id}`}>
-                      <button className="btn btn-primary">Edit</button>
-                    </Link>
+                    <p className="year">Release year: 2021</p>
                   ) : (
-                    <Link to={`/admin/premieres/premiere-edit/${premiere._id}`}>
-                      <button className="btn btn-primary">Edit</button>
-                    </Link>
+                    <p className="info">Price: {premiere.price} MDL</p>
                   )}
-                </div>
-                <div className="col-md-3">
-                  <button className="btn btn-danger" onClick={handleShow}>
-                    Delete
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="card_right">
-            <div className="img_container">
-              <img src={premiere?.movie.image_url || movie.image_url} alt="" />
-            </div>
-          </div>
-        </div>
+                  <p className="time">
+                    Duration: {premiere?.movie.duration || movie.duration}
+                  </p>
+                </Card.Text>
+                <Card.Text>
+                  {movie ? (
+                    <>
+                      <strong>Sinopsys:</strong>
+                      {movie.description}
+                    </>
+                  ) : (
+                    <>
+                      <strong>Sessions:</strong>
+                      {premiere.interval_hours.map((hour, idx) => (
+                        <span style={{ padding: "10px" }} key={idx}>
+                          {hour}
+                        </span>
+                      ))}
+                    </>
+                  )}
+                </Card.Text>
+                <Card.Text as="div">
+                  {movie ? (
+                    <>
+                      <strong>Director:</strong> {movie.director}
+                      <br></br>
+                      <strong>Stars:</strong> {movie.actors}
+                    </>
+                  ) : (
+                    <p>
+                      <strong>Cinemas:</strong>
+                      {premiere?.cinema.map((cinema, idx) => (
+                        <span style={{ padding: "10px" }} key={idx}>
+                          {cinema.name}
+                        </span>
+                      ))}
+                      <br></br>
+                      <strong> Halls:</strong>
+                      {premiere?.hall.map((hall, idx) => (
+                        <span style={{ padding: "10px" }} key={idx}>
+                          {hall.name}
+                        </span>
+                      ))}
+                    </p>
+                  )}
+                </Card.Text>
+                <Button className="crd-button" onClick={() => setShow(true)}>
+                  <i className="fas fa-play "></i> SEE TRAILER
+                </Button>
+                <Modal
+                  size="lg"
+                  show={show}
+                  onHide={() => setShow(false)}
+                  dialogClassName="modal-90w"
+                  aria-labelledby="example-custom-modal-styling-title"
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                      Trailer
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <iframe
+                      width="100%"
+                      title="movie-trailer"
+                      src={premiere?.movie.video_url || movie.video_url}
+                      height="450"
+                      allow="autoplay;  encrypted-media; picture-in-picture"
+                      allowFullScreen
+                      frameBorder="0"
+                    ></iframe>
+                  </Modal.Body>
+                </Modal>
+                <Button className="crd-button">
+                  <i className="fas fa-star "></i>
+                  <span> RATING {premiere?.movie.rating || movie.rating}</span>
+                </Button>
+              </Card.Body>
+            </Col>
+            <Card.Footer as="div" className="text-center">
+              {movie ? (
+                <Link to={`/admin/movies/movie-edit/${movie._id}`}>
+                  <Button className="crd-footer">Edit</Button>
+                </Link>
+              ) : (
+                <Link to={`/admin/premieres/premiere-edit/${premiere._id}`}>
+                  <Button className="crd-footer">Edit</Button>
+                </Link>
+              )}
+              <Button
+                variant="danger"
+                onClick={handleShow}
+                className="crd-footer"
+              >
+                Delete
+              </Button>
+            </Card.Footer>
+          </Row>
+        </Card>
       ) : null}
     </>
   );
