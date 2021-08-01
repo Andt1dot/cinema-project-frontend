@@ -17,6 +17,8 @@ import NewsList from "./News/NewsList";
 import NewsArticle from "./News/NewsArticle";
 import AddNews from "./News/AddNews";
 import EditNews from "./News/EditNews";
+import ReservationsList from "./Reservation/ReservationsList";
+import UsersList from "./User/UsersList";
 
 const AdminPage = () => {
   const [moviesChart, setMoviesChart] = useState({});
@@ -34,6 +36,16 @@ const AdminPage = () => {
     <>
       <Dashboard>
         <Switch>
+          <Route
+            exact
+            path="/admin/users"
+            render={(props) => <UsersList {...props} />}
+          />
+          <Route
+            exact
+            path="/admin/reservations"
+            render={(props) => <ReservationsList {...props} />}
+          />
           <Route
             exact
             path="/admin/news/news-edit/:news_id"

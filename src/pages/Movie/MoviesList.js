@@ -34,11 +34,7 @@ const MoviesList = () => {
               marginBottom: "30px",
             }}
           >
-            <span
-              style={{ padding: 10, fontSize: "30px", textAlign: "center" }}
-            >
-              Movies
-            </span>
+            <h2>Movies</h2>
             <FilterCustom
               addButtonTitle="Add Movie"
               pathName="/admin/movies/movie-add"

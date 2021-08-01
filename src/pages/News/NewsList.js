@@ -20,7 +20,7 @@ const NewsList = () => {
 
   return (
     <>
-      <Container style={{ marginTop: "50px", marginBottom: "100px" }}>
+      <Container>
         {loading ? (
           <div>Loading...</div>
         ) : !loading && news ? (
@@ -33,11 +33,7 @@ const NewsList = () => {
                 marginBottom: "30px",
               }}
             >
-              <span
-                style={{ padding: 10, fontSize: "30px", textAlign: "center" }}
-              >
-                News
-              </span>
+              <h2>News</h2>
               <FilterCustom
                 addButtonTitle="Add Article"
                 pathName="/admin/news/news-add"

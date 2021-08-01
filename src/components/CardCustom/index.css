@@ -1,74 +1,23 @@
-.main_card {
-  color: #fff;
-  width: 800px;
-  height: 390px;
-  margin: 50px auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  max-width: 800px;
-  background: #bbc2c4;
-  background: -webkit-linear-gradient(to right, #0d0f0e, #bbc2c4);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(#0d0f0e),
-    to(#bbc2c4)
-  );
-  background: -webkit-linear-gradient(left, #0d0f0e, #bbc2c4);
-  background: -o-linear-gradient(left, #0d0f0e, #bbc2c4);
-  background: linear-gradient(to right, #0d0f0e, #bbc2c4);
-  -webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-}
-
-.card_left {
-  width: 90%;
-}
-
-.card_datails {
-  width: 90%;
-  padding: 5px;
-  margin-top: 25px;
-  margin-left: 10px;
-}
-.card_datails {
-  font-size: 15px;
-}
-.crew {
-  font-size: 15px;
-}
-.card_right img {
-  height: 390px;
-  border-radius: 2px;
-  width: 270px;
-}
-.card_right {
-  border-radius: 2px;
-}
-
 .card_cat {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  align-items: center;
 }
 
 .year,
 .genre,
-.time {
-  color: fff;
-  padding: 2px;
+.time,
+.info {
+  color: white;
+  margin-right: 20px;
   font-weight: bold;
-  border-radius: 15px;
+}
+strong {
+  padding-right: 5px;
 }
 
 .PG {
   padding: 8px;
+  margin-right: 20px;
   font-weight: bold;
   border-radius: 15px;
   background: #e6bd0b;
@@ -76,19 +25,9 @@
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
 }
 
-.disc {
-  font-weight: 100;
-  line-height: 27px;
-}
-a {
-  display: block;
-  text-decoration: none;
-}
-.social-btn {
-  margin-left: 0px;
-}
 .crd-button {
   color: #fff;
+  margin-right: 15px;
   border: none;
   padding: 15px;
   outline: none;
@@ -106,20 +45,12 @@ a {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
+  background: #e6bd0b;
 }
-.play_btn {
-  height: 100%;
-  margin: -394px auto;
-  position: relative;
-  text-align: center;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
-}
-.fa-play-circle {
-  color: #255;
-  font-size: 160px;
-  margin-top: 110px;
-  -webkit-animation: bounce 1s -0.4s infinite;
-  animation: bounce 1s -0.4s infinite;
+
+.crd-footer {
+  width: 150px;
+  margin-right: 5px;
 }
 
 @-webkit-keyframes bounce {

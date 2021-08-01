@@ -7,9 +7,10 @@
 
 .link-color {
   color: darkgray;
+  text-decoration: none;
 }
 
-.link-color :hover {
+.link-color:hover {
   color: darkgray;
   width: 2px;
 }

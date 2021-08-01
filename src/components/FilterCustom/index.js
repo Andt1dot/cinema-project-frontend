@@ -1,67 +1,55 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ListGroup, Button } from "react-bootstrap";
 import "./index.css";
 
 const FilterCustom = ({ addButtonTitle, pathName }) => {
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
-        <div>
-          {" "}
+      <ListGroup horizontal="lg" className="m-0">
+        <ListGroup.Item>
           <Link to={pathName}>
-            <button
+            <Button
               className="btn btn-secondary wrn-btn"
               style={{ background: "green" }}
             >
               {addButtonTitle}
-            </button>
+            </Button>
           </Link>
-        </div>
-        <form>
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="row">
-                <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                  <input
-                    type="text"
-                    className="form-control search-slt"
-                    placeholder="Genre"
-                  />
-                </div>
-                <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                  <input
-                    type="text"
-                    className="form-control search-slt"
-                    placeholder="Release Date"
-                  />
-                </div>
-                <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                  <select
-                    className="form-control search-slt"
-                    id="exampleFormControlSelect1"
-                  >
-                    <option>Age Restrict</option>
-                    <option>Example one</option>
-                    <option>Example one</option>
-                    <option>Example one</option>
-                    <option>Example one</option>
-                    <option>Example one</option>
-                    <option>Example one</option>
-                  </select>
-                </div>
-                <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                  <button className="btn btn-secondary wrn-btn">Filter</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
+        </ListGroup.Item>
+
+        <ListGroup.Item>
+          <input
+            type="text"
+            className="form-control search-slt"
+            placeholder="Genre"
+          />
+        </ListGroup.Item>
+        <ListGroup.Item>
+          <input
+            type="text"
+            className="form-control search-slt"
+            placeholder="Release Date"
+          />
+        </ListGroup.Item>
+        <ListGroup.Item>
+          <select
+            className="form-control search-slt"
+            id="exampleFormControlSelect1"
+          >
+            <option>Age Restrict</option>
+            <option>Example one</option>
+            <option>Example one</option>
+            <option>Example one</option>
+            <option>Example one</option>
+            <option>Example one</option>
+            <option>Example one</option>
+          </select>
+        </ListGroup.Item>
+        <ListGroup.Item>
+          <Button className="btn btn-secondary wrn-btn">Filter</Button>
+        </ListGroup.Item>
+      </ListGroup>
     </>
   );
 };

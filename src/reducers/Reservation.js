@@ -1,10 +1,14 @@
 import {
   FETCH_RESERVATIONS_SUCCES,
   FETCH_RESERVATIONS_FAILURE,
+  GET_ALL_RESERVATIONS_LOADING,
+  GET_ALL_RESERVATIONS_SUCCESS,
+  GET_ALL_RESERVATIONS_ERROR,
 } from "../actions/Reservation";
 
 const initialState = {
   reservations: [],
+  loading: false,
   error: "",
 };
 
@@ -21,6 +25,31 @@ const Reservation = (state = initialState, action) => {
         error: action.payload,
       };
     }
+    case GET_ALL_RESERVATIONS_LOADING: {
+      return {
+        ...state,
+        loading: true,
+        error: "",
+      };
+    }
+
+    case GET_ALL_RESERVATIONS_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        reservations: action.payload,
+        error: "",
+      };
+    }
+
+    case GET_ALL_RESERVATIONS_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    }
+
     default:
       return state;
   }
