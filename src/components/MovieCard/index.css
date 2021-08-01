@@ -7,13 +7,12 @@
 }
 
 .movie_card {
-  padding: 0 !important;
-  width: 12rem;
-  margin: 14px;
+  width: 250px;
+  margin: 5px;
 }
 
-.movie_card img {
-  height: 16rem;
+.movie_card_img {
+  height: 300px;
 }
 .movie_info {
   color: #5e5c5c;
@@ -23,8 +22,7 @@
   font-size: 20px;
 }
 .card-title-movie {
-  width: 80%;
-  height: 4rem;
+  height: 50px;
   color: black;
   text-align: center;
 }

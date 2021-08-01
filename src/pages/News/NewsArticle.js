@@ -33,27 +33,46 @@ const NewsArticle = () => {
       <Container style={{ marginTop: "50px", marginBottom: "100px" }}>
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
+            background: "white",
+            color: "black",
+            border: "2px solid black",
+            padding: "15px",
+            borderRadius: "20px",
           }}
         >
-          <Link to={`/admin/news/news-edit/${newsArticle._id}`}>
-            <button className="btn btn-primary">Edit</button>
-          </Link>
-          <button className="btn btn-danger" onClick={handleShow}>
-            Delete
-          </button>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Link to={`/admin/news/news-edit/${newsArticle._id}`}>
+              <button
+                className="btn btn-primary"
+                style={{ width: "150px", marginRight: "10px" }}
+              >
+                Edit
+              </button>
+            </Link>
+            <button
+              className="btn btn-danger"
+              style={{ width: "150px" }}
+              onClick={handleShow}
+            >
+              Delete
+            </button>
+          </div>
+          <h1>{newsArticle.title}</h1>{" "}
+          <img
+            src={newsArticle.image_url}
+            style={{ width: "100%", margin: 0 }}
+            alt="news-article"
+          />
+          <h2 style={{ marginTop: "10px" }}>{newsArticle.subtitle}</h2>
+          <p style={{ marginTop: "30px" }}>{newsArticle.content}</p>
         </div>
-        <h1>{newsArticle.title}</h1>{" "}
-        <img
-          src={newsArticle.image_url}
-          style={{ width: "100%", margin: 0 }}
-          alt="news-article"
-        />
-        <h2>{newsArticle.subtitle}</h2>
-        <p>{newsArticle.content}</p>
       </Container>
       <DeleteModal
         show={show}

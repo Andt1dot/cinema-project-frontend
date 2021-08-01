@@ -1,15 +1,20 @@
 /*❤❤❤❤ @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900");*/
 
-.form-title {
-  font-weight: 600;
-  color: #102770;
-}
-
 .section {
   position: relative;
   width: 100%;
   display: block;
 }
+
+.movie-form-style {
+  padding: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background: rgb(58, 66, 66);
+}
+
 .full-height {
   min-height: 120vh;
 }
@@ -35,7 +40,7 @@
 .card-front {
   width: 100%;
   height: 100%;
-  background-color: #141414;
+  background-color: white;
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: 300%;
@@ -70,8 +75,6 @@
 }
 .form-style {
   padding: 13px 20px;
-  padding-left: 15px;
-  padding-right: 5px;
   height: 48px;
   width: 100%;
   font-weight: 500;
@@ -80,8 +83,8 @@
   line-height: 22px;
   letter-spacing: 0.5px;
   outline: none;
-  color: #c4c3ca;
-  background-color: #464750;
+  color: #262629;
+  background-color: whitesmoke;
   border: none;
   box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
 }
@@ -93,25 +96,25 @@
 }
 
 .form-group input:-ms-input-placeholder {
-  color: #c4c3ca;
+  color: #262629;
   opacity: 0.7;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
 .form-group input::-moz-placeholder {
-  color: #c4c3ca;
+  color: #262629;
   opacity: 0.7;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
 .form-group input:-moz-placeholder {
-  color: #c4c3ca;
+  color: #262629;
   opacity: 0.7;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
 .form-group input::-webkit-input-placeholder {
-  color: #c4c3ca;
+  color: #262629;
   opacity: 0.7;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
@@ -138,30 +141,9 @@
 }
 
 .btn-add {
-  border-radius: 4px;
-  height: 44px;
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 0 150px;
-  letter-spacing: 1px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: none;
-  background-color: #cca012;
-  color: #102770;
-  box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
-}
-.btn-add:active,
-.btn-add:focus {
-  background-color: #102770;
-  color: #cca012;
-  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
-}
-.btn-add:hover {
-  background-color: #102770;
-  color: #cca012;
-  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+  width: 300px;
+  background: #d1a019;
+  color: "black";
+  font-weight: bold;
+  border: "none";
 }

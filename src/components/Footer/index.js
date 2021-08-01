@@ -20,17 +20,17 @@ const Footer = () => {
                 </h5>
                 <p>
                   Olymp Cinema va ofera o experienta cinematografica de exceptie
-                  prin cele 7 de sali confortabile în cele 3 locaţii, peste
-                  1.000 de locuri, ambianta premium, ecrane adaptate fiecarei
-                  săli, confort prin fotolii de calitate superioara si
-                  tehnologie de ultima generatie.
+                  prin cele 7 sali confortabile în cele 3 locaţii, peste 1.000
+                  de locuri, ambianta premium, ecrane adaptate fiecarei săli,
+                  confort prin fotolii de calitate superioara si tehnologie de
+                  ultima generatie.
                 </p>
               </div>
 
               <hr className="clearfix w-100 d-md-none" />
 
               <div className="col-md-2 mx-auto">
-                <h6 className="font-weight-bold text-uppercase mt-3 mb-4">
+                <h6 className="font-weight-bold text-uppercase mt-3 mb-4 h5-color">
                   Meniu
                 </h6>
 
@@ -71,7 +71,7 @@ const Footer = () => {
               <hr className="clearfix w-100 d-md-none" />
 
               <div className="col-md-2 mx-auto">
-                <h6 className="font-weight-bold text-uppercase mt-3 mb-4">
+                <h6 className="font-weight-bold text-uppercase mt-3 mb-4 h5-color">
                   Link-uri Utile
                 </h6>
 
@@ -107,20 +107,21 @@ const Footer = () => {
               <hr className="clearfix w-100 d-md-none" />
 
               <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h6 className="text-uppercase mb-4 font-weight-bold">
+                <h6 className="text-uppercase mb-4 font-weight-bold h5-color">
                   Contact
                 </h6>
                 <p>
                   <i className="fas fa-home mr-3"></i> Chisinau, MD-2198
                 </p>
                 <p>
-                  <i className="fas fa-envelope mr-3"></i> info@gmail.com
+                  <i className="fas fa-envelope mr-3"></i>{" "}
+                  olymp.cinema@gmail.com
                 </p>
                 <p>
-                  <i className="fas fa-phone mr-3"></i> + 01 234 567 88
+                  <i className="fas fa-phone mr-3"></i> + 060 886 863
                 </p>
                 <p>
-                  <i className="fas fa-print mr-3"></i> + 01 234 567 89
+                  <i className="fas fa-print mr-3"></i> + 022 234 567
                 </p>
               </div>
             </div>

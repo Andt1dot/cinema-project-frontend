@@ -89,21 +89,10 @@ const Navbar = () => {
             <li className="nav-item">
               <a className="nav-link listItem" href="/current">
                 <span data-feather="file-text"></span>
-                Current month
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link listItem" href="/lastquarter">
-                <span data-feather="file-text"></span>
-                Last quarter
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link listItem" href="/social">
-                <span data-feather="file-text"></span>
                 Personel
               </a>
             </li>
+
             <li className="nav-item">
               <a className="nav-link listItem" href="/sales">
                 <span data-feather="file-text"></span>
