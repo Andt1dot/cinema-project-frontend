@@ -39,10 +39,11 @@ const ReservationsList = () => {
           </thead>
           <tbody>
             {reservations.map((reserv) => (
+              
               <tr key={reserv._id}>
                 <td>{reserv._id}</td>
-                <td>{reserv.premiere}</td>
-                <td>reserv.seats</td>
+                {/* <td>{reserv.premiere}</td>
+                <td>reserv.seats</td> */}
                 <td>{reserv.parent_user}</td>
                 <td>{reserv.reserv_date}</td>
                 <td>{reserv.reserv_hour}</td>
