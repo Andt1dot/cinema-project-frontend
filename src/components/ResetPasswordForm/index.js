@@ -19,17 +19,17 @@ const ResetPasswordForm = () => {
   };
 
   return (
-    <div class="styled-form">
-      <div class="card-header password-card-header">
-        <h3 class="mb-0">Resetare parolă</h3>
+    <div className="styled-form">
+      <div className="card-header password-card-header">
+        <h3 className="mb-0">Resetare parolă</h3>
       </div>
       {password.password !== password.confirmPassword &&
       password.confirmPassword ? (
         <p className="error-message">*Parola de confirmare nu concide*</p>
       ) : null}
-      <div class="card-body">
-        <form class="form" role="form" autocomplete="off">
-          <div class="form-group">
+      <div className="card-body">
+        <form className="form" autocomplete="off">
+          <div className="form-group">
             <label className="label-reset" for="inputPasswordOld">
               Parola nouă:
             </label>
@@ -39,12 +39,12 @@ const ResetPasswordForm = () => {
                 setPassword({ ...password, [e.target.name]: e.target.value })
               }
               type="password"
-              class="form-control"
+              className="form-control"
               id="inputPasswordOld"
               required=""
             ></input>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label className="label-reset" for="inputPasswordNew">
               Confirmare parolă:
             </label>
@@ -54,16 +54,16 @@ const ResetPasswordForm = () => {
                 setPassword({ ...password, [e.target.name]: e.target.value })
               }
               type="password"
-              class="form-control"
+              className="form-control"
               id="inputPasswordNew"
               required=""
             ></input>
           </div>
 
-          <div class="form-save">
+          <div className="form-save">
             <button
               type="submit"
-              class="styled-button signIn save-new-password"
+              className="styled-button signIn save-new-password"
               onClick={onSubmitResetPassword}
             >
               Save

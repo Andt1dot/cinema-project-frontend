@@ -25,7 +25,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(checkRegister());
-  }, [isAuthenticated, isAdmin]);
+  }, [dispatch]);
 
   console.log(isAuthenticated, isAdmin);
 
