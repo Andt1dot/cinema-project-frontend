@@ -10,7 +10,7 @@ const generateTicket = (reservation, pay_type) => async (dispatch) => {
 
   axios
     .post(
-      `http://localhost:4000/api/tickets`,
+      `https://api-olymp-cinema.herokuapp.com/api/tickets`,
       {
         reservation,
         pay_type,

@@ -13,7 +13,7 @@ const requestRegister =
     });
 
      await axios
-      .post("http://localhost:4000/api/auth/register", {
+      .post("https://api-olymp-cinema.herokuapp.com/api/auth/register", {
         firstname,
         lastname,
         username,

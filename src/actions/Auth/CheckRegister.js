@@ -9,7 +9,7 @@ const checkRegister = () => async (dispatch) => {
   });
 
   await axios
-    .get("http://localhost:4000/api/auth/check-auth", {
+    .get("https://api-olymp-cinema.herokuapp.com/api/auth/check-auth", {
       headers: {
         Authorization: localStorage.getItem("token"),
       },

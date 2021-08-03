@@ -5,7 +5,7 @@ export const ADD_NEWS_FAILURE = "ADD_NEWS_FAILURE";
 export const addNews = (data) => async (dispatch) => {
   axios
     .post(
-      "http://localhost:4000/api/news",
+      "https://api-olymp-cinema.herokuapp.com/api/news",
       {
         title: data.title,
         subtitle: data.subtitle,
@@ -41,7 +41,7 @@ export const getNews = () => async (dispatch) => {
   dispatch({ type: GET_NEWS_LOADING });
 
   axios
-    .get("http://localhost:4000/api/news")
+    .get("https://api-olymp-cinema.herokuapp.com/api/news")
     .then((news) => {
       dispatch({
         type: GET_NEWS_SUCCESS,
@@ -63,7 +63,7 @@ export const EDIT_NEWS_FAILURE = "EDIT_NEWS_FAILURE";
 export const editNews = (news_id, data) => async (dispatch) => {
   axios
     .put(
-      `http://localhost:4000/api/news/${news_id}`,
+      `https://api-olymp-cinema.herokuapp.com/api/news/${news_id}`,
       {
         title: data.title,
         subtitle: data.subtitle,
@@ -96,7 +96,7 @@ export const DELETE_NEWS_FAILURE = "DELETE_NEWS_FAILURE";
 
 export const deleteNews = (news_id) => async (dispatch) => {
   axios
-    .delete(`http://localhost:4000/api/news/${news_id}`, {
+    .delete(`https://api-olymp-cinema.herokuapp.com/api/news/${news_id}`, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },

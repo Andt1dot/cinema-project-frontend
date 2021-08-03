@@ -5,7 +5,7 @@ import axios from "axios";
 
 export const requestResetPassword = async (email) => {
   return await axios
-    .post("http://localhost:4000/api/auth/request/reset-password", {
+    .post("https://api-olymp-cinema.herokuapp.com/api/auth/request/reset-password", {
       email,
     })
     .then((user) => {
@@ -22,7 +22,7 @@ export const requestResetPassword = async (email) => {
 export const resetPassword = async (user_id, new_password) => {
   console.log(user_id,new_password)
   return await axios
-    .patch("http://localhost:4000/api/auth/reset-password/", {
+    .patch("https://api-olymp-cinema.herokuapp.com/api/auth/reset-password/", {
       user_id,
       new_password,
     })
