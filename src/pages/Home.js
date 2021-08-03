@@ -13,15 +13,15 @@ const responsive = {
     items: 4,
   },
   desktop: {
-    breakpoint: { max: 1125, min: 770 },
+    breakpoint: { max: 1125, min: 990 },
     items: 3,
   },
   tablet: {
-    breakpoint: { max: 770, min: 400 },
+    breakpoint: { max: 990, min: 770 },
     items: 2,
   },
   mobile: {
-    breakpoint: { max: 400, min: 0 },
+    breakpoint: { max: 770, min: 50 },
     items: 1,
   },
 };
@@ -68,7 +68,7 @@ export default function Home() {
                     to={`/about-premiere/${premiere._id}`}
                     style={{ textDecoration: "none" }}
                   >
-                    <MovieCard premiere={premiere} responsive={responsive} />
+                    <MovieCard premiere={premiere} />
                   </Link>
                 );
               })}

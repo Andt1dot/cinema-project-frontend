@@ -30,3 +30,39 @@
 .card-body a {
   text-decoration: none;
 }
+
+@media (max-width: 4000px) {
+  .responsive-card {
+    margin: 15px;
+  }
+}
+
+@media (max-width: 1125px) {
+  .responsive-card {
+    margin: 28px;
+  }
+}
+
+@media (max-width: 990px) {
+  .responsive-card {
+    margin: 38px;
+  }
+}
+
+@media (max-width: 770px) {
+  .responsive-card {
+    margin-left: 110px;
+    margin-right: 110px;
+  }
+}
+@media (max-width: 510px) {
+  .responsive-card {
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+}
+@media (max-width: 400px) {
+  .responsive-card {
+    margin: 10px;
+  }
+}
