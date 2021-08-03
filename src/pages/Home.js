@@ -49,7 +49,6 @@ export default function Home() {
               responsive={responsive}
               swipeable={false}
               draggable={false}
-              //showDots={true}
               ssr={true}
               infinite={true}
               autoPlaySpeed={1000}
@@ -57,8 +56,6 @@ export default function Home() {
               customTransition="all .5"
               transitionDuration={500}
               containerClass="carousel-container"
-              //dotListClass="custom-dot-list-style"
-              //itemClass="carousel-item-padding-40-px"
             >
               {premieres.map((premiere, index) => {
                 return (
