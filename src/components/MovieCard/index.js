@@ -1,13 +1,13 @@
 import { Card } from "react-bootstrap";
 import "./index.css";
 
-const MovieCard = ({ premiere, movie }) => {
+const MovieCard = ({ premiere, movie, responsive }) => {
   return (
     <>
       {premiere?.movie || movie ? (
         <Card
           style={{
-            margin: "10px",
+            margin: "30px",
           }}
         >
           <Card.Img

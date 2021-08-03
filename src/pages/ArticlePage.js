@@ -16,12 +16,13 @@ const ArticlePage = () => {
 
   return (
     <Container style={{ marginTop: "50px", marginBottom: "100px" }}>
-      <div
+      <Container
         style={{
           background: "#141414",
           border: "2px solid white",
           padding: "15px",
           borderRadius: "20px",
+          width: "65%",
         }}
       >
         <h1>{newsArticle.title}</h1>
@@ -32,7 +33,7 @@ const ArticlePage = () => {
         />
         <h2 style={{ marginTop: "10px" }}>{newsArticle.subtitle}</h2>
         <p style={{ marginTop: "30px" }}>{newsArticle.content}</p>
-      </div>
+      </Container>
     </Container>
   );
 };

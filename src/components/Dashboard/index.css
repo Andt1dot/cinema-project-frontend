@@ -1,10 +1,10 @@
 .main-container {
   background-color: rgb(161, 159, 159);
-  position: absolute;
-  height: 300vh;
+  background-image: none;
+  height: fit-content;
+  /* position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  bottom: 0;
-  width: auto;
+  bottom: 0; */
 }

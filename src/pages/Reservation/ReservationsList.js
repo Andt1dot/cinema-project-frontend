@@ -21,40 +21,49 @@ const ReservationsList = () => {
       {loading ? (
         <div>Loading...</div>
       ) : !loading && reservations ? (
-        <Table bordered hover variant="dark">
+        <Table bordered hover variant="dark" className="table-style">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Premiere</th>
-              <th>Seats</th>
-              <th>Parent_User</th>
+              <th className="table-col-width">#ID</th>
+              <th className="table-col-width">Parent_User</th>
               <th>Reserv_Date</th>
-              <th>Reserv_Hour</th>
               <th>Total_Price</th>
-              <th>Status</th>
               <th>Created_At</th>
               <th>Updated_At</th>
               <th>Options</th>
+              {/* <th>Premiere</th> */}
+              {/* <th>Seats</th> */}
+              {/* <th>Status</th> */}
+              {/* <th>Reserv_Hour</th> */}
             </tr>
           </thead>
           <tbody>
             {reservations.map((reserv) => (
-              
               <tr key={reserv._id}>
-                <td>{reserv._id}</td>
-                {/* <td>{reserv.premiere}</td>
-                <td>reserv.seats</td> */}
-                <td>{reserv.parent_user}</td>
+                <td className="table-col-width">{reserv._id}</td>
+                <td className="table-col-width">{reserv.parent_user}</td>
                 <td>{reserv.reserv_date}</td>
-                <td>{reserv.reserv_hour}</td>
                 <td>{reserv.total_price}</td>
-                <td>{reserv.status}</td>
                 <td>{reserv.createdAt}</td>
                 <td>{reserv.updatedAt}</td>
                 <td>
-                  <button>Edit</button>
-                  <button>Delete</button>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    style={{ width: "60px", marginRight: "7px" }}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    style={{ width: "60px" }}
+                  >
+                    Delete
+                  </button>
                 </td>
+                {/* <td>{reserv.premiere}</td> */}
+                {/* <td>reserv.seats</td> */}
+                {/* <td>{reserv.status}</td> */}
+                {/* <td>{reserv.reserv_hour}</td> */}
               </tr>
             ))}
           </tbody>
