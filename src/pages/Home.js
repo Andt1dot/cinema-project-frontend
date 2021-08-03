@@ -9,11 +9,11 @@ import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
   superLargeDesktop: {
-    breakpoint: { max: 4000, min: 990 },
+    breakpoint: { max: 4000, min: 1125 },
     items: 4,
   },
   desktop: {
-    breakpoint: { max: 990, min: 770 },
+    breakpoint: { max: 1125, min: 770 },
     items: 3,
   },
   tablet: {
@@ -43,9 +43,7 @@ export default function Home() {
       <MovieCarousel></MovieCarousel>
       <div className="container" style={{ marginTop: 30, marginBottom: 100 }}>
         <div>
-          <h4 className="text-center" style={{ marginBottom: "25px" }}>
-            Filme în Derulare
-          </h4>
+          <h4 className="text-center">Filme în Derulare</h4>
           {premieres.length > 0 ? (
             <Carousel
               responsive={responsive}
@@ -70,7 +68,7 @@ export default function Home() {
                     to={`/about-premiere/${premiere._id}`}
                     style={{ textDecoration: "none" }}
                   >
-                    <MovieCard premiere={premiere} />
+                    <MovieCard premiere={premiere} responsive={responsive} />
                   </Link>
                 );
               })}
