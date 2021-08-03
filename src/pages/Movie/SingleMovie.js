@@ -19,7 +19,7 @@ const SingleMovie = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/movies/${movie_id}`, {
+      .get(`https://api-olymp-cinema.herokuapp.com/api/movies/${movie_id}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

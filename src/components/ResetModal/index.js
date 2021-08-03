@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import {requestResetPassword} from "../../actions/Auth/ResetPassword";
+import { requestResetPassword } from "../../actions/Auth/ResetPassword";
 import NotificationModal from "../NotificationModal";
 
 const ResetModal = (props) => {
@@ -14,9 +14,6 @@ const ResetModal = (props) => {
       setStateNotification(response);
     });
   };
-
-  //console.log("stateNotification", stateNotification.title);
-
   return (
     <>
       <Modal

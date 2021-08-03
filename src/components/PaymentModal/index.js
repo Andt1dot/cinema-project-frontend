@@ -8,7 +8,8 @@ const PaymentModal = ({
   totalPrice,
   handleClickPayMethodCard,
 }) => {
-  console.log("totalPrice", totalPrice);
+
+  
   return (
     <Modal
       size="lg"

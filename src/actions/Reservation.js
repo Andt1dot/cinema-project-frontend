@@ -15,7 +15,7 @@ const fetchReservationsPremiere =
 
     axios
       .get(
-        `http://localhost:4000/api/reservations/${premiere_id}/${cinema_id}/${hall_id}${params}`,
+        `https://api-olymp-cinema.herokuapp.com/api/reservations/${premiere_id}/${cinema_id}/${hall_id}${params}`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -53,7 +53,7 @@ export const addReservation =
 
     axios
       .post(
-        "http://localhost:4000/api/reservations/",
+        "https://api-olymp-cinema.herokuapp.com/api/reservations/",
         {
           seats,
           premiere,
@@ -94,7 +94,7 @@ export const getAllReservations = () => async (dispatch) => {
   dispatch({ type: GET_ALL_RESERVATIONS_LOADING });
 
   axios
-    .get("http://localhost:4000/api/reservations", {
+    .get("https://api-olymp-cinema.herokuapp.com/api/reservations", {
       headers: {
         Authorization: localStorage.getItem("token"),
       },

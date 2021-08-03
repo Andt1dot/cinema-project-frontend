@@ -6,7 +6,7 @@ export const addMovie = (data) => async (dispatch) => {
   //console.log("addMovieAction: ", data);
   await axios
     .post(
-      "http://localhost:4000/api/movies",
+      "https://api-olymp-cinema.herokuapp.com/api/movies",
       {
         title: data.title,
         original_title: data.original_title,
@@ -54,7 +54,7 @@ export const getMovies = () => async (dispatch) => {
   dispatch({ type: GET_MOVIES_LOADING });
 
   axios
-    .get("http://localhost:4000/api/movies", {
+    .get("https://api-olymp-cinema.herokuapp.com/api/movies", {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
@@ -80,7 +80,7 @@ export const EDIT_MOVIE_FAILURE = "EDIT_MOVIE_FAILURE";
 export const editMovie = (movie_id, data) => async (dispatch) => {
   axios
     .put(
-      `http://localhost:4000/api/movies/${movie_id}`,
+      `https://api-olymp-cinema.herokuapp.com/api/movies/${movie_id}`,
       {
         title: data.title,
         original_title: data.original_title,
@@ -121,7 +121,7 @@ export const DELETE_MOVIE_FAILURE = "DELETE_MOVIE_FAILURE";
 
 export const deleteMovie = (movie_id) => async (dispatch) => {
   await axios
-    .delete(`http://localhost:4000/api/movies/${movie_id}`, {
+    .delete(`https://api-olymp-cinema.herokuapp.com/api/movies/${movie_id}`, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },

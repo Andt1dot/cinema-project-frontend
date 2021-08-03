@@ -9,7 +9,7 @@ const requestLogin = (email, password) => async (dispatch) => {
   });
 
   await axios
-    .post("http://localhost:4000/api/auth/login", {
+    .post("https://api-olymp-cinema.herokuapp.com/api/auth/login", {
       email,
       password,
     })

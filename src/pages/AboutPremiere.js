@@ -11,7 +11,7 @@ const AboutPremiere = (props) => {
   const [premiere, setPremiere] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/premieres/${id}`).then((premiere) => {
+    axios.get(`https://api-olymp-cinema.herokuapp.com/api/premieres/${id}`).then((premiere) => {
       setPremiere(premiere.data);
     });
   }, [id]);

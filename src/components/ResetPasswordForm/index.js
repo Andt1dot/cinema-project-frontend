@@ -13,9 +13,9 @@ const ResetPasswordForm = () => {
 
   const onSubmitResetPassword = (e) => {
     e.preventDefault();
-    resetPassword(params.user_id, password.confirmPassword).then((response) => {
-      console.log("Modificat Login", response);
-    });
+    resetPassword(params.user_id, password.confirmPassword).then(
+      (response) => {}
+    );
   };
 
   return (
