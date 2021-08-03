@@ -18,7 +18,7 @@ const initialData = {
 
 const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
   const [data, setData] = useState(initialMovie);
-  // console.log("data: ", initialMovie);
+
   const handleInputChange = (e) => {
     setData({
       ...data,
@@ -28,7 +28,6 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    //console.log("data: ", data);
     onSubmitCallback(data);
     setData(initialMovie);
   };

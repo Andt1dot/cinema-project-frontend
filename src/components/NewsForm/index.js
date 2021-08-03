@@ -46,7 +46,6 @@ const NewsForm = ({ initialArticle = initialData, onSubmitCallback }) => {
     widget.open();
   };
 
-  console.log("data: ", data);
   return (
     <>
       <h4 className="m-4 text-center">News Form</h4>
