@@ -1,15 +1,11 @@
-import { Card } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import "./index.css";
 
-const MovieCard = ({ premiere, movie, responsive }) => {
+const MovieCard = ({ premiere, movie }) => {
   return (
-    <>
+    <Container>
       {premiere?.movie || movie ? (
-        <Card
-          style={{
-            margin: "30px",
-          }}
-        >
+        <Card className="responsive-card">
           <Card.Img
             variant="top"
             src={premiere?.movie.image_url || movie?.image_url}
@@ -39,7 +35,7 @@ const MovieCard = ({ premiere, movie, responsive }) => {
           </Card.Body>
         </Card>
       ) : null}
-    </>
+    </Container>
   );
 };
 
