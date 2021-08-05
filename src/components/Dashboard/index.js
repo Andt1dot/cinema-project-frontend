@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Navbar from "./Navbar";
 import "./index.css";
 
 const Dashboard = ({ children }) => {
+  const [dateState, setDateState] = useState(new Date());
+
+  useEffect(() => {
+    setInterval(() => setDateState(new Date()), 30000);
+  }, []);
+
   //console.log("children.props.children", children.props.children);
   return (
     <div className="main-container">
@@ -16,26 +22,39 @@ const Dashboard = ({ children }) => {
               <h1 className="h2">Dashboard</h1>
               <div className="btn-toolbar mb-2 mb-md-0">
                 <div className="btn-group me-2">
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-outline-secondary"
-                  >
-                    Share
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-outline-secondary"
-                  >
-                    Export
+                  <button className="btn btn-datetime">
+                    <svg
+                      width="180px"
+                      height="60px"
+                      viewBox="0 0 180 60"
+                      className="border svg-style"
+                    >
+                      <polyline
+                        points="179,1 179,59 1,59 1,1 179,1"
+                        className="bg-line"
+                      />
+                      <polyline
+                        points="179,1 179,59 1,59 1,1 179,1"
+                        className="hl-line"
+                      />
+                    </svg>
+                    <span>
+                      {dateState.toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                    </span>
+                    <span>
+                      {" "}
+                      {dateState.toLocaleString("en-US", {
+                        hour: "numeric",
+                        minute: "numeric",
+                        hour12: true,
+                      })}
+                    </span>
                   </button>
                 </div>
-                <button
-                  type="button"
-                  className="btn btn-sm btn-outline-secondary dropdown-toggle"
-                >
-                  <span data-feather="calendar"></span>
-                  This week
-                </button>
               </div>
             </div>
 

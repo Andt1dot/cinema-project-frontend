@@ -9,8 +9,8 @@ import EditMovie from "./Movie/EditMovie";
 import SingleMovie from "./Movie/SingleMovie";
 import PremieresList from "./Premieres/PremieresList";
 import chartFirst from "../components/Dashboard/Charts/ChartFirst";
-import chartSecond from "../components/Dashboard/Charts/ChartSecond";
-import chartThird from "../components/Dashboard/Charts/ChartThird";
+// import chartSecond from "../components/Dashboard/Charts/ChartSecond";
+// import chartThird from "../components/Dashboard/Charts/ChartThird";
 import SinglePremiere from "./Premieres/SinglePremiere";
 import EditPremiere from "./Premieres/EditPremiere";
 import AddPremiere from "./Premieres/AddPremiere";
@@ -23,13 +23,13 @@ import UsersList from "./User/UsersList";
 
 const AdminPage = () => {
   const [moviesChart, setMoviesChart] = useState({});
-  const [usersChart, setUsersChart] = useState({});
-  const [metricsChart, setMetricsChart] = useState({});
+  // const [usersChart, setUsersChart] = useState({});
+  // const [metricsChart, setMetricsChart] = useState({});
 
   useEffect(() => {
     setMoviesChart(chartFirst);
-    setUsersChart(chartSecond);
-    setMetricsChart(chartThird);
+    // setUsersChart(chartSecond);
+    // setMetricsChart(chartThird);
   }, []);
 
   //console.log("chart: ", chart);
@@ -115,8 +115,8 @@ const AdminPage = () => {
               render={(props) => (
                 <div>
                   <ZingChart {...props} data={moviesChart.config} />
-                  <ZingChart {...props} data={usersChart.config} />
-                  <ZingChart {...props} data={metricsChart.config} />
+                  {/* <ZingChart {...props} data={usersChart.config} />
+                  <ZingChart {...props} data={metricsChart.config} /> */}
                 </div>
               )}
             />

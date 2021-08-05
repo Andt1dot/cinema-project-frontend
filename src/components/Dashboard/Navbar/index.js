@@ -1,5 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import {
+  PersonSquare,
+  Film,
+  CameraReelsFill,
+  FileEarmarkPost,
+  BookmarkHeartFill,
+  Speedometer2,
+  Cash,
+  BellFill,
+  GeoAltFill,
+  Coin,
+  ZoomIn,
+} from "react-bootstrap-icons";
+
 import "./index.css";
 
 const Navbar = () => {
@@ -17,20 +31,19 @@ const Navbar = () => {
                 aria-current="page"
                 href="/admin"
               >
-                <span data-feather="home"></span>
+                <Speedometer2 className="mr-2" />
                 Dashboard
               </a>
             </li>
             <li className="nav-item ">
               <NavLink exact to="/admin/users" className="nav-link listItem">
-                <span data-feather="file"></span>
+                <PersonSquare className="mr-2" />
                 Users
               </NavLink>
             </li>
             <li className="nav-item ">
               <NavLink exact to="/admin/movies" className="nav-link listItem">
-                <span data-feather="shopping-cart"></span>
-                Movies
+                <Film className="mr-1" /> Movies
               </NavLink>
             </li>
             <li className="nav-item ">
@@ -39,14 +52,12 @@ const Navbar = () => {
                 to="/admin/premieres"
                 className="nav-link listItem"
               >
-                <span data-feather="shopping-cart"></span>
-                Premieres
+                <CameraReelsFill className="mr-1" /> Premieres
               </NavLink>
             </li>
             <li className="nav-item ">
               <NavLink exact to="/admin/news" className="nav-link listItem">
-                <span data-feather="layers"></span>
-                News
+                <FileEarmarkPost className="mr-1" /> News
               </NavLink>
             </li>
             <li className="nav-item ">
@@ -55,13 +66,12 @@ const Navbar = () => {
                 to="/admin/reservations"
                 className="nav-link listItem"
               >
-                <span data-feather="bar-chart-2"></span>
-                Reservations
+                <BookmarkHeartFill className="mr-1" /> Reservations
               </NavLink>
             </li>
             <li className="nav-item ">
               <NavLink exact to="/admin/tickets" className="nav-link listItem">
-                <span data-feather="layers"></span>
+                <Cash className="mr-2" />
                 Tickets
               </NavLink>
             </li>
@@ -72,13 +82,13 @@ const Navbar = () => {
                 to="/admin/notifications"
                 className="nav-link listItem"
               >
-                <span data-feather="layers"></span>
+                <BellFill className="mr-2" />
                 Notifications
               </NavLink>
             </li>
             <li className="nav-item ">
               <NavLink exact to="/admin/cinemas" className="nav-link listItem">
-                <span data-feather="layers"></span>
+                <GeoAltFill className="mr-2" />
                 Cinemas
               </NavLink>
             </li>
@@ -97,14 +107,14 @@ const Navbar = () => {
           <ul className="nav flex-column mb-2">
             <li className="nav-item">
               <a className="nav-link listItem" href="/current">
-                <span data-feather="file-text"></span>
+                <Coin className="mr-2" />
                 Sales
               </a>
             </li>
 
             <li className="nav-item">
               <a className="nav-link listItem" href="/sales">
-                <span data-feather="file-text"></span>
+                <ZoomIn className="mr-2" />
                 Metrics
               </a>
             </li>

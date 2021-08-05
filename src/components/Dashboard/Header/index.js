@@ -16,7 +16,10 @@ const Header = () => {
   return (
     <>
       <header className="navbar navbar-dark header-style sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <Link className="navbar-brand col-md-3 col-lg-2 me-0 px-3 " to="/">
+        <Link
+          className="navbar-brand col-md-3 col-lg-2 me-0 text-center "
+          to="/"
+        >
           <div className="logo-wrapp">
             <img src={logo1} className="company-logo" alt="cinema" />
             <img src={logo2} className="company-logo" alt="logo" />
