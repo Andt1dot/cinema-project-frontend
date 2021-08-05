@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
+import SearchProvider from "../contexts/SearchContext";
 import ZingChart from "zingchart-react";
 import Dashboard from "../components/Dashboard";
 import MoviesList from "./Movie/MoviesList";
@@ -34,92 +35,94 @@ const AdminPage = () => {
   //console.log("chart: ", chart);
   return (
     <>
-      <Dashboard>
-        <Switch>
-          <Route
-            exact
-            path="/admin/users"
-            render={(props) => <UsersList {...props} />}
-          />
-          <Route
-            exact
-            path="/admin/reservations"
-            render={(props) => <ReservationsList {...props} />}
-          />
-          <Route
-            exact
-            path="/admin/news/news-edit/:news_id"
-            render={(props) => <EditNews {...props} />}
-          />
-          <Route
-            exact
-            path="/admin/news/news-add"
-            render={(props) => <AddNews {...props} />}
-          />
-          <Route
-            exact
-            path="/admin/news/:news_id"
-            render={(props) => <NewsArticle {...props} />}
-          />
-          <Route
-            exact
-            path="/admin/news"
-            render={(props) => <NewsList {...props} />}
-          />
+      <SearchProvider>
+        <Dashboard>
+          <Switch>
+            <Route
+              exact
+              path="/admin/users"
+              render={(props) => <UsersList {...props} />}
+            />
+            <Route
+              exact
+              path="/admin/reservations"
+              render={(props) => <ReservationsList {...props} />}
+            />
+            <Route
+              exact
+              path="/admin/news/news-edit/:news_id"
+              render={(props) => <EditNews {...props} />}
+            />
+            <Route
+              exact
+              path="/admin/news/news-add"
+              render={(props) => <AddNews {...props} />}
+            />
+            <Route
+              exact
+              path="/admin/news/:news_id"
+              render={(props) => <NewsArticle {...props} />}
+            />
+            <Route
+              exact
+              path="/admin/news"
+              render={(props) => <NewsList {...props} />}
+            />
 
-          <Route
-            exact
-            path="/admin/premieres/premiere-edit/:premiere_id"
-            render={(props) => <EditPremiere {...props} />}
-          />
-          <Route
-            exact
-            path="/admin/premieres/premiere-add"
-            render={(props) => <AddPremiere {...props} />}
-          />
-          <Route
-            exact
-            path="/admin/premieres/:premiere_id"
-            render={(props) => <SinglePremiere {...props} />}
-          />
-          <Route
-            exact
-            path="/admin/premieres"
-            render={(props) => <PremieresList {...props} />}
-          />
-          <Route
-            exact
-            path="/admin/movies"
-            render={(props) => <MoviesList {...props} />}
-          />
-          <Route
-            exact
-            path="/admin/movies/movie-add"
-            render={(props) => <AddMovie {...props} />}
-          />
-          <Route
-            exact
-            path="/admin/movies/movie-edit/:movie_id"
-            render={(props) => <EditMovie {...props} />}
-          />
-          <Route
-            exact
-            path="/admin/movies/:movie_id"
-            render={(props) => <SingleMovie {...props} />}
-          />
-          <Route
-            exact
-            path="/admin"
-            render={(props) => (
-              <div>
-                <ZingChart {...props} data={moviesChart.config} />
-                <ZingChart {...props} data={usersChart.config} />
-                <ZingChart {...props} data={metricsChart.config} />
-              </div>
-            )}
-          />
-        </Switch>
-      </Dashboard>
+            <Route
+              exact
+              path="/admin/premieres/premiere-edit/:premiere_id"
+              render={(props) => <EditPremiere {...props} />}
+            />
+            <Route
+              exact
+              path="/admin/premieres/premiere-add"
+              render={(props) => <AddPremiere {...props} />}
+            />
+            <Route
+              exact
+              path="/admin/premieres/:premiere_id"
+              render={(props) => <SinglePremiere {...props} />}
+            />
+            <Route
+              exact
+              path="/admin/premieres"
+              render={(props) => <PremieresList {...props} />}
+            />
+            <Route
+              exact
+              path="/admin/movies"
+              render={(props) => <MoviesList {...props} />}
+            />
+            <Route
+              exact
+              path="/admin/movies/movie-add"
+              render={(props) => <AddMovie {...props} />}
+            />
+            <Route
+              exact
+              path="/admin/movies/movie-edit/:movie_id"
+              render={(props) => <EditMovie {...props} />}
+            />
+            <Route
+              exact
+              path="/admin/movies/:movie_id"
+              render={(props) => <SingleMovie {...props} />}
+            />
+            <Route
+              exact
+              path="/admin"
+              render={(props) => (
+                <div>
+                  <ZingChart {...props} data={moviesChart.config} />
+                  <ZingChart {...props} data={usersChart.config} />
+                  <ZingChart {...props} data={metricsChart.config} />
+                </div>
+              )}
+            />
+          </Switch>
+        </Dashboard>
+      </SearchProvider>
     </>
   );
 };
