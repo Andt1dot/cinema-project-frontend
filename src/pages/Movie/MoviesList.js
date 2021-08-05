@@ -5,10 +5,11 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import MovieCard from "../../components/MovieCard";
 import FilterCustom from "../../components/FilterCustom";
+import { useSearch } from "../../contexts/SearchContext";
 
 const MoviesList = () => {
   const dispatch = useDispatch();
-
+  const { filteredData } = useSearch();
   useEffect(() => {
     dispatch(getMovies());
   }, [dispatch]);
@@ -40,7 +41,7 @@ const MoviesList = () => {
               pathName="/admin/movies/movie-add"
             />
           </div>
-          {movies.map((movie) => {
+          {filteredData.map((movie) => {
             return (
               <Link
                 to={`/admin/movies/${movie._id}`}

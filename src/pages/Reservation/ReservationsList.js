@@ -1,11 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { getAllReservations } from "../../actions/Reservation";
+import { useSearch } from "../../contexts/SearchContext";
 import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
 import { CaretUp, CaretDown } from "react-bootstrap-icons";
 
 const ReservationsList = () => {
   const [sortState, setSortState] = useState({ key: "", direction: "" });
+  const { filteredData } = useSearch();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,7 +21,7 @@ const ReservationsList = () => {
   }));
 
   const sortedItems = useMemo(() => {
-    let sortableItems = [...reservations];
+    let sortableItems = [...filteredData];
 
     if (sortState !== null) {
       sortableItems.sort((a, b) => {
@@ -33,7 +35,7 @@ const ReservationsList = () => {
       });
     }
     return sortableItems;
-  }, [sortState, reservations]);
+  }, [sortState, filteredData]);
 
   const handleSort = (key) => {
     let direction = "ascending";

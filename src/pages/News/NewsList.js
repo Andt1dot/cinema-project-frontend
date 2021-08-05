@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useSearch } from "../../contexts/SearchContext";
 import { getNews } from "../../actions/News";
 import { Row, Col, Container, Card, Button } from "react-bootstrap";
 import FilterCustom from "../../components/FilterCustom";
 
 const NewsList = () => {
   const dispatch = useDispatch();
+  const { filteredData } = useSearch();
 
   useEffect(() => {
     dispatch(getNews());
@@ -40,7 +42,7 @@ const NewsList = () => {
               />
             </div>
             <Row xs={1} md={3}>
-              {news.map((article, idx) => {
+              {filteredData.map((article, idx) => {
                 return (
                   <Col key={idx}>
                     <Card style={{ color: "black", margin: "10px" }}>
