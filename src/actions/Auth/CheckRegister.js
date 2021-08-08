@@ -9,7 +9,7 @@ const checkRegister = () => async (dispatch) => {
   });
 
   await axios
-    .get(process.env.BACKEND_APP+'/api/auth/check-auth', {
+    .get(process.env.REACT_APP_API_URL+'/auth/check-auth', {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
