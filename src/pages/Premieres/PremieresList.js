@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchPremiereMovies } from "../../actions/Premiere";
 import { useSelector, useDispatch } from "react-redux";
-import MovieCard from "../../components/MovieCard";
 import FilterCustom from "../../components/FilterCustom";
+import { Card } from "react-bootstrap";
 
 const PremieresList = () => {
   const dispatch = useDispatch();
@@ -44,7 +44,40 @@ const PremieresList = () => {
                 key={premiere._id}
                 style={{ width: 250, marginLeft: 20, textDecoration: "none" }}
               >
-                <MovieCard premiere={premiere} />
+                {premiere?.movie ? (
+                  <Card className="mb-3">
+                    <Card.Img
+                      variant="top"
+                      src={premiere?.movie.image_url}
+                      className="card-img-top movie_card_img"
+                    />
+                    <Card.Body>
+                      <Card.Title
+                        style={{
+                          width: "content-width",
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {premiere?.movie.title}
+                      </Card.Title>
+                      <Card.Footer>
+                        <span className="movie_info">
+                          {
+                            premiere?.movie.release_date
+                              .split("T")[0]
+                              .split("-")[0]
+                          }
+                        </span>
+                        <span className="movie_info float-right">
+                          <i className="fas fa-star"></i>{" "}
+                          {premiere?.movie.rating}
+                        </span>
+                      </Card.Footer>
+                    </Card.Body>
+                  </Card>
+                ) : null}
               </Link>
             );
           })}

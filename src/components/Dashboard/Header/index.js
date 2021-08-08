@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useSearch } from "../../../contexts/SearchContext";
 import logo1 from "../../../assets/logo/olymp.png";
 import logo2 from "../../../assets/logo/olymp-cinema-logo.png";
 import logo3 from "../../../assets/logo/cinema.png";
@@ -7,10 +8,18 @@ import logo3 from "../../../assets/logo/cinema.png";
 import "./index.css";
 
 const Header = () => {
+  const { search, setSearch } = useSearch();
+  const searchRef = useRef(null);
+
+  const handleSearchClear = useCallback(() => setSearch(""), [setSearch]);
+
   return (
     <>
       <header className="navbar navbar-dark header-style sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <Link className="navbar-brand col-md-3 col-lg-2 me-0 px-3 " to="/">
+        <Link
+          className="navbar-brand col-md-3 col-lg-2 me-0 text-center "
+          to="/"
+        >
           <div className="logo-wrapp">
             <img src={logo1} className="company-logo" alt="cinema" />
             <img src={logo2} className="company-logo" alt="logo" />
@@ -29,6 +38,9 @@ const Header = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <input
+          ref={searchRef}
+          value={search}
+          onChange={({ target: { value } }) => setSearch(value)}
           className="form-control form-control-dark w-100"
           type="text"
           placeholder="Search"
@@ -36,9 +48,9 @@ const Header = () => {
         />
         <ul className="navbar-nav px-3">
           <li className="nav-item text-nowrap">
-            <a className="nav-link" href="/logout">
+            <button className="btn btn-dark btn-md" onClick={handleSearchClear}>
               Clear Search
-            </a>
+            </button>
           </li>
         </ul>
       </header>

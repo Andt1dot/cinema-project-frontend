@@ -1,10 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { getAllReservations } from "../../actions/Reservation";
+import { useSearch } from "../../contexts/SearchContext";
 import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
+import { CaretUp, CaretDown } from "react-bootstrap-icons";
 
 const ReservationsList = () => {
   const [sortState, setSortState] = useState({ key: "", direction: "" });
+  const { filteredData } = useSearch();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,15 +20,8 @@ const ReservationsList = () => {
     error: state.Reservation.error,
   }));
 
-  const getClassNamesFor = (name) => {
-    if (!sortState) {
-      return;
-    }
-    return sortState.key === name ? sortState.direction : undefined;
-  };
-
   const sortedItems = useMemo(() => {
-    let sortableItems = [...reservations];
+    let sortableItems = [...filteredData];
 
     if (sortState !== null) {
       sortableItems.sort((a, b) => {
@@ -39,7 +35,7 @@ const ReservationsList = () => {
       });
     }
     return sortableItems;
-  }, [sortState, reservations]);
+  }, [sortState, filteredData]);
 
   const handleSort = (key) => {
     let direction = "ascending";
@@ -53,6 +49,19 @@ const ReservationsList = () => {
     setSortState({ key, direction });
   };
 
+  const getIcon = (key) => {
+    if (sortState.key === key && sortState.direction === "ascending") {
+      return <CaretDown className="single-icon" />;
+    } else if (sortState.key === key && sortState.direction === "descending") {
+      return <CaretUp className="single-icon" />;
+    }
+    return (
+      <span className="sort-icon">
+        <CaretUp /> <CaretDown />
+      </span>
+    );
+  };
+
   return (
     <>
       {loading ? (
@@ -63,23 +72,38 @@ const ReservationsList = () => {
             <tr>
               <th className="table-col-width">#ID</th>
               <th className="table-col-width">Parent_User</th>
-              <th>Reserv_Date</th>
-              <th>Total_Price</th>
               <th>
-                {" "}
+                <button
+                  onClick={() => handleSort("reserv_date")}
+                  className="btn btn-dark sort-button"
+                >
+                  Reserv_Date {getIcon("reserv_date")}
+                </button>
+              </th>
+              <th>
+                <button
+                  onClick={() => handleSort("total_price")}
+                  className="btn btn-dark sort-button"
+                >
+                  Total_Price {getIcon("total_price")}
+                </button>
+              </th>
+              <th>
                 <button
                   onClick={() => handleSort("createdAt")}
-                  className={getClassNamesFor("createdAt")}
+                  className="btn btn-dark sort-button"
                 >
                   Created_At
+                  {getIcon("createdAt")}
                 </button>
               </th>
               <th>
                 <button
                   onClick={() => handleSort("updatedAt")}
-                  className={getClassNamesFor("updatedAt")}
+                  className="btn btn-dark sort-button"
                 >
                   Updated_At
+                  {getIcon("updatedAt")}
                 </button>
               </th>
               <th>Options</th>
@@ -103,7 +127,7 @@ const ReservationsList = () => {
                     className="btn btn-primary btn-sm"
                     style={{ width: "60px", marginRight: "7px" }}
                   >
-                    Edit
+                    View
                   </button>
                   <button
                     className="btn btn-danger btn-sm"
