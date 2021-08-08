@@ -23,6 +23,7 @@ const App = () => {
     isAdmin: state.Auth.isAdmin,
   }));
 
+
   useEffect(() => {
     dispatch(checkRegister());
   }, [dispatch]);

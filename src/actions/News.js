@@ -5,7 +5,7 @@ export const ADD_NEWS_FAILURE = "ADD_NEWS_FAILURE";
 export const addNews = (data) => async (dispatch) => {
   axios
     .post(
-      "https://api-olymp-cinema.herokuapp.com/api/news",
+      process.env.REACT_APP_API_URL+'/news',
       {
         title: data.title,
         subtitle: data.subtitle,
@@ -41,7 +41,7 @@ export const getNews = () => async (dispatch) => {
   dispatch({ type: GET_NEWS_LOADING });
 
   axios
-    .get("https://api-olymp-cinema.herokuapp.com/api/news")
+    .get(process.env.REACT_APP_API_URL+'/news')
     .then((news) => {
       dispatch({
         type: GET_NEWS_SUCCESS,
@@ -63,7 +63,7 @@ export const EDIT_NEWS_FAILURE = "EDIT_NEWS_FAILURE";
 export const editNews = (news_id, data) => async (dispatch) => {
   axios
     .put(
-      `https://api-olymp-cinema.herokuapp.com/api/news/${news_id}`,
+      process.env.REACT_APP_API_URL+`/news/${news_id}`,
       {
         title: data.title,
         subtitle: data.subtitle,
@@ -83,7 +83,6 @@ export const editNews = (news_id, data) => async (dispatch) => {
       });
     })
     .catch((error) => {
-      console.error(error);
       dispatch({
         type: EDIT_NEWS_FAILURE,
         payload: "Error.Could not edit news article.",
@@ -96,13 +95,12 @@ export const DELETE_NEWS_FAILURE = "DELETE_NEWS_FAILURE";
 
 export const deleteNews = (news_id) => async (dispatch) => {
   axios
-    .delete(`https://api-olymp-cinema.herokuapp.com/api/news/${news_id}`, {
+    .delete(process.env.REACT_APP_API_URL+`/news/${news_id}`, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
     })
     .then((newsArticle) => {
-      console.log("removedNewsArticle:", newsArticle);
       dispatch({
         type: DELETE_NEWS_SUCCESS,
         payload: "News article was successfully deleted.",

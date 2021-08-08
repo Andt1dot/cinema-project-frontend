@@ -9,7 +9,7 @@ const requestLogin = (email, password) => async (dispatch) => {
   });
 
   await axios
-    .post("https://api-olymp-cinema.herokuapp.com/api/auth/login", {
+    .post(process.env.REACT_APP_API_URL+'/auth/login', {
       email,
       password,
     })

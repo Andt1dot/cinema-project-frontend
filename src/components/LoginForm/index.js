@@ -82,6 +82,7 @@ const LoginForm = () => {
             </button>
           </Link>
         </div>
+        
       </form>
       <ResetModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>

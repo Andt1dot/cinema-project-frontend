@@ -9,7 +9,7 @@ export const fetchPremiereMovies = () => async (dispatch) => {
   });
 
   axios
-    .get("https://api-olymp-cinema.herokuapp.com/api/premieres")
+    .get(process.env.REACT_APP_API_URL+'/premieres')
     .then((premiere) => {
       dispatch({
         type: FETCH_PREMIERE_SUCCES,
@@ -31,7 +31,7 @@ export const ADD_PREMIERE_FAILURE = "ADD_PREMIERE_FAILURE";
 export const addPremiere = (data) => async (dispatch) => {
   axios
     .post(
-      "https://api-olymp-cinema.herokuapp.com/api/premieres",
+      process.env.REACT_APP_API_URL+'/premieres',
       {
         movie: data.movie,
         cinema: data.cinema,
@@ -68,7 +68,7 @@ export const EDIT_PREMIERE_FAILURE = "EDIT_PREMIERE_FAILURE";
 export const editPremiere = (premiere_id, data) => async (dispatch) => {
   axios
     .put(
-      `https://api-olymp-cinema.herokuapp.com/api/premieres/${premiere_id}`,
+      process.env.REACT_APP_API_URL+`/premieres/${premiere_id}`,
       {
         movie: data.movie,
         cinema: data.cinema,
@@ -104,13 +104,13 @@ export const DELETE_PREMIERE_FAILURE = "DELETE_PREMIERE_FAILURE";
 
 export const deletePremiere = (premiere_id) => async (dispatch) => {
   axios
-    .delete(`https://api-olymp-cinema.herokuapp.com/api/premieres/${premiere_id}`, {
+    .delete(process.env.REACT_APP_API_URL+`/premieres/${premiere_id}`, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
     })
     .then((removedPremiere) => {
-      console.log("removed: ", removedPremiere);
+   
       dispatch({
         type: DELETE_PREMIERE_SUCCESS,
         payload: "Premiere was successfully deleted.",

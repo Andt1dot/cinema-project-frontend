@@ -9,7 +9,7 @@ const fetchSeatsPremiere = () => async (dispatch) => {
   });
 
   axios
-    .get("https://api-olymp-cinema.herokuapp.com/api/seats", {
+    .get(process.env.REACT_APP_API_URL+'/seats', {
       headers: {
         Authorization: localStorage.getItem("token"),
       },

@@ -69,6 +69,7 @@ const Auth = (state = initialStateLogin, action) => {
     case REGISTER_SUCCESS: {
       return {
         ...state,
+        responseMessage: action.payload,
         isFetching: false,
         isRegister: true,
       };

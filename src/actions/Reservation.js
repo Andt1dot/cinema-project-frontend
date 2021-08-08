@@ -15,7 +15,7 @@ const fetchReservationsPremiere =
 
     axios
       .get(
-        `https://api-olymp-cinema.herokuapp.com/api/reservations/${premiere_id}/${cinema_id}/${hall_id}${params}`,
+        process.env.REACT_APP_API_URL+`/reservations/${premiere_id}/${cinema_id}/${hall_id}${params}`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -53,7 +53,7 @@ export const addReservation =
 
     axios
       .post(
-        "https://api-olymp-cinema.herokuapp.com/api/reservations/",
+        process.env.REACT_APP_API_URL+'/reservations/',
         {
           seats,
           premiere,
@@ -77,7 +77,7 @@ export const addReservation =
           type: ADD_RESERVATIONS_SUCCES,
           payload: reservation.data,
         });
-        console.log("reservationAction", reservation);
+     
       })
       .catch((err) => {
         console.log(err);
@@ -94,7 +94,7 @@ export const getAllReservations = () => async (dispatch) => {
   dispatch({ type: GET_ALL_RESERVATIONS_LOADING });
 
   axios
-    .get("https://api-olymp-cinema.herokuapp.com/api/reservations", {
+    .get(process.env.REACT_APP_API_URL+'/reservations', {
       headers: {
         Authorization: localStorage.getItem("token"),
       },

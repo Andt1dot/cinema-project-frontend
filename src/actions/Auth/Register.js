@@ -13,7 +13,7 @@ const requestRegister =
     });
 
      await axios
-      .post("https://api-olymp-cinema.herokuapp.com/api/auth/register", {
+      .post(process.env.REACT_APP_API_URL+'/auth/register', {
         firstname,
         lastname,
         username,
@@ -26,7 +26,7 @@ const requestRegister =
         console.log("newUser: ", newUser);
         dispatch({
           type: REGISTER_SUCCESS,
-          payload: newUser,
+          payload: newUser.data,
         });
 
         // localStorage.setItem("token", newUser.data.token);

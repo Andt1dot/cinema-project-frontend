@@ -5,8 +5,9 @@
 .container-reset {
   display: flex;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 30px;
   color: white;
+  margin-bottom: 30px;
 }
 
 .label-reset {
@@ -26,4 +27,12 @@
 
 .form-group {
   margin-bottom: 15px;
+}
+
+.styled-button.signIn.save-new-password:hover {
+  font-size: 20px;
+}
+
+.modal-content {
+  width: none !important;
 }

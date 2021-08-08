@@ -3,10 +3,9 @@ export const ADD_MOVIE_SUCCESS = "ADD_MOVIE_SUCCESS";
 export const ADD_MOVIE_FAILURE = "ADD_MOVIE_FAILURE";
 
 export const addMovie = (data) => async (dispatch) => {
-  //console.log("addMovieAction: ", data);
   await axios
     .post(
-      "https://api-olymp-cinema.herokuapp.com/api/movies",
+      process.env.REACT_APP_API_URL+'/movies',
       {
         title: data.title,
         original_title: data.original_title,
@@ -28,10 +27,6 @@ export const addMovie = (data) => async (dispatch) => {
       }
     )
     .then((movie) => {
-      console.log("movie :", movie);
-      console.log("movie.data", movie.data);
-      console.log("movie.headers", movie.headers);
-      console.log("movie.config", movie.config);
       dispatch({
         type: ADD_MOVIE_SUCCESS,
         payload: movie.data,
@@ -54,7 +49,7 @@ export const getMovies = () => async (dispatch) => {
   dispatch({ type: GET_MOVIES_LOADING });
 
   axios
-    .get("https://api-olymp-cinema.herokuapp.com/api/movies", {
+    .get(process.env.REACT_APP_API_URL+"/movies", {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
@@ -80,7 +75,7 @@ export const EDIT_MOVIE_FAILURE = "EDIT_MOVIE_FAILURE";
 export const editMovie = (movie_id, data) => async (dispatch) => {
   axios
     .put(
-      `https://api-olymp-cinema.herokuapp.com/api/movies/${movie_id}`,
+      process.env.REACT_APP_API_URL+`/movies/${movie_id}`,
       {
         title: data.title,
         original_title: data.original_title,
@@ -121,13 +116,12 @@ export const DELETE_MOVIE_FAILURE = "DELETE_MOVIE_FAILURE";
 
 export const deleteMovie = (movie_id) => async (dispatch) => {
   await axios
-    .delete(`https://api-olymp-cinema.herokuapp.com/api/movies/${movie_id}`, {
+    .delete(process.env.REACT_APP_API_URL+`/movies/${movie_id}`, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
     })
     .then((removedMovie) => {
-      console.log("removedMovie:", removedMovie);
       dispatch({
         type: DELETE_MOVIE_SUCCESS,
         payload: "The movie was successfully deleted.",

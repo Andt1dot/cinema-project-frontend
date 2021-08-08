@@ -3,13 +3,13 @@ import { Modal } from "react-bootstrap";
 
 import "./index.css";
 
-const NotificationModal = (props) => {
+const NotificationModal = ({onHide,show,title,body,messageType}) => {
   return (
     <Modal
       className="modal-client_type"
-      onHide={props.onHide}
-      show={props.show}
-      size="lg"
+      onHide={onHide}
+      show={show}
+    
       aria-labelledby="contained-modal-title-vcenter"
       data-backdrop="static"
       centered
@@ -18,19 +18,21 @@ const NotificationModal = (props) => {
         <Modal.Title
           id="contained-modal-title-vcenter"
           style={
-            props.messageType === 200 ? { color: "green" } : { color: "red" }
+            messageType === 200 ? { color: "green" } : { color: "red" }
           }
         >
-          {props.title}
+          {title}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+      <p className="text-center text-dark">{body}</p>
         <div className="info">
-          <p>{props.body}</p>
-          {props.messageType === 200 ? (
-            <i class="fa fa-check-circle"></i>
+       
+          {messageType === 200 ? (
+            
+            <i className="fa fa-check-circle"></i>
           ) : (
-            <i class="fa fa-times-circle"></i>
+            <i className="fa fa-times-circle"></i>
           )}
         </div>
       </Modal.Body>

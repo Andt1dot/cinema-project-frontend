@@ -23,3 +23,7 @@
 .modal-backdrop.show:nth-of-type(even) {
     z-index: 1051 !important;
 }
+
+.modal-content {
+  width: none !important;
+}

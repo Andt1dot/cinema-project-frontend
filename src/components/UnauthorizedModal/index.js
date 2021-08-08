@@ -1,35 +1,34 @@
 import React from "react";
 import "./index.css";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const UnauthorizedModal = (props) => {
   return (
     <Modal
       onHide={props.onHide}
       show={props.show}
-      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
-      centered
     >
       <Modal.Header className="header-unauthorize" closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Cod 401: Neautorizat
+          Cod 401: Neautorizat !!!
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="body-unauthorize">
-        <h4>Stimate vizitator,</h4>
-        <p>
+        <h4 className = 'text-dark' >Stimate vizitator,</h4>
+        <p className="text-center">
           Accesul în continuare se realizează doar cu un cont de utilizator
-          valid.
-          <p>
-            Vă recomandăm să vă autentificați sau să vă înregistrați în sistem.
+          activat conform politicii de scuritate impuse.
+          <p className="text-center">
+            Vă mulțuimim pentru înțelegere și venim cu recomandarea să selectați una din opțiunile propuse mai jos.
           </p>
         </p>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Autentificare</Button>
-        <Button onClick={props.onHide}>Înregistrare</Button>
-      </Modal.Footer>
+
+        <Link to="/login" className="styled-button signIn modal-btn" onClick={props.onHide}>Autentificare</Link>
+        <Link to="/register" className="styled-button signUp modal-btn" onClick={props.onHide}>Înregistrare</Link>
+  
     </Modal>
   );
 };

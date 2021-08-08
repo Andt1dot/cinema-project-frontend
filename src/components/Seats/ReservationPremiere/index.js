@@ -16,7 +16,7 @@ const ReservationPremiere = ({ totalReservation }) => {
 
   useEffect(() => {
     axios
-      .get(`https://api-olymp-cinema.herokuapp.com/api/premieres/${premiere_id}`)
+      .get(process.env.REACT_APP_API_URL+`/premieres/${premiere_id}`)
       .then((premiere) => {
         setPremiere({
           hall: premiere.data.hall.find((el) => el._id === hall_id).name,

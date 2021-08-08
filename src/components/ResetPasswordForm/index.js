@@ -1,21 +1,35 @@
 import React, { useState } from "react";
 import "./index.css";
 import { resetPassword } from "../../actions/Auth/ResetPassword";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import NotificationModal from "../NotificationModal";
 
 const ResetPasswordForm = () => {
   const params = useParams();
-
+  const history = useHistory();
   const [password, setPassword] = useState({
     password: "",
     confirmPassword: "",
   });
 
+  const [showModal, setModalShow] = useState();
+  const [errorMessage, setErrorMessage] = useState();
+
+  const onChangePassword = (e) => {
+    setPassword({ ...password, [e.target.name]: e.target.value });
+    setErrorMessage("");
+  };
+
   const onSubmitResetPassword = (e) => {
     e.preventDefault();
-    resetPassword(params.user_id, password.confirmPassword).then(
-      (response) => {}
-    );
+    resetPassword(params.user_id, password.confirmPassword)
+      .then((response) => {
+        setErrorMessage("");
+        setModalShow(response.data);
+      })
+      .catch((error) =>
+        console.log(setErrorMessage(error.request.response.split("%")[1]))
+      );
   };
 
   return (
@@ -26,6 +40,8 @@ const ResetPasswordForm = () => {
       {password.password !== password.confirmPassword &&
       password.confirmPassword ? (
         <p className="error-message">*Parola de confirmare nu concide*</p>
+      ) : errorMessage ? (
+        <p className="error-message">*{errorMessage}*</p>
       ) : null}
       <div className="card-body">
         <form className="form" autocomplete="off">
@@ -35,13 +51,11 @@ const ResetPasswordForm = () => {
             </label>
             <input
               name="password"
-              onChange={(e) =>
-                setPassword({ ...password, [e.target.name]: e.target.value })
-              }
+              onChange={onChangePassword}
               type="password"
               className="form-control"
               id="inputPasswordOld"
-              required=""
+              required
             ></input>
           </div>
           <div className="form-group">
@@ -50,16 +64,13 @@ const ResetPasswordForm = () => {
             </label>
             <input
               name="confirmPassword"
-              onChange={(e) =>
-                setPassword({ ...password, [e.target.name]: e.target.value })
-              }
+              onChange={onChangePassword}
               type="password"
               className="form-control"
               id="inputPasswordNew"
-              required=""
+              required
             ></input>
           </div>
-
           <div className="form-save">
             <button
               type="submit"
@@ -71,6 +82,15 @@ const ResetPasswordForm = () => {
           </div>
         </form>
       </div>
+      {showModal ? (
+        <NotificationModal
+          show={true}
+          onHide={(e)=> history.push('/')}
+          title={showModal.title}
+          body={showModal.body}
+          messageType={showModal.messageType}
+        ></NotificationModal>
+      ) : null}
     </div>
   );
 };
