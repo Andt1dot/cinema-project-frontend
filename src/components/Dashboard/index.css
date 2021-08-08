@@ -15,7 +15,7 @@
   height: 60px;
   cursor: pointer;
   background: transparent;
-  border: 1px solid #91c9ff;
+  border: 1px solid #a7a9aa;
   outline: none;
   transition: 1s ease-in-out;
 }
@@ -33,7 +33,7 @@
 
 .btn-datetime:hover {
   transition: 1s ease-in-out;
-  background: #4f95da;
+  background: #55595c;
 }
 
 .btn-datetime:hover svg {
@@ -42,6 +42,6 @@
 
 .btn-datetime span {
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 100;
 }
