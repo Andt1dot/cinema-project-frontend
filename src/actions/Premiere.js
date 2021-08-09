@@ -8,7 +8,7 @@ export const fetchPremiereMovies = () => async (dispatch) => {
     type: FETCH_PREMIERE_LOADING,
   });
   new Promise((resolve, reject) => {
-  await axios
+   axios
     .get(`${process.env.REACT_APP_API_URL}/premieres`)
     .then((premiere) => {
       console.log('request',`${process.env.REACT_APP_API_URL}/premieres`);
