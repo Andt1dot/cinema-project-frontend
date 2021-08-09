@@ -29,7 +29,6 @@ export const fetchPremiereMovies = () => async (dispatch) => {
   })
 };
 
-
 export const ADD_PREMIERE_SUCCESS = "ADD_PREMIERE_SUCCESS";
 export const ADD_PREMIERE_FAILURE = "ADD_PREMIERE_FAILURE";
 
