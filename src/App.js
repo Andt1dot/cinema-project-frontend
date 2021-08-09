@@ -28,8 +28,8 @@ const App = () => {
     dispatch(checkRegister());
   }, [dispatch]);
 
-  console.log(isAuthenticated, isAdmin);
-
+  // console.log(isAuthenticated, isAdmin);
+  console.log('ENV',process.env.REACT_APP_API_URL);
   return (
     <React.Fragment>
       <Menu />
