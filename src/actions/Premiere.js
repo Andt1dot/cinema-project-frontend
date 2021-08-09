@@ -19,7 +19,6 @@ export const fetchPremiereMovies = () => async (dispatch) => {
     })
     .catch((err) => {
       console.log(err);
-      reject(err);
       dispatch({
         type: FETCH_PREMIERE_FAILURE,
         payload: "Error fetch premieres",
