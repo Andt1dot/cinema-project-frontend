@@ -9,7 +9,7 @@ export const fetchPremiereMovies = () => async (dispatch) => {
   });
 
   axios
-    .get(process.env.REACT_APP_API_URL+'/premieres')
+    .get(`${process.env.REACT_APP_API_URL}/premieres`)
     .then((premiere) => {
       console.log('succesPremieres',premiere);
       dispatch({
