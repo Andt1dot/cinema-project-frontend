@@ -7,7 +7,6 @@ export const fetchPremiereMovies = () => async (dispatch) => {
   dispatch({
     type: FETCH_PREMIERE_LOADING,
   });
-  new Promise((resolve, reject) => {
    axios
     .get(`${process.env.REACT_APP_API_URL}/premieres`)
     .then((premiere) => {
@@ -26,7 +25,6 @@ export const fetchPremiereMovies = () => async (dispatch) => {
         payload: "Error fetch premieres",
       });
     });
-  })
 };
 
 export const ADD_PREMIERE_SUCCESS = "ADD_PREMIERE_SUCCESS";
