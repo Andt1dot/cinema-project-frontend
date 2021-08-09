@@ -11,6 +11,7 @@ export const fetchPremiereMovies = () => async (dispatch) => {
   axios
     .get(process.env.REACT_APP_API_URL+'/premieres')
     .then((premiere) => {
+      console.log('succesPremieres',premiere);
       dispatch({
         type: FETCH_PREMIERE_SUCCES,
         payload: premiere.data,

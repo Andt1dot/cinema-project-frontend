@@ -38,6 +38,7 @@ export default function Home() {
     error: state.Premiere.error,
   }));
 
+  console.log('Home',premieres);
   return (
     <div>
       <MovieCarousel></MovieCarousel>
