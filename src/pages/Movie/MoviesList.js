@@ -124,93 +124,49 @@ const MoviesList = () => {
               </ListGroup.Item>
             </FilterCustom>
           </div>
-          {filteredMovies && filteredMovies !== {}
-            ? filteredMovies.map((movie) => {
-                return (
-                  <Link
-                    to={`/admin/movies/${movie._id}`}
-                    key={movie._id}
-                    style={{
-                      width: 250,
-                      marginLeft: 20,
-                      textDecoration: "none",
-                    }}
-                  >
-                    {movie ? (
-                      <Card className="mb-3">
-                        <Card.Img
-                          variant="top"
-                          src={movie?.image_url}
-                          className="card-img-top movie_card_img"
-                        />
-                        <Card.Body>
-                          <Card.Title
-                            style={{
-                              width: "content-width",
-                              whiteSpace: "nowrap",
-                              overflow: "hidden",
-                              textOverflow: "ellipsis",
-                            }}
-                          >
-                            {movie?.title}
-                          </Card.Title>
-                          <Card.Footer>
-                            <span className="movie_info">
-                              {movie?.release_date.split("T")[0].split("-")[0]}
-                            </span>
-                            <span className="movie_info float-right">
-                              <i className="fas fa-star"></i> {movie?.rating}
-                            </span>
-                          </Card.Footer>
-                        </Card.Body>
-                      </Card>
-                    ) : null}
-                  </Link>
-                );
-              })
-            : filteredData.map((movie) => {
-                return (
-                  <Link
-                    to={`/admin/movies/${movie._id}`}
-                    key={movie._id}
-                    style={{
-                      width: 250,
-                      marginLeft: 20,
-                      textDecoration: "none",
-                    }}
-                  >
-                    {movie ? (
-                      <Card className="mb-3">
-                        <Card.Img
-                          variant="top"
-                          src={movie?.image_url}
-                          className="card-img-top movie_card_img"
-                        />
-                        <Card.Body>
-                          <Card.Title
-                            style={{
-                              width: "content-width",
-                              whiteSpace: "nowrap",
-                              overflow: "hidden",
-                              textOverflow: "ellipsis",
-                            }}
-                          >
-                            {movie?.title}
-                          </Card.Title>
-                          <Card.Footer>
-                            <span className="movie_info">
-                              {movie?.release_date.split("T")[0].split("-")[0]}
-                            </span>
-                            <span className="movie_info float-right">
-                              <i className="fas fa-star"></i> {movie?.rating}
-                            </span>
-                          </Card.Footer>
-                        </Card.Body>
-                      </Card>
-                    ) : null}
-                  </Link>
-                );
-              })}
+          {filteredData.map((movie) => {
+            return (
+              <Link
+                to={`/admin/movies/${movie._id}`}
+                key={movie._id}
+                style={{
+                  width: 250,
+                  marginLeft: 20,
+                  textDecoration: "none",
+                }}
+              >
+                {movie ? (
+                  <Card className="mb-3">
+                    <Card.Img
+                      variant="top"
+                      src={movie?.image_url}
+                      className="card-img-top movie_card_img"
+                    />
+                    <Card.Body>
+                      <Card.Title
+                        style={{
+                          width: "content-width",
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {movie?.title}
+                      </Card.Title>
+                      <Card.Footer>
+                        <span className="movie_info">
+                          {movie?.release_date.split("T")[0].split("-")[0]}
+                        </span>
+                        <span className="movie_info float-right">
+                          <i className="fas fa-star"></i> {movie?.rating}
+                        </span>
+                      </Card.Footer>
+                    </Card.Body>
+                  </Card>
+                ) : null}
+              </Link>
+            );
+          })}
         </div>
       ) : (
         <div>{error}</div>

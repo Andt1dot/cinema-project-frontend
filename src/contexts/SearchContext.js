@@ -10,6 +10,7 @@ export const useSearch = () => {
 
 const SearchProvider = ({ children }) => {
   const [search, setSearch] = useState("");
+  const [searchParam] = useState(["title", "subtitle", "content"]);
 
   const { movies, news, reservations } = useSelector((state) => ({
     movies: state.Movie.movies,
@@ -26,13 +27,24 @@ const SearchProvider = ({ children }) => {
         if (!search) {
           return movies;
         }
-        return movies.filter(({ title }) => title.includes(search));
+        return movies.filter(({ title }) =>
+          title.toLowerCase().includes(search)
+        );
 
       case "/admin/news":
         if (!search) {
           return news;
         }
-        return news.filter(({ title }) => title.includes(search));
+        return news.filter((article) => {
+          return searchParam.some((item) => {
+            return (
+              article[item]
+                .toString()
+                .toLowerCase()
+                .indexOf(search.toLowerCase()) > -1
+            );
+          });
+        });
 
       case "/admin/reservations":
         if (!search) {
@@ -43,7 +55,7 @@ const SearchProvider = ({ children }) => {
       default:
         return [];
     }
-  }, [search, pathname, movies, news, reservations]);
+  }, [search, searchParam, pathname, movies, news, reservations]);
 
   const value = {
     search,
