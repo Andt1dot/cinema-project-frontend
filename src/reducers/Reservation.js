@@ -10,6 +10,7 @@ const initialState = {
   reservations: [],
   loading: false,
   error: "",
+  pageCount: 0,
 };
 
 const Reservation = (state = initialState, action) => {
@@ -37,7 +38,8 @@ const Reservation = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        reservations: action.payload,
+        reservations: action.payload.data,
+        pageCount: action.payload.paging.pages,
         error: "",
       };
     }
