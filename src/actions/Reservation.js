@@ -15,7 +15,8 @@ const fetchReservationsPremiere =
 
     axios
       .get(
-        process.env.REACT_APP_API_URL+`/reservations/${premiere_id}/${cinema_id}/${hall_id}${params}`,
+        process.env.REACT_APP_API_URL +
+          `/reservations/${premiere_id}/${cinema_id}/${hall_id}${params}`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -53,7 +54,7 @@ export const addReservation =
 
     axios
       .post(
-        process.env.REACT_APP_API_URL+'/reservations/',
+        process.env.REACT_APP_API_URL + "/reservations/",
         {
           seats,
           premiere,
@@ -77,7 +78,6 @@ export const addReservation =
           type: ADD_RESERVATIONS_SUCCES,
           payload: reservation.data,
         });
-     
       })
       .catch((err) => {
         console.log(err);
@@ -90,26 +90,32 @@ export const GET_ALL_RESERVATIONS_LOADING = "GET_ALL_RESERVATIONS_LOADING";
 export const GET_ALL_RESERVATIONS_SUCCESS = "GET_ALL_RESERVATIONS_SUCCESS";
 export const GET_ALL_RESERVATIONS_ERROR = "GET_ALL_RESERVATIONS_ERROR";
 
-export const getAllReservations = () => async (dispatch) => {
-  dispatch({ type: GET_ALL_RESERVATIONS_LOADING });
+export const getAllReservations =
+  ({ limit, skip }) =>
+  async (dispatch) => {
+    dispatch({ type: GET_ALL_RESERVATIONS_LOADING });
 
-  axios
-    .get(process.env.REACT_APP_API_URL+'/reservations', {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-    })
-    .then((reservations) => {
-      dispatch({
-        type: GET_ALL_RESERVATIONS_SUCCESS,
-        payload: reservations.data,
+    axios
+      .get(
+        process.env.REACT_APP_API_URL +
+          `/reservations?limit=${limit}&skip=${skip}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
+      .then((reservations) => {
+        dispatch({
+          type: GET_ALL_RESERVATIONS_SUCCESS,
+          payload: reservations.data,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        dispatch({
+          type: GET_ALL_RESERVATIONS_ERROR,
+          payload: "Error.Could not get reservations.",
+        });
       });
-    })
-    .catch((error) => {
-      console.error(error);
-      dispatch({
-        type: GET_ALL_RESERVATIONS_ERROR,
-        payload: "Error.Could not get reservations.",
-      });
-    });
-};
+  };

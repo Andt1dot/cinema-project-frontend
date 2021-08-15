@@ -14,7 +14,7 @@ const MoviesList = () => {
     release_date: "",
     age_restrict: "",
   });
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  //const [filteredMovies, setFilteredMovies] = useState([]);
   const dispatch = useDispatch();
   const { filteredData } = useSearch();
   useEffect(() => {
@@ -39,7 +39,7 @@ const MoviesList = () => {
     );
     console.log(filteredMovies);
 
-    setFilteredMovies(filteredMovies);
+    //setFilteredMovies(filteredMovies);
   };
 
   return (
