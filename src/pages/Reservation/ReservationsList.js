@@ -7,7 +7,7 @@ import { CaretUp, CaretDown } from "react-bootstrap-icons";
 
 const ReservationsList = () => {
   const [sortState, setSortState] = useState({ key: "", direction: "" });
-  const [pageIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(0);
   const [pageSize] = useState(15);
   const { filteredData } = useSearch();
   const dispatch = useDispatch();
@@ -67,17 +67,30 @@ const ReservationsList = () => {
       </span>
     );
   };
-
   let active = 1;
   let items = [];
-  for (let number = 1; number <= pageCount; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
+  const goToNextPage = (e) => {
+    setPageIndex(e.target.id);
+    dispatch(
+      getAllReservations({ limit: pageSize, skip: pageSize * pageIndex })
     );
+  };
+
+  for (let number = 1; number <= pageCount; number++) {
+    items.push(number);
   }
 
+  const pages = items.map((item, index) => (
+    <Pagination.Item
+      id={index}
+      key={item}
+      active={item === active}
+      onClick={goToNextPage}
+    >
+      {item}
+    </Pagination.Item>
+  ));
+  //console.log("pages", pages);
   return (
     <>
       {loading ? (
@@ -153,7 +166,7 @@ const ReservationsList = () => {
               ))}
             </tbody>
           </Table>
-          <Pagination>{items}</Pagination>
+          <Pagination>{pages}</Pagination>
         </>
       ) : (
         <div>{error}</div>

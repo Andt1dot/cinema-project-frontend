@@ -31,6 +31,7 @@ const Reservation = (state = initialState, action) => {
         ...state,
         loading: true,
         error: "",
+        pageCount: 0,
       };
     }
 
