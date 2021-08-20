@@ -32,6 +32,7 @@ const LoginForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     dispatch(requestLogin(email, password));
+    setErrorMessage(errorMessageLogin);
   };
 
   useEffect(() => {
