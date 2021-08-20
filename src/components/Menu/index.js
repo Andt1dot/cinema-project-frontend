@@ -62,7 +62,7 @@ const Menu = () => {
                         </Nav.Link>
                       </Nav.Item>
                       <Nav.Item className="custom-link">
-                        <Nav.Link eventKey="3" href="/">
+                        <Nav.Link eventKey="3" href="/contacts">
                           Contacte
                         </Nav.Link>
                       </Nav.Item>

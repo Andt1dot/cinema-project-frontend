@@ -10,6 +10,7 @@ import PrivateRoute, { AdminRoute } from "./components/PrivateRoute";
 import Reservation from "./pages/Reservation";
 import AdminPage from "./pages/AdminPage";
 import NewsPage from "./pages/NewsPage";
+import Contact from "./pages/Contact";
 import ArticlePage from "./pages/ArticlePage";
 import checkRegister from "./actions/Auth/CheckRegister";
 import ResetPassword from "./pages/ResetPassword";
@@ -47,6 +48,7 @@ const App = () => {
         />
         <Route path="/about-premiere/:id" component={AboutPremiere} />
         <Route exact path="/news" component={NewsPage} />
+        <Route exact path="/contacts" component={Contact} />
         <Route path="/news/:news_id" component={ArticlePage} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
