@@ -30,13 +30,15 @@ const LoginForm = () => {
   };
 
   const handleFormSubmit = async (event) => {
+    setErrorMessage(errorMessageLogin);
     event.preventDefault();
     dispatch(requestLogin(email, password));
-    setErrorMessage(errorMessageLogin);
+    setErrorMessage("");
   };
 
   useEffect(() => {
     if (isAuthenticated) {
+      setErrorMessage("");
       history.push("/");
     }
     if (errorMessageLogin) {
