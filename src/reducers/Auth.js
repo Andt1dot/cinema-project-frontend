@@ -33,7 +33,7 @@ const Auth = (state = initialStateLogin, action) => {
       };
     }
     case LOGIN_SUCCESS: {
-      return {
+      return  {
         ...state,
         isFetching: false,
         isAuthenticated: true,

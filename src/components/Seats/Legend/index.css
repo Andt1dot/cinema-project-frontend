@@ -58,16 +58,13 @@
   width: 35px;
   height: 50px;
   border-radius: 7px;
-  background: linear-gradient(
-    to top,
-    #bb5b5b,
-    #913636,
-    #963737,
-    #aa4c4c,
-    #e6c0c0,
-    #f37a7c,
-    #f3686a
-  );
+  background: linear-gradient( to top, #fbc905, #d7ad07, #bb9f0a, #ffd700, #d5aa04, #e8c233, #ffcb00 );
+  background-color: rgba(0, 0, 0, 0);
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-image: linear-gradient(to top, rgb(130, 104, 5), rgb(215, 173, 7), rgb(187, 159, 10), rgb(191, 162, 7), rgb(213, 170, 4), rgb(176, 140, 3), rgb(145, 116, 5));
 
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }

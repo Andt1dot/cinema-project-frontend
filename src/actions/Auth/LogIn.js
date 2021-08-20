@@ -8,8 +8,8 @@ const requestLogin = (email, password) => async (dispatch) => {
     type: LOGIN_REQUEST,
   });
 
-  await axios
-    .post(process.env.REACT_APP_API_URL+'/auth/login', {
+   axios
+    .post(process.env.REACT_APP_API_URL + "/auth/login", {
       email,
       password,
     })
@@ -29,7 +29,7 @@ const requestLogin = (email, password) => async (dispatch) => {
 
       dispatch({
         type: LOGIN_FAILURE,
-        payload: error.request.response.split("%")[1],
+        payload:  error.request.response.split("%")[1],
       });
     });
 };

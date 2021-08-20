@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import requestLogin from "../../actions/Auth/LogIn";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [modalShow, setModalShow] = React.useState(false);
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
 
   const { isAuthenticated, errorMessageLogin } = useSelector(
@@ -19,30 +20,36 @@ const LoginForm = () => {
   );
 
   const handleEmailChange = (event) => {
+    setErrorMessage("");
     setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
+    setErrorMessage("");
     setPassword(event.target.value);
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     dispatch(requestLogin(email, password));
+  };
 
-    console.log(isAuthenticated);
+  useEffect(() => {
     if (isAuthenticated) {
       history.push("/");
     }
-  };
+    if (errorMessageLogin) {
+      setErrorMessage(errorMessageLogin);
+    }
+  }, [isAuthenticated, errorMessageLogin, history]);
 
   return (
     <div className="login-wrapper">
       <form onSubmit={handleFormSubmit} className="styled-form">
-        <h1 className="title">Login</h1>
-        {errorMessageLogin && !isAuthenticated ? (
+        <h1 className="title">Autentificare</h1>
+        {errorMessage && !isAuthenticated ? (
           <div className="error-message">
-            <p>{`* ${errorMessageLogin} *`}</p>
+            <p>{`* ${errorMessage} *`}</p>
           </div>
         ) : null}
         <input
@@ -59,30 +66,19 @@ const LoginForm = () => {
           placeholder="Password"
           className="styled-input input-custom"
         ></input>
-
         <h3 className="styled-h3" onClick={() => setModalShow(true)}>
           Ați uitat parola?
         </h3>
         <div className="manage-acces">
-          {isAuthenticated ? (
-            // <Link to="/" className="Sign-In">
-            <button type="submit" className="styled-button signIn">
-              Autentificare
-            </button>
-          ) : (
-            // </Link>
-            <button type="submit" className="styled-button signIn">
-              Autentificare
-            </button>
-          )}
-
+          <button type="submit" className="styled-button signIn">
+            Identificare
+          </button>
           <Link to="/register" className=" Sign-Up">
             <button type="button" className="styled-button signUp">
               Înregistrare
             </button>
           </Link>
         </div>
-        
       </form>
       <ResetModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>

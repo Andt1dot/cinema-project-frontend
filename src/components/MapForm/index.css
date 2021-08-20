@@ -8,7 +8,8 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  padding-top: 10px;
 }
 .section-cinema,
 .section-address,
@@ -19,4 +20,5 @@
   flex-wrap: wrap;
   text-align: center;
   font-size: 15px;
+  flex-direction: column;
 }
