@@ -3,7 +3,7 @@ import Seats from "../components/Seats";
 import fetchSeatsPremiere from "../actions/Seat";
 import fetchReservationsPremiere from "../actions/Reservation";
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import { addReservation } from "../actions/Reservation";
 import { fetchPremiereMovies } from "../actions/Premiere";
 import ChoosePaymentModal from "../components/ChoosePaymentModal";
@@ -13,6 +13,7 @@ import PaymentModal from "../components/PaymentModal";
 const Reservation = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const histroy = useHistory();
   const { premiere_id, cinema_id, hall_id } = useParams();
 
   const [modalShowChoosePayment, setModalShowChoosePayment] = useState(false);
@@ -24,6 +25,11 @@ const Reservation = () => {
     seats: [],
     total_price: "",
   });
+
+  const handleClickHideModal = (e) => {
+    setModalShowNotification(false);
+    histroy.push("/");
+  };
 
   const handleClickPayMethodCard = (e) => {
     e.preventDefault();
@@ -143,10 +149,10 @@ const Reservation = () => {
       ></ChoosePaymentModal>
       <NotificationModal
         show={modalShowNotification}
-        onHide={(e) => setModalShowNotification(false)}
-        title={"Succes"}
+        onHide={handleClickHideModal}
+        title={"Cod 200: Succes !!!"}
         body={
-          "Felicitari modal cu succes, ati rezervat locul verificati posta electronica"
+          "Tiketul a fost expediat pe adresa electronică. Vă mulțumim că ați ales Olymp Cinema."
         }
         messageType={200}
       ></NotificationModal>
