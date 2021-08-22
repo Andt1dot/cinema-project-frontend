@@ -12,7 +12,7 @@ const chartFirst = {
         x: "2%",
         y: "3%",
         title: {
-          text: "DEPARTMENT PERFORMANCE",
+          text: "TICKETS SOLD PER PREMIERE",
           marginTop: "7px",
           marginLeft: "9px",
           backgroundColor: "none",
@@ -47,14 +47,14 @@ const chartFirst = {
         },
         scaleX: {
           values: [
-            "Apparel",
-            "Drug",
-            "Footwear",
-            "Gift Card",
-            "Home",
-            "Jewelry",
-            "Garden",
-            "Other",
+            "Cruella",
+            "Black Widow",
+            "Fast and Furious 9",
+            "Peter Rabbit",
+            "Hitman's Wife's Bodyguard",
+            "Suicide Squad",
+            "Jungle Cruise",
+            "Cruds 2",
           ],
           guide: {
             visible: false,
@@ -147,7 +147,7 @@ const chartFirst = {
         x: "2%",
         y: "35.2%",
         title: {
-          text: "BRAND PERFORMANCE",
+          text: "CINEMA PERFORMANCE",
           marginTop: "7px",
           marginLeft: "9px",
           backgroundColor: "none",
@@ -171,12 +171,12 @@ const chartFirst = {
         },
         scaleX: {
           values: [
-            "Kenmore",
-            "Craftsman",
-            "DieHard",
-            "Land's End",
-            "Laclyn Smith",
-            "Joe Boxer",
+            "CHISINAU-CENTRU",
+            "CHISINAU-BUIUCANI",
+            "CHISINAU-BOTANICA",
+            "IALOVENI",
+            "CAHUL",
+            "SOROCA",
           ],
           guide: {
             visible: false,
@@ -396,7 +396,7 @@ const chartFirst = {
         },
         series: [
           {
-            text: "Kenmore",
+            text: "Black Widow",
             values: [69, 68, 54, 48, 70, 74, 98, 70, 72, 68, 49, 69],
             lineColor: "#4dbac0",
             lineWidth: "2px",
@@ -411,7 +411,7 @@ const chartFirst = {
             shadow: false,
           },
           {
-            text: "Craftsman",
+            text: "Jungle Cruise",
             values: [51, 53, 47, 60, 48, 52, 75, 52, 55, 47, 60, 48],
             lineColor: "#25a6f7",
             lineWidth: "2px",
@@ -427,7 +427,7 @@ const chartFirst = {
             visible: true,
           },
           {
-            text: "DieHard",
+            text: "Fast an Furious 9",
             values: [42, 43, 30, 50, 31, 48, 55, 46, 48, 32, 50, 38],
             lineColor: "#ad6bae",
             lineWidth: "2px",
@@ -443,7 +443,7 @@ const chartFirst = {
             visible: true,
           },
           {
-            text: "Land's End",
+            text: "Crud's Family 2",
             values: [25, 15, 26, 21, 24, 26, 33, 25, 15, 25, 22, 24],
             lineColor: "#f3950d",
             lineWidth: "2px",

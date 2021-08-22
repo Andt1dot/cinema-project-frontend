@@ -14,7 +14,6 @@ const MoviesList = () => {
     release_date: "",
     age_restrict: "",
   });
-  //const [filteredMovies, setFilteredMovies] = useState([]);
   const dispatch = useDispatch();
   const { filteredData } = useSearch();
   useEffect(() => {
@@ -27,19 +26,8 @@ const MoviesList = () => {
     loading: state.Movie.loading,
   }));
 
-  //console.log("get movies: ", movies);
-
   const handleClickFilter = () => {
     console.log("i am here");
-    const filteredMovies = movies.filter(
-      (movie) =>
-        // movie.genre.includes(filterOptions?.genre) ||
-        // movie.release_date === filterOptions?.release_date ||
-        movie.age_restrict === filterOptions?.age_restrict
-    );
-    console.log(filteredMovies);
-
-    //setFilteredMovies(filteredMovies);
   };
 
   return (
@@ -72,14 +60,14 @@ const MoviesList = () => {
                     })
                   }
                 >
-                  <option>Genre</option>
-                  <option>Action</option>
-                  <option>Comedy</option>
-                  <option>Drama</option>
-                  <option>Animation</option>
-                  <option>Thriller</option>
-                  <option>Horror</option>
-                  <option>Romance</option>
+                  <option value="Genre">Genre</option>
+                  <option value="Action">Action</option>
+                  <option value="Comedy">Comedy</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Animation">Animation</option>
+                  <option value="Thriller">Thriller</option>
+                  <option value="Horror">Horror</option>
+                  <option value="Romance">Romance</option>
                 </select>
               </ListGroup.Item>
               <ListGroup.Item>
@@ -107,11 +95,11 @@ const MoviesList = () => {
                     })
                   }
                 >
-                  <option>Age Restrict</option>
-                  <option>AG</option>
-                  <option>AP-12</option>
-                  <option>N-15</option>
-                  <option>IM-18</option>
+                  <option value="Age Restrict">Age Restrict</option>
+                  <option value="AG">AG</option>
+                  <option value="AP-12">AP-12</option>
+                  <option value="N-15">N-15</option>
+                  <option value="IM-18">IM-18</option>
                 </select>
               </ListGroup.Item>
               <ListGroup.Item>
