@@ -18,6 +18,7 @@ const MovieCard = ({ premiere }) => {
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
+                color: "black",
               }}
             >
               {premiere?.movie.title}
