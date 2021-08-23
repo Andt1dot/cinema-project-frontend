@@ -41,7 +41,9 @@ const PremiereDescription = ({ premiere }) => {
               <p className="movieDetails__runtime">{premiere.movie.duration}</p>
 
               <div className="movieDetails__genres">
-                <p className="movieDetails__genre">{premiere.movie.genre}</p>
+                <p className="movieDetails__genre">
+                  {premiere.movie.genre.join(", ")}
+                </p>
               </div>
               <div className="movieDetails__buttonDiv">
                 <div className="rating">

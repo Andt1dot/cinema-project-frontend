@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { getMovies } from "../../actions/Movie";
 import { useSelector } from "react-redux";
@@ -14,6 +14,7 @@ const MoviesList = () => {
     release_date: "",
     age_restrict: "",
   });
+
   const dispatch = useDispatch();
   const { filteredData } = useSearch();
   useEffect(() => {
@@ -26,8 +27,34 @@ const MoviesList = () => {
     loading: state.Movie.loading,
   }));
 
-  const handleClickFilter = () => {
-    console.log("i am here");
+  const filteredItems = useMemo(() => {
+    let items = [...filteredData];
+    if (filterOptions.age_restrict !== "") {
+      return items.filter(
+        (movie) => movie.age_restrict === filterOptions.age_restrict
+      );
+    }
+    if (filterOptions.genre !== "") {
+      return items.filter((movie) => movie.genre.includes(filterOptions.genre));
+    }
+    if (filterOptions.release_date !== "") {
+      return items.filter(
+        (movie) =>
+          movie.release_date.split("T", 1).toString() ===
+          filterOptions.release_date
+      );
+    }
+    return items;
+  }, [filterOptions, filteredData]);
+
+  //console.log("filteredItems", filteredItems);
+
+  const resetFilter = () => {
+    setFilterOptions({
+      genre: "",
+      release_date: "",
+      age_restrict: "",
+    });
   };
 
   return (
@@ -55,6 +82,7 @@ const MoviesList = () => {
                 <select
                   className="form-control search-slt"
                   id="exampleFormControlSelect1"
+                  value={filterOptions.genre}
                   onChange={(e) =>
                     setFilterOptions({
                       ...filterOptions,
@@ -62,11 +90,14 @@ const MoviesList = () => {
                     })
                   }
                 >
-                  <option value="Genre">Genre</option>
-                  <option value="Action">Action</option>
-                  <option value="Comedy">Comedy</option>
-                  <option value="Drama">Drama</option>
-                  <option value="Animation">Animation</option>
+                  <option value="" hidden>
+                    Genre
+                  </option>
+                  <option value="Acțiune">Acțiune</option>
+                  <option value="Comedie">Comedie</option>
+                  <option value="Crimă">Crimă</option>
+                  <option value="Aventuri">Aventuri</option>
+                  <option value="Animație">Animație</option>
                   <option value="Thriller">Thriller</option>
                   <option value="Horror">Horror</option>
                   <option value="Romance">Romance</option>
@@ -90,6 +121,7 @@ const MoviesList = () => {
                 <select
                   className="form-control search-slt"
                   id="exampleFormControlSelect1"
+                  value={filterOptions.age_restrict}
                   onChange={(e) =>
                     setFilterOptions({
                       ...filterOptions,
@@ -97,7 +129,9 @@ const MoviesList = () => {
                     })
                   }
                 >
-                  <option value="Age Restrict">Age Restrict</option>
+                  <option value="" hidden>
+                    Age Restrict
+                  </option>
                   <option value="AG">AG</option>
                   <option value="AP-12">AP-12</option>
                   <option value="N-15">N-15</option>
@@ -106,15 +140,15 @@ const MoviesList = () => {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button
-                  onClick={handleClickFilter}
+                  onClick={resetFilter}
                   className="btn btn-secondary wrn-btn"
                 >
-                  Filter
+                  Reset Filter
                 </Button>
               </ListGroup.Item>
             </FilterCustom>
           </div>
-          {filteredData.map((movie) => {
+          {filteredItems.map((movie) => {
             return (
               <Link
                 to={`/admin/movies/${movie._id}`}
