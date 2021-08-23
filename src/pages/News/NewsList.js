@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useSearch } from "../../contexts/SearchContext";
 import { getNews } from "../../actions/News";
-import { Row, Col, Container, Card, Button } from "react-bootstrap";
+import { Row, Col, Container, Card, Button, Spinner } from "react-bootstrap";
 // import FilterCustom from "../../components/FilterCustom";
 
 const NewsList = () => {
@@ -24,7 +24,9 @@ const NewsList = () => {
     <>
       <Container>
         {loading ? (
-          <div>Loading...</div>
+          <div className="spinner-style">
+            <Spinner animation="border" variant="light" />
+          </div>
         ) : !loading && news ? (
           <>
             <div

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import FilterCustom from "../../components/FilterCustom";
 import { useSearch } from "../../contexts/SearchContext";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Spinner } from "react-bootstrap";
 import { ListGroup } from "react-bootstrap";
 
 const MoviesList = () => {
@@ -33,7 +33,9 @@ const MoviesList = () => {
   return (
     <>
       {loading ? (
-        <div>Loading....</div>
+        <div className="spinner-style">
+          <Spinner animation="border" variant="light" />
+        </div>
       ) : !loading && movies ? (
         <div className="row">
           <div

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Spinner } from "react-bootstrap";
 
 const responsive = {
   superLargeDesktop: {
@@ -33,19 +34,24 @@ export default function Home() {
     dispatch(fetchPremiereMovies());
   }, [dispatch]);
 
-  const { premieres, error } = useSelector((state) => ({
+  const { premieres, error, loading } = useSelector((state) => ({
     premieres: state.Premiere.premieres,
     error: state.Premiere.error,
+    loading: state.Premiere.loading,
   }));
 
-  console.log('Home',premieres);
+  console.log("Home", premieres);
   return (
     <div>
       <MovieCarousel></MovieCarousel>
       <div className="container" style={{ marginTop: 30, marginBottom: 100 }}>
         <div>
           <h4 className="text-center">Filme în Derulare</h4>
-          {premieres.length > 0 ? (
+          {loading ? (
+            <div className="spinner-style">
+              <Spinner animation="border" variant="light" />
+            </div>
+          ) : !loading && premieres && premieres.length > 0 ? (
             <Carousel
               responsive={responsive}
               swipeable={false}

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getNews } from "../actions/News";
-import { Row, Col, Container, Card, Button } from "react-bootstrap";
+import { Row, Col, Container, Card, Button, Spinner } from "react-bootstrap";
 
 const NewsPage = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,9 @@ const NewsPage = () => {
   return (
     <Container style={{ marginTop: "50px", marginBottom: "100px" }}>
       {loading ? (
-        <div>Loading...</div>
+        <div className="spinner-style">
+          <Spinner animation="border" variant="light" />
+        </div>
       ) : !loading && news ? (
         <Row xs={1} md={3}>
           {news.map((article, idx) => {
