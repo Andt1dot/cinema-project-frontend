@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { fetchPremiereMovies } from "../../actions/Premiere";
 import { useSelector, useDispatch } from "react-redux";
 import FilterCustom from "../../components/FilterCustom";
-import { Card } from "react-bootstrap";
+import { Card, Spinner } from "react-bootstrap";
 
 const PremieresList = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,9 @@ const PremieresList = () => {
   return (
     <>
       {loading ? (
-        <div>Loading....</div>
+        <div className="spinner-style">
+          <Spinner animation="border" variant="light" />
+        </div>
       ) : !loading && premieres ? (
         <div className="row">
           <div

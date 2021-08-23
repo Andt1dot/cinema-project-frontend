@@ -48,3 +48,7 @@ th {
   margin: 3px;
   align-self: center;
 }
+
+.spinner-style {
+  text-align: center;
+}

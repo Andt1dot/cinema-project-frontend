@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { getAllReservations } from "../../actions/Reservation";
 import { useSearch } from "../../contexts/SearchContext";
 import { useDispatch, useSelector } from "react-redux";
-import { Pagination, Table } from "react-bootstrap";
+import { Pagination, Spinner, Table } from "react-bootstrap";
 import { CaretUp, CaretDown } from "react-bootstrap-icons";
 
 const ReservationsList = () => {
@@ -94,7 +94,9 @@ const ReservationsList = () => {
   return (
     <>
       {loading ? (
-        <div>Loading...</div>
+        <div className="spinner-style">
+          <Spinner animation="border" variant="light" />
+        </div>
       ) : !loading && reservations ? (
         <>
           <Table bordered hover variant="dark" className="table-style">
