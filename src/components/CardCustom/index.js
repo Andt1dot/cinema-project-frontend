@@ -39,7 +39,7 @@ const CardCustom = ({ movie, premiere, handleShow }) => {
                     {premiere?.movie.age_restrict || movie.age_restrict}
                   </p>
                   <p className="genre">
-                    {premiere?.movie.genre || movie.genre}
+                    {premiere?.movie.genre.join(", ") || movie.genre}
                   </p>
                 </Card.Text>
                 <Card.Text as="div">

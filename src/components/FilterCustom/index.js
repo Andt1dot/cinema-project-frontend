@@ -3,12 +3,7 @@ import { Link } from "react-router-dom";
 import { ListGroup, Button } from "react-bootstrap";
 import "./index.css";
 
-const FilterCustom = ({
-  children,
-  addButtonTitle,
-  pathName,
-  handleClickFilter,
-}) => {
+const FilterCustom = ({ children, addButtonTitle, pathName }) => {
   return (
     <>
       <ListGroup horizontal="lg" className="m-0">
