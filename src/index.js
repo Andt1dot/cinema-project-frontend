@@ -13,6 +13,7 @@ import thunk from "redux-thunk";
 import Premiere from "./reducers/Premiere";
 import Seat from "./reducers/Seat";
 import Reservation from "./reducers/Reservation";
+import User from "./reducers/User";
 
 const reducer = combineReducers({
   Auth,
@@ -20,6 +21,7 @@ const reducer = combineReducers({
   Premiere,
   Seat,
   Reservation,
+  User,
   News,
 });
 
