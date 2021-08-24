@@ -49,10 +49,10 @@ const Navbar = () => {
             <li className="nav-item ">
               <NavLink
                 exact
-                to="/admin/premieres"
+                to="/admin/reservations"
                 className="nav-link listItem"
               >
-                <CameraReelsFill className="mr-1" /> Premieres
+                <BookmarkHeartFill className="mr-1" /> Reservations
               </NavLink>
             </li>
             <li className="nav-item ">
@@ -63,10 +63,10 @@ const Navbar = () => {
             <li className="nav-item ">
               <NavLink
                 exact
-                to="/admin/reservations"
+                to="/admin/premieres"
                 className="nav-link listItem"
               >
-                <BookmarkHeartFill className="mr-1" /> Reservations
+                <CameraReelsFill className="mr-1" /> Premieres
               </NavLink>
             </li>
             <li className="nav-item ">

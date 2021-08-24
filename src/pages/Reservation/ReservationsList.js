@@ -9,6 +9,7 @@ const ReservationsList = () => {
   const [sortState, setSortState] = useState({ key: "", direction: "" });
   const [pageIndex, setPageIndex] = useState(0);
   const [pageSize] = useState(15);
+  const [activePage, setActivePage] = useState(1);
   const { filteredData } = useSearch();
   const dispatch = useDispatch();
 
@@ -67,10 +68,11 @@ const ReservationsList = () => {
       </span>
     );
   };
-  let active = 1;
+
   let items = [];
   const goToNextPage = (e) => {
     setPageIndex(e.target.id);
+    setActivePage(Number(e.target.text));
     dispatch(
       getAllReservations({ limit: pageSize, skip: pageSize * pageIndex })
     );
@@ -84,7 +86,7 @@ const ReservationsList = () => {
     <Pagination.Item
       id={index}
       key={item}
-      active={item === active}
+      active={activePage === item}
       onClick={goToNextPage}
     >
       {item}

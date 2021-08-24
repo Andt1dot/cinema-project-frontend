@@ -29,6 +29,7 @@ const MoviesList = () => {
 
   const filteredItems = useMemo(() => {
     let items = [...filteredData];
+
     if (filterOptions.age_restrict !== "") {
       return items.filter(
         (movie) => movie.age_restrict === filterOptions.age_restrict
