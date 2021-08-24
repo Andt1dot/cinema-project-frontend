@@ -101,6 +101,16 @@ const ReservationsList = () => {
         </div>
       ) : !loading && reservations ? (
         <>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              marginBottom: "30px",
+            }}
+          >
+            <h2>Reservations</h2>
+          </div>
           <Table bordered hover variant="dark" className="table-style">
             <thead>
               <tr>
