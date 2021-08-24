@@ -39,12 +39,17 @@ const CardCustom = ({ movie, premiere, handleShow }) => {
                     {premiere?.movie.age_restrict || movie.age_restrict}
                   </p>
                   <p className="genre">
-                    {premiere?.movie.genre.join(", ") || movie.genre}
+                    {premiere?.movie.genre.join(", ") ||
+                      (movie.genre && movie.genre.join(", "))}
                   </p>
                 </Card.Text>
                 <Card.Text as="div">
                   {movie ? (
-                    <p className="year">Release year: 2021</p>
+                    <p className="year">
+                      Release date:{" "}
+                      {movie.release_date &&
+                        movie.release_date.split("T", 1).toString()}
+                    </p>
                   ) : (
                     <p className="info">Price: {premiere.price} MDL</p>
                   )}
@@ -74,7 +79,8 @@ const CardCustom = ({ movie, premiere, handleShow }) => {
                     <>
                       <strong>Director:</strong> {movie.director}
                       <br></br>
-                      <strong>Stars:</strong> {movie.actors}
+                      <strong>Stars:</strong>{" "}
+                      {movie.actors && movie.actors.join(", ")}
                     </>
                   ) : (
                     <p>

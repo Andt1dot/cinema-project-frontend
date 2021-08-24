@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchPremiereMovies } from "../../actions/Premiere";
 import { useSelector, useDispatch } from "react-redux";
-import FilterCustom from "../../components/FilterCustom";
 import { Card, Spinner } from "react-bootstrap";
 
 const PremieresList = () => {
@@ -34,10 +33,6 @@ const PremieresList = () => {
             }}
           >
             <h2>Premieres</h2>
-            <FilterCustom
-              addButtonTitle="Add Premiere"
-              pathName="/admin/premieres/premiere-add"
-            />
           </div>
           {premieres.map((premiere) => {
             return (
