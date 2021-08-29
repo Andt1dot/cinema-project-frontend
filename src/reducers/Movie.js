@@ -14,6 +14,7 @@ const initialState = {
   movies: [],
   error: "",
   loading: false,
+  pageCount: 0,
 };
 
 const Movie = (state = initialState, action) => {
@@ -38,12 +39,14 @@ const Movie = (state = initialState, action) => {
         ...state,
         loading: true,
         error: "",
+        pageCount: 0,
       };
 
     case GET_MOVIES_SUCCESS:
       return {
         ...state,
-        movies: action.payload,
+        movies: action.payload.data,
+        pageCount: action.payload.paging.pages,
         loading: false,
         error: "",
       };

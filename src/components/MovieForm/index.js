@@ -1,15 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import * as Yup from "yup";
+import { Modal, Button } from "react-bootstrap";
 import "./index.css";
+import { useHistory, useLocation } from "react-router-dom";
+
+const schema = Yup.object().shape({
+  title: Yup.string()
+    .min(3, "Title must have minimum length of 3.")
+    .max(50)
+    .required("Title field can't be empty."),
+
+  genre: Yup.string()
+    .min(1, "Please add at least one genre.")
+    .required("Genre field can't be empty."),
+  original_title: Yup.string(),
+
+  director: Yup.string()
+    .min(3, "Director name can't be less than 3 chars.")
+    .required("Director field can't be empty."),
+
+  release_date: Yup.date().required("Release date field can't be empty."),
+
+  rating: Yup.number()
+    .min(0, "Rating can't be less than 0.")
+    .max(10, "Rating can't be more than 10.")
+    .required("Rating field can't be empty."),
+
+  description: Yup.string()
+    .min(50, "Description must have mininum length of 50.")
+    .required("Description field can't be empty."),
+
+  actors: Yup.string().min(1).required("Actors field can't be empty."),
+  age_restrict: Yup.string()
+    .oneOf(["AG", "AP-12", "IM-18", "N-15"])
+    .required("Age Restriction field is required."),
+
+  duration: Yup.string().required("Duration field is required."),
+
+  image_url: Yup.string()
+    .url("Provided value must be a valid URL.")
+    .required("Image url field is required."),
+  video_url: Yup.string()
+    .url("Provided value must be a valid URL.")
+    .required("Video url field is required."),
+});
 
 const initialData = {
   title: "",
   original_title: "",
-  genre: "",
+  genre: [],
   director: "",
   release_date: "",
   rating: 0,
   description: "",
-  actors: "",
+  actors: [],
   age_restrict: "Age Restrict",
   duration: "",
   image_url: "",
@@ -18,8 +62,67 @@ const initialData = {
 
 const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
   const [data, setData] = useState(initialMovie);
+  const [show, setShow] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [errorsState, setErrorsState] = useState({
+    title: "",
+    original_title: "",
+    genre: "",
+    director: "",
+    release_date: "",
+    rating: "",
+    description: "",
+    actors: "",
+    age_restrict: "",
+    duration: "",
+    image_url: "",
+    video_url: "",
+  });
+
+  const history = useHistory();
+  const location = useLocation();
+
+  const handleModalClose = () => {
+    setData(initialMovie);
+    setShow(false);
+  };
+  const handleModalShow = () => setShow(true);
+
+  const goToMovie = () => {
+    setData(initialMovie);
+    history.push("/admin/movies");
+  };
+
+  //console.log("data: ", data);
+
+  function handleFieldValidation(e) {
+    Yup.reach(schema, e.target.name)
+      .validate(e.target.value)
+      .then(() => {
+        setErrorsState({
+          ...errorsState,
+          [e.target.name]: "",
+        });
+      })
+      .catch((err) => {
+        setErrorsState({
+          ...errorsState,
+          [e.target.name]: err.errors[0],
+        });
+      });
+  }
+
+  useEffect(() => {
+    async function helper() {
+      const valid = await schema.isValid(data);
+      setIsButtonDisabled(!valid);
+    }
+    helper();
+  }, [data]);
 
   const handleInputChange = (e) => {
+    handleFieldValidation(e);
+
     setData({
       ...data,
       [e.target.name]: e.target.value,
@@ -29,7 +132,6 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     onSubmitCallback(data);
-    setData(initialMovie);
   };
 
   const showWidget = (e) => {
@@ -66,6 +168,11 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
           <div className="row">
             <div className="col">
               <div className="form-group">
+                {errorsState.title ? (
+                  <p style={{ fontSize: "12px", color: "red" }}>
+                    {errorsState.title}
+                  </p>
+                ) : null}
                 <input
                   type="text"
                   name="title"
@@ -94,6 +201,11 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
           <div className="row mt-2">
             <div className="col">
               <div className="form-group">
+                {errorsState.release_date ? (
+                  <p style={{ fontSize: "12px", color: "red" }}>
+                    {errorsState.release_date}
+                  </p>
+                ) : null}
                 <input
                   type="date"
                   name="release_date"
@@ -107,6 +219,11 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
             </div>
             <div className="col">
               <div className="form-group">
+                {errorsState.director ? (
+                  <p style={{ fontSize: "12px", color: "red" }}>
+                    {errorsState.director}
+                  </p>
+                ) : null}
                 <input
                   type="text"
                   name="director"
@@ -122,6 +239,11 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
           <div className="row mt-2">
             <div className="col">
               <div className="form-group">
+                {errorsState.rating ? (
+                  <p style={{ fontSize: "12px", color: "red" }}>
+                    {errorsState.rating}
+                  </p>
+                ) : null}
                 <input
                   type="number"
                   name="rating"
@@ -135,6 +257,11 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
             </div>
             <div className="col">
               <div className="form-group">
+                {errorsState.duration ? (
+                  <p style={{ fontSize: "12px", color: "red" }}>
+                    {errorsState.duration}
+                  </p>
+                ) : null}
                 <input
                   type="text"
                   name="duration"
@@ -150,6 +277,11 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
           <div className="row mt-2">
             <div className="col">
               <div className="form-group">
+                {errorsState.age_restrict ? (
+                  <p style={{ fontSize: "12px", color: "red" }}>
+                    {errorsState.age_restrict}
+                  </p>
+                ) : null}
                 <select
                   name="age_restrict"
                   className="form-style"
@@ -167,6 +299,11 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
             </div>
             <div className="col">
               <div className="form-group">
+                {errorsState.genre ? (
+                  <p style={{ fontSize: "12px", color: "red" }}>
+                    {errorsState.genre}
+                  </p>
+                ) : null}
                 <input
                   type="text"
                   name="genre"
@@ -182,6 +319,11 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
           <div className="row mt-2">
             <div className="col">
               <div className="form-group">
+                {errorsState.actors ? (
+                  <p style={{ fontSize: "12px", color: "red" }}>
+                    {errorsState.actors}
+                  </p>
+                ) : null}
                 <input
                   type="text"
                   name="actors"
@@ -195,6 +337,11 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
             </div>
             <div className="col">
               <div className="form-group">
+                {errorsState.description ? (
+                  <p style={{ fontSize: "12px", color: "red" }}>
+                    {errorsState.description}
+                  </p>
+                ) : null}
                 <textarea
                   name="description"
                   className="form-style"
@@ -208,6 +355,11 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
           <div className="row mt-2">
             <div className="col">
               <div className="form-group">
+                {errorsState.image_url ? (
+                  <p style={{ fontSize: "12px", color: "red" }}>
+                    {errorsState.image_url}
+                  </p>
+                ) : null}
                 <div
                   id="image_upload"
                   onDoubleClick={showWidget}
@@ -219,6 +371,11 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
             </div>
             <div className="col">
               <div className="form-group">
+                {errorsState.video_url ? (
+                  <p style={{ fontSize: "12px", color: "red" }}>
+                    {errorsState.video_url}
+                  </p>
+                ) : null}
                 <div
                   id="video_upload"
                   onDoubleClick={showWidget}
@@ -266,11 +423,52 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
           <div className="row">
             <div className="form-group">
               {" "}
-              <button className="btn btn-add mt-3">Submit</button>
+              <button
+                className="btn btn-add mt-3"
+                disabled={isButtonDisabled}
+                onClick={handleModalShow}
+              >
+                Submit
+              </button>
             </div>
           </div>
         </form>
       </div>
+      <Modal
+        show={show}
+        onHide={handleModalClose}
+        className="modal-client_type"
+        aria-labelledby="contained-modal-title-vcenter"
+        data-backdrop="static"
+        centered
+      >
+        <Modal.Header className="header-title" closeButton>
+          <Modal.Title
+            id="contained-modal-title-vcenter"
+            style={{ color: "green" }}
+          ></Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{ color: "black", fontWeight: "bold", fontSize: "larger" }}
+        >
+          <div className="info">
+            <i className="fa fa-check-circle sm"></i>
+          </div>
+          {location.pathname.includes("/movie-edit") ? (
+            <div> Movie was edited successfully!</div>
+          ) : (
+            <div> Movie was added successfully!</div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={goToMovie}>
+            Goto Movie
+          </Button>{" "}
+          <Button variant="secondary" onClick={handleModalClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

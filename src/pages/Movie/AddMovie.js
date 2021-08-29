@@ -8,10 +8,6 @@ const AddMovie = () => {
 
   const onSubmitCallback = (movie) => {
     dispatch(addMovie(movie));
-
-    /*dispatch(addMovie(movie)).then(() => {
-      history.push("/");
-    });*/
   };
 
   return <MovieForm onSubmitCallback={onSubmitCallback} />;
