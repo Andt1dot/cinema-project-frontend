@@ -93,6 +93,7 @@ const ReservationsList = () => {
     </Pagination.Item>
   ));
   //console.log("pages", pages);
+
   return (
     <>
       {loading ? (
@@ -115,7 +116,15 @@ const ReservationsList = () => {
             <thead>
               <tr>
                 <th className="table-col-width">#ID</th>
-                <th className="table-col-width">Premiere</th>
+                <th className="table-col-width">
+                  {" "}
+                  <button
+                    onClick={() => handleSort("premiere")}
+                    className="btn btn-dark sort-button"
+                  >
+                    Premiere {getIcon("premiere")}
+                  </button>
+                </th>
                 <th className="table-col-width">Parent_User</th>
                 <th>
                   <button
@@ -127,10 +136,28 @@ const ReservationsList = () => {
                 </th>
                 <th>
                   <button
+                    onClick={() => handleSort("reserv_hour")}
+                    className="btn btn-dark sort-button"
+                  >
+                    Reserv_Hour {getIcon("reserv_hour")}
+                  </button>
+                </th>
+                <th>
+                  <button
                     onClick={() => handleSort("total_price")}
                     className="btn btn-dark sort-button"
                   >
                     Total_Price {getIcon("total_price")}
+                  </button>
+                </th>
+
+                <th>
+                  <button
+                    onClick={() => handleSort("status")}
+                    className="btn btn-dark sort-button"
+                  >
+                    Status
+                    {getIcon("status")}
                   </button>
                 </th>
                 <th>
@@ -142,19 +169,6 @@ const ReservationsList = () => {
                     {getIcon("createdAt")}
                   </button>
                 </th>
-                <th>
-                  <button
-                    onClick={() => handleSort("updatedAt")}
-                    className="btn btn-dark sort-button"
-                  >
-                    Updated_At
-                    {getIcon("updatedAt")}
-                  </button>
-                </th>
-                <th>Options</th>
-                {/* <th>Seats</th> */}
-                {/* <th>Status</th> */}
-                {/* <th>Reserv_Hour</th> */}
               </tr>
             </thead>
 
@@ -167,15 +181,14 @@ const ReservationsList = () => {
                   </td>
                   <td className="table-col-width">{reserv.parent_user}</td>
                   <td>{reserv.reserv_date.split("T", 1)}</td>
+                  <td>{reserv.reserv_hour}</td>
                   <td>{reserv.total_price}</td>
+                  <td>{reserv.status}</td>
                   <td>{reserv.createdAt.split("T", 1)}</td>
-                  <td>{reserv.updatedAt.split("T", 1)}</td>
-                  <td style={{ textAlign: "center" }}>
+                  {/* <td style={{ textAlign: "center" }}>
                     <button className="btn btn-primary">Manage</button>
-                  </td>
+                  </td> */}
                   {/* <td>reserv.seats</td> */}
-                  {/* <td>{reserv.status}</td> */}
-                  {/* <td>{reserv.reserv_hour}</td> */}
                 </tr>
               ))}
             </tbody>

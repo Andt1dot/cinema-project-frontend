@@ -5,7 +5,7 @@ export const ADD_MOVIE_FAILURE = "ADD_MOVIE_FAILURE";
 export const addMovie = (data) => async (dispatch) => {
   await axios
     .post(
-      process.env.REACT_APP_API_URL+'/movies',
+      process.env.REACT_APP_API_URL + "/movies",
       {
         title: data.title,
         original_title: data.original_title,
@@ -45,29 +45,34 @@ export const GET_MOVIES_LOADING = "GET_MOVIES_LOADING";
 export const GET_MOVIES_SUCCESS = "ET_MOVIES_SUCCESS";
 export const GET_MOVIES_FAILURE = "GET_MOVIES_FAILURE";
 
-export const getMovies = () => async (dispatch) => {
-  dispatch({ type: GET_MOVIES_LOADING });
+export const getMovies =
+  ({ limit, skip }) =>
+  async (dispatch) => {
+    dispatch({ type: GET_MOVIES_LOADING });
 
-  axios
-    .get(process.env.REACT_APP_API_URL+"/movies", {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-    })
-    .then((movies) => {
-      dispatch({
-        type: GET_MOVIES_SUCCESS,
-        payload: movies.data,
+    axios
+      .get(
+        process.env.REACT_APP_API_URL + `/movies?limit=${limit}&skip=${skip}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
+      .then((movies) => {
+        dispatch({
+          type: GET_MOVIES_SUCCESS,
+          payload: movies.data,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        dispatch({
+          type: GET_MOVIES_FAILURE,
+          payload: "Error.Could not get movies.",
+        });
       });
-    })
-    .catch((error) => {
-      console.error(error);
-      dispatch({
-        type: GET_MOVIES_FAILURE,
-        payload: "Error.Could not get movies.",
-      });
-    });
-};
+  };
 
 export const EDIT_MOVIE_SUCCESS = "EDIT_MOVIE_SUCCESS";
 export const EDIT_MOVIE_FAILURE = "EDIT_MOVIE_FAILURE";
@@ -75,7 +80,7 @@ export const EDIT_MOVIE_FAILURE = "EDIT_MOVIE_FAILURE";
 export const editMovie = (movie_id, data) => async (dispatch) => {
   axios
     .put(
-      process.env.REACT_APP_API_URL+`/movies/${movie_id}`,
+      process.env.REACT_APP_API_URL + `/movies/${movie_id}`,
       {
         title: data.title,
         original_title: data.original_title,
@@ -116,7 +121,7 @@ export const DELETE_MOVIE_FAILURE = "DELETE_MOVIE_FAILURE";
 
 export const deleteMovie = (movie_id) => async (dispatch) => {
   await axios
-    .delete(process.env.REACT_APP_API_URL+`/movies/${movie_id}`, {
+    .delete(process.env.REACT_APP_API_URL + `/movies/${movie_id}`, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
