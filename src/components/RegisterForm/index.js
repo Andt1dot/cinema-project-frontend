@@ -36,7 +36,7 @@ const RegisterForm = () => {
     <div className="register-wrapper">
       <Container style={{ marginTop: "20px", marginBottom: "20px" }}>
         <form className="styled-form">
-          <h1 className="title">Register</h1>
+          <h1 className="title">Înregistrare</h1>
           {errorMessageRegister && !isRegister ? (
             <div className="error-message">
               <p>{`* ${errorMessageRegister} *`}</p>
@@ -109,7 +109,7 @@ const RegisterForm = () => {
             className="styled-button signUp-register"
             onClick={handleSubmit}
           >
-            Sign-Up
+            Registrează
           </button>
         </form>
         {isRegister ? (
