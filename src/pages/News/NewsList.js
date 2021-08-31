@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useSearch } from "../../contexts/SearchContext";
 import { getNews } from "../../actions/News";
 import { Row, Col, Container, Card, Button, Spinner } from "react-bootstrap";
-// import FilterCustom from "../../components/FilterCustom";
 
 const NewsList = () => {
   const dispatch = useDispatch();
@@ -38,16 +37,27 @@ const NewsList = () => {
               }}
             >
               <h2>News</h2>
-              {/* <FilterCustom
-                addButtonTitle="Add Article"
-                pathName="/admin/news/news-add"
-              /> */}
+
+              <Link to="/admin/news/news-add">
+                <Button
+                  className="btn btn-secondary wrn-btn"
+                  style={{
+                    background: "#d1a019",
+                    color: "white",
+                    fontWeight: "bold",
+                    border: "none",
+                    borderRadius: "15px",
+                  }}
+                >
+                  Add Article{" "}
+                </Button>
+              </Link>
             </div>
             <Row xs={1} md={3}>
               {filteredData.map((article, idx) => {
                 return (
                   <Col key={idx}>
-                    <Card style={{ color: "black", margin: "10px" }}>
+                    <Card style={{ background: "#141414", margin: "10px" }}>
                       <Card.Img variant="top" src={article.image_url} />
                       <Card.Body>
                         <Card.Title
@@ -71,7 +81,16 @@ const NewsList = () => {
                           {article.subtitle}
                         </Card.Text>
                         <Link to={`/admin/news/${article._id}`}>
-                          <Button variant="primary">Vezi Articol</Button>
+                          <Button
+                            style={{
+                              background: "#d1a019",
+                              color: "black",
+                              fontWeight: "bold",
+                              border: "none",
+                            }}
+                          >
+                            Vezi Articol
+                          </Button>
                         </Link>
                       </Card.Body>
                     </Card>

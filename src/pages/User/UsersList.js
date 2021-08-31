@@ -16,8 +16,6 @@ const UsersList = () => {
     dispatch(getUsers());
   }, [dispatch]);
 
-  console.log("users: ", users);
-
   return (
     <>
       {loading ? (
@@ -55,7 +53,10 @@ const UsersList = () => {
               {users.map((user) => (
                 <tr key={user._id}>
                   <td className="table-col-width">{user._id}</td>
-                  <td className="table-col-width">{user.role}</td>
+
+                  <td className="table-col-width">
+                    {user.role === 1 ? "admin" : "user"}
+                  </td>
                   <td className="table-col-width">{user.email}</td>
                   <td className="table-col-width">{user.status}</td>
                   <td className="table-col-width">{user.firstname}</td>

@@ -443,28 +443,27 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
         centered
       >
         <Modal.Header className="header-title" closeButton>
-          <Modal.Title
-            id="contained-modal-title-vcenter"
-            style={{ color: "green" }}
-          ></Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
         </Modal.Header>
         <Modal.Body
           style={{ color: "black", fontWeight: "bold", fontSize: "larger" }}
         >
-          <div className="info">
-            <i className="fa fa-check-circle sm"></i>
-          </div>
+          <i className="fa fa-check-circle" style={{ width: "500px" }}></i>
           {location.pathname.includes("/movie-edit") ? (
-            <div> Movie was edited successfully!</div>
+            <div className="txt"> Movie was edited successfully!</div>
           ) : (
-            <div> Movie was added successfully!</div>
+            <div className="txt"> Movie was added successfully!</div>
           )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={goToMovie}>
             Goto Movie
           </Button>{" "}
-          <Button variant="secondary" onClick={handleModalClose}>
+          <Button
+            variant="secondary"
+            className="w-25"
+            onClick={handleModalClose}
+          >
             Close
           </Button>
         </Modal.Footer>
