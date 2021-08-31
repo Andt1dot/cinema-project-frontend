@@ -77,7 +77,7 @@ const ResetPasswordForm = () => {
               className="styled-button signIn save-new-password"
               onClick={onSubmitResetPassword}
             >
-              Save
+              Salvează
             </button>
           </div>
         </form>

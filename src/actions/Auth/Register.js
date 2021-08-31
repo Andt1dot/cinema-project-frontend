@@ -11,7 +11,6 @@ const requestRegister =
     dispatch({
       type: REGISTER_REQUEST,
     });
-
      await axios
       .post(process.env.REACT_APP_API_URL+'/auth/register', {
         firstname,
@@ -23,20 +22,12 @@ const requestRegister =
         mobile,
       })
       .then((newUser) => {
-        console.log("newUser: ", newUser);
         dispatch({
           type: REGISTER_SUCCESS,
           payload: newUser.data,
         });
-
-        // localStorage.setItem("token", newUser.data.token);
-        // localStorage.setItem("isAdmin", newUser.data.role);
       })
       .catch((error) => {
-        // console.log("eroare", error.request.response);
-        console.log("eroare", error.request.response.split("%")[1]);
-        // if (response) {
-        //   console.log('eroare',response);
         dispatch({
           type: REGISTER_FAILURE,
           payload: error.request.response.split("%")[1],
