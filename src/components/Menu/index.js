@@ -58,7 +58,7 @@ const Menu = () => {
                       </Nav.Item>
                       <Nav.Item className="custom-link">
                         <Nav.Link eventKey="2" href="/news">
-                          Noutati
+                          Actualități
                         </Nav.Link>
                       </Nav.Item>
                       <Nav.Item className="custom-link">
