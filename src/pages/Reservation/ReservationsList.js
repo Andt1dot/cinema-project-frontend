@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { getAllReservations } from "../../actions/Reservation";
+import getUsers from "../../actions/User";
 import { useSearch } from "../../contexts/SearchContext";
 import { useDispatch, useSelector } from "react-redux";
 import { Pagination, Spinner, Table } from "react-bootstrap";
@@ -8,17 +9,20 @@ import { CaretUp, CaretDown } from "react-bootstrap-icons";
 const ReservationsList = () => {
   const [sortState, setSortState] = useState({ key: "", direction: "" });
   const [pageIndex, setPageIndex] = useState(0);
-  const [pageSize] = useState(15);
+  const [pageSize] = useState(10);
   const [activePage, setActivePage] = useState(1);
   const { filteredData } = useSearch();
   const dispatch = useDispatch();
 
-  const { reservations, loading, error, pageCount } = useSelector((state) => ({
-    reservations: state.Reservation.reservations,
-    loading: state.Reservation.loading,
-    error: state.Reservation.error,
-    pageCount: state.Reservation.pageCount,
-  }));
+  const { reservations, loading, error, pageCount, users } = useSelector(
+    (state) => ({
+      reservations: state.Reservation.reservations,
+      loading: state.Reservation.loading,
+      error: state.Reservation.error,
+      pageCount: state.Reservation.pageCount,
+      users: state.User.users,
+    })
+  );
   console.log("reserv: ", reservations);
 
   const sortedItems = useMemo(() => {
@@ -43,6 +47,10 @@ const ReservationsList = () => {
       getAllReservations({ limit: pageSize, skip: pageSize * pageIndex })
     );
   }, [dispatch, pageIndex, pageSize]);
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
 
   const handleSort = (key) => {
     let direction = "ascending";
@@ -116,15 +124,7 @@ const ReservationsList = () => {
             <thead>
               <tr>
                 <th className="table-col-width">#ID</th>
-                <th className="table-col-width">
-                  {" "}
-                  <button
-                    onClick={() => handleSort("premiere")}
-                    className="btn btn-dark sort-button"
-                  >
-                    Premiere {getIcon("premiere")}
-                  </button>
-                </th>
+                <th className="table-col-width">Premiere</th>
                 <th className="table-col-width">Parent_User</th>
                 <th>
                   <button
@@ -179,7 +179,11 @@ const ReservationsList = () => {
                   <td className="table-col-width">
                     {reserv.premiere.movie.title}
                   </td>
-                  <td className="table-col-width">{reserv.parent_user}</td>
+                  <td className="table-col-width">
+                    {users.map(
+                      (user) => user._id === reserv.parent_user && user.email
+                    )}
+                  </td>
                   <td>{reserv.reserv_date.split("T", 1)}</td>
                   <td>{reserv.reserv_hour}</td>
                   <td>{reserv.total_price}</td>

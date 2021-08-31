@@ -197,6 +197,7 @@ const MoviesList = () => {
                       <Card.Body>
                         <Card.Title
                           style={{
+                            color: "black",
                             width: "content-width",
                             whiteSpace: "nowrap",
                             overflow: "hidden",
