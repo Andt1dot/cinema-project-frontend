@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import getUsers from "../../actions/User";
 import { useDispatch, useSelector } from "react-redux";
+import { useSearch } from "../../contexts/SearchContext";
 import { Spinner, Table } from "react-bootstrap";
 
 const UsersList = () => {
   const dispatch = useDispatch();
+  const { filteredData } = useSearch();
 
   const { users, loading, error } = useSelector((state) => ({
     users: state.User.users,
@@ -50,7 +52,7 @@ const UsersList = () => {
             </thead>
 
             <tbody>
-              {users.map((user) => (
+              {filteredData.map((user) => (
                 <tr key={user._id}>
                   <td className="table-col-width">{user._id}</td>
 
