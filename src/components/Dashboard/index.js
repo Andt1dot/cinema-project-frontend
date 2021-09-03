@@ -24,17 +24,17 @@ const Dashboard = ({ children }) => {
                 <div className="btn-group me-2">
                   <button className="btn btn-datetime">
                     <svg
-                      width="180px"
+                      width="280px"
                       height="60px"
-                      viewBox="0 0 180 60"
+                      viewBox="0 0 280 60"
                       className="border svg-style"
                     >
                       <polyline
-                        points="179,1 179,59 1,59 1,1 179,1"
+                        points="279,1 279,59 1,59 1,1 279,1"
                         className="bg-line"
                       />
                       <polyline
-                        points="179,1 179,59 1,59 1,1 179,1"
+                        points="279,1 279,59 1,59 1,1 279,1"
                         className="hl-line"
                       />
                     </svg>

@@ -12,10 +12,11 @@ const SearchProvider = ({ children }) => {
   const [search, setSearch] = useState("");
   const [searchParam] = useState(["title", "subtitle", "content"]);
 
-  const { movies, news, reservations } = useSelector((state) => ({
+  const { movies, news, reservations, users } = useSelector((state) => ({
     movies: state.Movie.movies,
     news: state.News.news,
     reservations: state.Reservation.reservations,
+    users: state.User.users,
   }));
 
   let location = useLocation();
@@ -52,10 +53,15 @@ const SearchProvider = ({ children }) => {
         }
         return reservations.filter(({ _id }) => _id.includes(search));
 
+      case "/admin/users":
+        if (!search) {
+          return users;
+        }
+        return users.filter(({ email }) => email.includes(search));
       default:
         return [];
     }
-  }, [search, searchParam, pathname, movies, news, reservations]);
+  }, [search, searchParam, pathname, movies, news, reservations, users]);
 
   const value = {
     search,

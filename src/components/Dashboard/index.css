@@ -11,7 +11,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:100&display=swap");
 
 .btn-datetime {
-  width: 180px;
+  width: 280px;
   height: 60px;
   cursor: pointer;
   background: transparent;
@@ -26,8 +26,8 @@
   top: 0;
   fill: none;
   stroke: #fff;
-  stroke-dasharray: 150 480;
-  stroke-dashoffset: 150;
+  stroke-dasharray: 180 160;
+  stroke-dashoffset: 170 200;
   transition: 1s ease-in-out;
 }
 
@@ -42,6 +42,6 @@
 
 .btn-datetime span {
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 100;
 }
