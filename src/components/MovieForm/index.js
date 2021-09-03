@@ -114,11 +114,14 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
 
   useEffect(() => {
     async function helper() {
+      if (location.pathname.includes("movie-edit")) {
+        return setIsButtonDisabled(false);
+      }
       const valid = await schema.isValid(data);
       setIsButtonDisabled(!valid);
     }
     helper();
-  }, [data]);
+  }, [data, location]);
 
   const handleInputChange = (e) => {
     handleFieldValidation(e);
@@ -212,7 +215,7 @@ const MovieForm = ({ initialMovie = initialData, onSubmitCallback }) => {
                   className="form-style"
                   //autoComplete="off"
                   placeholder="Release Date"
-                  value={data.release_date}
+                  value={data?.release_date.split("T", 1) || data.release_date}
                   onChange={handleInputChange}
                 />
               </div>

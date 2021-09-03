@@ -18,7 +18,7 @@ const EditMovie = () => {
   const onSubmitCallback = (movie) => {
     const movie_id = currentMovie._id;
     dispatch(editMovie(movie_id, movie)).then(() => {
-      history.push(`/admin/movies/${movie_id}`);
+      history.push("/admin/movies");
       // history.goBack();
     });
   };
