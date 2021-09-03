@@ -29,12 +29,12 @@ const ClientTypeModal = (props) => {
             aria-label="Example select with button addon"
             onChange={(e) => setClientType(e.target.value)}
           >
-            <option value="Alege...">Alege...</option>
-            <option value="Copil">Copil</option>
-            <option value="Elev">Elev</option>
-            <option value="Student">Student</option>
-            <option value="Adult">Adult</option>
-            <option value="Pensionar">Pensionar</option>
+            <option value="Alege..." selected disabled>Alege...</option>
+            <option value="Copil">Copil (AG)</option>
+            <option value="Elev">Elev (AP-12,N-15)</option>
+            <option value="Student">Student (IM-18)</option>
+            <option value="Adult">Adult (IM-18)</option>
+            <option value="Pensionar">Pensionar (IM-18)</option>
           </select>
         </div>
       </Modal.Body>

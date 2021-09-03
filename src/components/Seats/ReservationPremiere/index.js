@@ -12,18 +12,21 @@ const ReservationPremiere = ({ totalReservation }) => {
     movie: "xxx",
     img: "xxx",
     age_restrict: "xxx",
+    price: "xxxx",
   });
 
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_API_URL+`/premieres/${premiere_id}`)
+      .get(process.env.REACT_APP_API_URL + `/premieres/${premiere_id}`)
       .then((premiere) => {
+        console.log("Premiere", premiere);
         setPremiere({
           hall: premiere.data.hall.find((el) => el._id === hall_id).name,
           cinema: premiere.data.cinema.find((el) => el._id === cinema_id).name,
           img: premiere.data.movie.image_url,
           movie: premiere.data.movie.title,
           age_restrict: premiere.data.movie.age_restrict,
+          price: premiere.data.price,
         });
       });
   }, [premiere_id, cinema_id, hall_id]);
@@ -76,6 +79,11 @@ const ReservationPremiere = ({ totalReservation }) => {
             <div>
               <p>
                 <b>Restricții de vîrstă:</b> {premiere.age_restrict}
+              </p>
+            </div>
+            <div>
+              <p>
+                <b>Costul sesiunii:</b> {premiere.price} Lei
               </p>
             </div>
           </div>
