@@ -1,10 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import getUsers from "../../actions/User";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearch } from "../../contexts/SearchContext";
 import { Spinner, Table } from "react-bootstrap";
+import UserDetails from "../../components/UserDetails/index"
 
 const UsersList = () => {
+
+  const [showModal, setShowModal] = useState({onShow:false, onHide:true, userData:""});
+
   const dispatch = useDispatch();
   const { filteredData } = useSearch();
 
@@ -13,6 +17,12 @@ const UsersList = () => {
     loading: state.User.loading,
     error: state.User.error,
   }));
+
+ const onHandleClickUser = (user) => {
+   console.log("Salut")
+   setShowModal({...showModal,onShow:true, onHide:false, userData:user});
+ }
+
 
   useEffect(() => {
     dispatch(getUsers());
@@ -36,40 +46,43 @@ const UsersList = () => {
           >
             <h2>Users</h2>
           </div>
-          <Table bordered hover variant="dark" className="table-style">
+          <Table bordered hover variant="dark" className="table-style" responsive >
             <thead>
               <tr>
-                <th className="table-col-width">#ID</th>
-                <th className="table-col-width">Role</th>
-                <th className="table-col-width">Email</th>
-                <th className="table-col-width">Status</th>
-                <th className="table-col-width">First Name</th>
-                <th className="table-col-width">Last Name</th>
-                <th className="table-col-width">Username</th>
-                <th className="table-col-width">Age</th>
-                <th className="table-col-width">Phone</th>
+                <th>ID</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Age</th>
+                <th>Phone</th>
               </tr>
             </thead>
 
             <tbody>
               {filteredData.map((user) => (
-                <tr key={user._id}>
-                  <td className="table-col-width">{user._id}</td>
+                <tr key={user._id} onClick={(e)=>onHandleClickUser(user)}>
+                  <td>{user._id}</td>
 
-                  <td className="table-col-width">
+                  <td align="center" >
                     {user.role === 1 ? "admin" : "user"}
                   </td>
-                  <td className="table-col-width">{user.email}</td>
-                  <td className="table-col-width">{user.status}</td>
-                  <td className="table-col-width">{user.firstname}</td>
-                  <td className="table-col-width">{user.lastname}</td>
-                  <td className="table-col-width">{user.username}</td>
-                  <td className="table-col-width">{user.age}</td>
-                  <td className="table-col-width">{user.mobile}</td>
+                  <td align="center">{user.email}</td>
+                  <td align="center">
+                    {user.status}
+                  </td>
+                  <td align="center">{user.firstname}</td>
+                  <td align="center">{user.lastname}</td>
+                  <td align="center">{user.username}</td>
+                  <td align="center">{user.age}</td>
+                  <td align="center">{user.mobile}</td>
                 </tr>
               ))}
             </tbody>
           </Table>
+          <UserDetails onShow={showModal.onShow} onHide={(e)=>setShowModal({...showModal,onShow:false,onHide:true})} userData={showModal.userData}></UserDetails>
         </>
       ) : (
         <div>{error}</div>

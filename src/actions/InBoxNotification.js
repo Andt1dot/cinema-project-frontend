@@ -9,7 +9,6 @@ export const sendMessage = async (email, content, title) => {
       notification_type: "Support",
     })
     .then((inBoxMessage) => {
-      console.log(inBoxMessage);
       return inBoxMessage.data;
     })
     .catch((error) => {

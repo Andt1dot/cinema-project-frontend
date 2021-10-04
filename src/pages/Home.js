@@ -40,7 +40,6 @@ export default function Home() {
     loading: state.Premiere.loading,
   }));
 
-  console.log("Home", premieres);
   return (
     <div>
       <MovieCarousel></MovieCarousel>

@@ -19,7 +19,7 @@ const SinglePremiere = () => {
 
   useEffect(() => {
     axios
-      .get(`https://api-olymp-cinema.herokuapp.com/api/premieres/${premiere_id}`, {
+      .get(`${process.env.REACT_APP_API_URL}+/premieres/${premiere_id}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
